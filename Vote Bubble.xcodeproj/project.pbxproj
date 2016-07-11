@@ -11,8 +11,20 @@
 		2D5952411D33EEEE0000DF98 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D5952401D33EEEE0000DF98 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D5952461D33EEEE0000DF98 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5952451D33EEEE0000DF98 /* Messages.framework */; };
 		2D5952491D33EEEE0000DF98 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952481D33EEEE0000DF98 /* MessagesViewController.swift */; };
-		2D59524C1D33EEEE0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D59524A1D33EEEE0000DF98 /* MainInterface.storyboard */; };
 		2D59524E1D33EEEE0000DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D59524D1D33EEEE0000DF98 /* Assets.xcassets */; };
+		2D59525F1D33EFE80000DF98 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59525E1D33EFE80000DF98 /* Bubble.swift */; };
+		2D5952611D33EFF00000DF98 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952601D33EFF00000DF98 /* BubbleButton.swift */; };
+		2D5952641D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */; };
+		2D5952651D33EFFC0000DF98 /* CGRect+stackedRects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */; };
+		2D5952671D33F01F0000DF98 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952661D33F01F0000DF98 /* BrowseViewController.swift */; };
+		2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952681D33F02A0000DF98 /* BuildViewController.swift */; };
+		2D59526D1D33F02A0000DF98 /* BuildTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */; };
+		2D59526E1D33F02A0000DF98 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59526A1D33F02A0000DF98 /* VoteViewController.swift */; };
+		2D59526F1D33F02A0000DF98 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59526B1D33F02A0000DF98 /* ReportViewController.swift */; };
+		2D5952731D33F0370000DF98 /* Ballot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952701D33F0370000DF98 /* Ballot.swift */; };
+		2D5952741D33F0370000DF98 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952711D33F0370000DF98 /* Candidate.swift */; };
+		2D5952751D33F0370000DF98 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
+		2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952761D33F07F0000DF98 /* MainInterface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,9 +58,21 @@
 		2D5952401D33EEEE0000DF98 /* MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MessagesExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5952451D33EEEE0000DF98 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		2D5952481D33EEEE0000DF98 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		2D59524B1D33EEEE0000DF98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		2D59524D1D33EEEE0000DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D59524F1D33EEEE0000DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D59525E1D33EFE80000DF98 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		2D5952601D33EFF00000DF98 /* BubbleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
+		2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MSMessageTemplateLayout+defaults.swift"; sourceTree = "<group>"; };
+		2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+stackedRects.swift"; sourceTree = "<group>"; };
+		2D5952661D33F01F0000DF98 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		2D5952681D33F02A0000DF98 /* BuildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildViewController.swift; sourceTree = "<group>"; };
+		2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableViewController.swift; sourceTree = "<group>"; };
+		2D59526A1D33F02A0000DF98 /* VoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
+		2D59526B1D33F02A0000DF98 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		2D5952701D33F0370000DF98 /* Ballot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ballot.swift; sourceTree = "<group>"; };
+		2D5952711D33F0370000DF98 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		2D5952721D33F0370000DF98 /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
+		2D5952761D33F07F0000DF98 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +126,32 @@
 		2D5952471D33EEEE0000DF98 /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				2D5952591D33EF4F0000DF98 /* Model */,
 				2D5952481D33EEEE0000DF98 /* MessagesViewController.swift */,
-				2D59524A1D33EEEE0000DF98 /* MainInterface.storyboard */,
+				2D5952661D33F01F0000DF98 /* BrowseViewController.swift */,
+				2D5952681D33F02A0000DF98 /* BuildViewController.swift */,
+				2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */,
+				2D59526A1D33F02A0000DF98 /* VoteViewController.swift */,
+				2D59526B1D33F02A0000DF98 /* ReportViewController.swift */,
+				2D59525E1D33EFE80000DF98 /* Bubble.swift */,
+				2D5952601D33EFF00000DF98 /* BubbleButton.swift */,
+				2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */,
+				2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */,
+				2D5952761D33F07F0000DF98 /* MainInterface.storyboard */,
 				2D59524D1D33EEEE0000DF98 /* Assets.xcassets */,
 				2D59524F1D33EEEE0000DF98 /* Info.plist */,
 			);
 			path = MessagesExtension;
+			sourceTree = "<group>";
+		};
+		2D5952591D33EF4F0000DF98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D5952701D33F0370000DF98 /* Ballot.swift */,
+				2D5952711D33F0370000DF98 /* Candidate.swift */,
+				2D5952721D33F0370000DF98 /* Figure.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,7 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D59524E1D33EEEE0000DF98 /* Assets.xcassets in Resources */,
-				2D59524C1D33EEEE0000DF98 /* MainInterface.storyboard in Resources */,
+				2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +259,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D59526D1D33F02A0000DF98 /* BuildTableViewController.swift in Sources */,
+				2D5952671D33F01F0000DF98 /* BrowseViewController.swift in Sources */,
+				2D5952611D33EFF00000DF98 /* BubbleButton.swift in Sources */,
+				2D5952741D33F0370000DF98 /* Candidate.swift in Sources */,
 				2D5952491D33EEEE0000DF98 /* MessagesViewController.swift in Sources */,
+				2D59525F1D33EFE80000DF98 /* Bubble.swift in Sources */,
+				2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */,
+				2D59526E1D33F02A0000DF98 /* VoteViewController.swift in Sources */,
+				2D5952651D33EFFC0000DF98 /* CGRect+stackedRects.swift in Sources */,
+				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
+				2D5952731D33F0370000DF98 /* Ballot.swift in Sources */,
+				2D59526F1D33F02A0000DF98 /* ReportViewController.swift in Sources */,
+				2D5952641D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,17 +284,6 @@
 			targetProxy = 2D5952421D33EEEE0000DF98 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2D59524A1D33EEEE0000DF98 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D59524B1D33EEEE0000DF98 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2D5952501D33EEEE0000DF98 /* Debug */ = {
