@@ -17,6 +17,7 @@ class BuildViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
+
     weak var buildViewControllerDelegate: BuildViewControllerDelegate!
     private(set) var ballot: Ballot!
     var lastQuestionCharacterWasSpace = false

@@ -143,7 +143,6 @@ class Ballot {
             figure: .character("N")
         )
         return Ballot(
-            questionText: "Your opinion please?",
             candidates: [yesCandidate, noCandidate],
             state: .building
         )

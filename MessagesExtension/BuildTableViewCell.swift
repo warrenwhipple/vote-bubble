@@ -10,4 +10,5 @@ import UIKit
 
 class BuildTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var textField: UITextField!
 }

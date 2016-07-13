@@ -93,22 +93,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Question?" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-Sy-8nn" userLabel="Question Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a question" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-Sy-8nn" userLabel="Question Text Field">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="HdJ-Lc-lfo"/>
+                                    <constraint firstAttribute="height" constant="32" id="HdJ-Lc-lfo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                 <connections>
                                     <action selector="questionTextEditingDidChange:" destination="f9d-Yw-mf8" eventType="editingChanged" id="FHR-6G-uV1"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiR-YL-ddN" userLabel="Done Button" customClass="BubbleButton" customModule="MessagesExtension" customModuleProvider="target">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="9ay-gq-Fia"/>
+                                    <constraint firstAttribute="height" constant="32" id="9ay-gq-Fia"/>
                                     <constraint firstAttribute="width" constant="60" id="lTp-y3-D7c"/>
                                 </constraints>
-                                <state key="normal" title="Done"/>
+                                <state key="normal" title="Ready"/>
                                 <connections>
                                     <action selector="doneAction:" destination="f9d-Yw-mf8" eventType="primaryActionTriggered" id="AFw-fU-ofb"/>
                                 </connections>
@@ -121,14 +121,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bfa-Sy-8nn" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" id="64L-Pa-ub7"/>
+                            <constraint firstItem="bfa-Sy-8nn" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" constant="16" id="64L-Pa-ub7"/>
                             <constraint firstItem="AqI-zE-KFX" firstAttribute="trailing" secondItem="VLO-Ki-ppC" secondAttribute="trailing" id="7lB-nc-gVO"/>
-                            <constraint firstItem="GiR-YL-ddN" firstAttribute="bottom" secondItem="1fH-hs-Jar" secondAttribute="top" constant="-8" id="N9W-gY-koc"/>
+                            <constraint firstItem="GiR-YL-ddN" firstAttribute="bottom" secondItem="1fH-hs-Jar" secondAttribute="top" constant="-4" id="N9W-gY-koc"/>
                             <constraint firstItem="AqI-zE-KFX" firstAttribute="top" secondItem="VLO-Ki-ppC" secondAttribute="topMargin" id="Xev-dp-dNS"/>
                             <constraint firstItem="GiR-YL-ddN" firstAttribute="top" secondItem="bfa-Sy-8nn" secondAttribute="bottom" constant="8" id="Z8a-eh-eWq"/>
                             <constraint firstItem="GiR-YL-ddN" firstAttribute="centerX" secondItem="VLO-Ki-ppC" secondAttribute="centerX" id="d2v-Bh-Rdt"/>
-                            <constraint firstItem="bfa-Sy-8nn" firstAttribute="top" secondItem="AqI-zE-KFX" secondAttribute="bottom" id="eLk-ca-LvX"/>
-                            <constraint firstItem="bfa-Sy-8nn" firstAttribute="trailing" secondItem="VLO-Ki-ppC" secondAttribute="trailing" id="nuP-dJ-Sag"/>
+                            <constraint firstItem="bfa-Sy-8nn" firstAttribute="top" secondItem="AqI-zE-KFX" secondAttribute="bottom" constant="8" id="eLk-ca-LvX"/>
+                            <constraint firstItem="bfa-Sy-8nn" firstAttribute="trailing" secondItem="VLO-Ki-ppC" secondAttribute="trailing" constant="-16" id="nuP-dJ-Sag"/>
                             <constraint firstItem="AqI-zE-KFX" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" id="tvQ-Y5-K4J"/>
                         </constraints>
                     </view>
@@ -249,18 +249,33 @@
         <scene sceneID="I0m-hS-jbD">
             <objects>
                 <viewController id="VHN-4r-oBd" customClass="BuildTableViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="hzG-Zt-Vb2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="579"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="hzG-Zt-Vb2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildTableViewCell" id="clM-Xr-L0b" customClass="BuildTableViewCell" customModule="MessagesExtension" customModuleProvider="target">
-                                <frame key="frameInset" minY="28" width="375" height="90"/>
+                                <frame key="frameInset" minY="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="clM-Xr-L0b" id="7pY-hr-WPR">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B0O-M4-vwa">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="B0O-M4-vwa" secondAttribute="trailing" id="IxK-OK-Mim"/>
+                                        <constraint firstItem="B0O-M4-vwa" firstAttribute="top" secondItem="7pY-hr-WPR" secondAttribute="top" id="PLJ-uX-mCK"/>
+                                        <constraint firstItem="B0O-M4-vwa" firstAttribute="leading" secondItem="7pY-hr-WPR" secondAttribute="leading" id="nhq-YF-O1V"/>
+                                        <constraint firstAttribute="bottom" secondItem="B0O-M4-vwa" secondAttribute="bottom" id="pmI-jY-b35"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="B0O-M4-vwa" id="qCR-OL-K9u"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>

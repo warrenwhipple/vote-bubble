@@ -46,7 +46,6 @@ extension MessagesViewController {
     }
 
     func keyboardWillShow(notification: NSNotification) {
-        print("Keyboard will show.")
         if  let info = notification.userInfo,
             let height = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue().size.height,
             let duration = info[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
@@ -62,7 +61,6 @@ extension MessagesViewController {
     }
 
     func keyboardWillHide(notification: NSNotification) {
-        print("Keyboard will hide.")
         if  let info = notification.userInfo,
             let duration = info[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
             let curveIndex = info[UIKeyboardAnimationCurveUserInfoKey] as? Int,

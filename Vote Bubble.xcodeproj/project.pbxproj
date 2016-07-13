@@ -91,6 +91,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D2C803E1D367D5A0070DB41 /* Report View */ = {
+			isa = PBXGroup;
+			children = (
+				2D59526B1D33F02A0000DF98 /* ReportViewController.swift */,
+			);
+			name = "Report View";
+			sourceTree = "<group>";
+		};
+		2D2C803F1D367D670070DB41 /* Vote View */ = {
+			isa = PBXGroup;
+			children = (
+				2D59526A1D33F02A0000DF98 /* VoteViewController.swift */,
+			);
+			name = "Vote View";
+			sourceTree = "<group>";
+		};
+		2D2C80401D367D770070DB41 /* Build View */ = {
+			isa = PBXGroup;
+			children = (
+				2D5952681D33F02A0000DF98 /* BuildViewController.swift */,
+				2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */,
+				2D2C803A1D360F510070DB41 /* BuildTableViewCell.swift */,
+			);
+			name = "Build View";
+			sourceTree = "<group>";
+		};
+		2D2C80411D367D880070DB41 /* Browse View */ = {
+			isa = PBXGroup;
+			children = (
+				2D5952661D33F01F0000DF98 /* BrowseViewController.swift */,
+			);
+			name = "Browse View";
+			sourceTree = "<group>";
+		};
+		2D2C80421D367D960070DB41 /* Message View */ = {
+			isa = PBXGroup;
+			children = (
+				2D5952481D33EEEE0000DF98 /* MessagesViewController.swift */,
+				2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */,
+			);
+			name = "Message View";
+			sourceTree = "<group>";
+		};
+		2D2C80431D367DF90070DB41 /* Shared Classes and Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2D59525E1D33EFE80000DF98 /* Bubble.swift */,
+				2D5952601D33EFF00000DF98 /* BubbleButton.swift */,
+				2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */,
+				2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */,
+			);
+			name = "Shared Classes and Extensions";
+			sourceTree = "<group>";
+		};
 		2D59522F1D33EEEE0000DF98 = {
 			isa = PBXGroup;
 			children = (
@@ -130,19 +184,13 @@
 		2D5952471D33EEEE0000DF98 /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				2D2C80431D367DF90070DB41 /* Shared Classes and Extensions */,
+				2D2C80421D367D960070DB41 /* Message View */,
+				2D2C80411D367D880070DB41 /* Browse View */,
+				2D2C80401D367D770070DB41 /* Build View */,
+				2D2C803F1D367D670070DB41 /* Vote View */,
+				2D2C803E1D367D5A0070DB41 /* Report View */,
 				2D5952591D33EF4F0000DF98 /* Model */,
-				2D5952481D33EEEE0000DF98 /* MessagesViewController.swift */,
-				2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */,
-				2D5952661D33F01F0000DF98 /* BrowseViewController.swift */,
-				2D5952681D33F02A0000DF98 /* BuildViewController.swift */,
-				2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */,
-				2D2C803A1D360F510070DB41 /* BuildTableViewCell.swift */,
-				2D59526A1D33F02A0000DF98 /* VoteViewController.swift */,
-				2D59526B1D33F02A0000DF98 /* ReportViewController.swift */,
-				2D59525E1D33EFE80000DF98 /* Bubble.swift */,
-				2D5952601D33EFF00000DF98 /* BubbleButton.swift */,
-				2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */,
-				2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */,
 				2D5952761D33F07F0000DF98 /* MainInterface.storyboard */,
 				2D59524D1D33EEEE0000DF98 /* Assets.xcassets */,
 				2D59524F1D33EEEE0000DF98 /* Info.plist */,

@@ -21,7 +21,14 @@ class MessagesViewController:
 
     private(set) var ballot: Ballot?
     private(set) var primaryChildViewController: UIViewController?
-    enum State { case browsing, building, voting, reporting }
+
+    enum State {
+        case
+        browsing,
+        building,
+        voting,
+        reporting
+    }
 
     var state: State {
         guard let ballot = ballot else { return .browsing }
@@ -90,7 +97,6 @@ class MessagesViewController:
     }
 
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        print("willTransition(to presentationStyle: \(presentationStyle))")
         // Called before the extension transitions to a new presentation style.
         // Use this method to prepare for the change in presentation style.
         if presentationStyle == .compact {
@@ -102,7 +108,6 @@ class MessagesViewController:
     }
 
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        print("didTransition(to presentationStyle: \(presentationStyle))")
         // Called after the extension transitions to a new presentation style.
         // Use this method to finalize any behaviors associated with the change in presentation style.
         if presentationStyle == .compact && bottomConstraint.constant != 0 {
