@@ -108,6 +108,7 @@ class MessagesViewController:
         if presentationStyle == .compact && bottomConstraint.constant != 0 {
             adjustForKeyboardHide()
         }
+        view.setNeedsLayout()
     }
 
     // MARK: - State changes

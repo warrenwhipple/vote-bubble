@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2C803B1D360F510070DB41 /* BuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C803A1D360F510070DB41 /* BuildTableViewCell.swift */; };
 		2D59523A1D33EEEE0000DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952391D33EEEE0000DF98 /* Assets.xcassets */; };
 		2D5952411D33EEEE0000DF98 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D5952401D33EEEE0000DF98 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D5952461D33EEEE0000DF98 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5952451D33EEEE0000DF98 /* Messages.framework */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D2C803A1D360F510070DB41 /* BuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableViewCell.swift; sourceTree = "<group>"; };
 		2D5952361D33EEEE0000DF98 /* Vote Bubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vote Bubble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5952391D33EEEE0000DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D59523B1D33EEEE0000DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				2D5952661D33F01F0000DF98 /* BrowseViewController.swift */,
 				2D5952681D33F02A0000DF98 /* BuildViewController.swift */,
 				2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */,
+				2D2C803A1D360F510070DB41 /* BuildTableViewCell.swift */,
 				2D59526A1D33F02A0000DF98 /* VoteViewController.swift */,
 				2D59526B1D33F02A0000DF98 /* ReportViewController.swift */,
 				2D59525E1D33EFE80000DF98 /* Bubble.swift */,
@@ -269,6 +272,7 @@
 				2D5952491D33EEEE0000DF98 /* MessagesViewController.swift in Sources */,
 				2D59525F1D33EFE80000DF98 /* Bubble.swift in Sources */,
 				2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */,
+				2D2C803B1D360F510070DB41 /* BuildTableViewCell.swift in Sources */,
 				2D59526E1D33F02A0000DF98 /* VoteViewController.swift in Sources */,
 				2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */,
 				2D5952651D33EFFC0000DF98 /* CGRect+stackedRects.swift in Sources */,
