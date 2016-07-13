@@ -1,5 +1,5 @@
 //
-//  BuildTableViewCell.swift
+//  AddBuildTableViewCell.swift
 //  Vote Bubble
 //
 //  Created by Warren Whipple on 7/13/16.
@@ -8,7 +8,6 @@
 
 import UIKit
 
-class BuildTableViewCell: UITableViewCell {
+class AddBuildTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var textField: UITextField!
 }

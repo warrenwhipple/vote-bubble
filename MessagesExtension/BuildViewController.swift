@@ -13,18 +13,25 @@ protocol BuildViewControllerDelegate: class {
     func didAproveBallot()
 }
 
-class BuildViewController: UIViewController {
+class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
 
-    @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
-    weak var tableViewController: BuildTableViewController!
+    weak var buildTableViewController: BuildTableViewController?
     weak var delegate: BuildViewControllerDelegate?
+    var ballot: Ballot? { return delegate?.ballot }
     var lastQuestionCharacterWasSpace = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let ballot = delegate?.ballot else { return }
-        questionTextField.text = ballot.questionText
+        for viewController in childViewControllers {
+            if let buildTableViewController = viewController as? BuildTableViewController {
+                self.buildTableViewController = buildTableViewController
+                buildTableViewController.delegate = self
+                print(buildTableViewController)
+                break
+            }
+        }
+
     }
     
     @IBAction func questionTextEditingDidChange(_ sender: UITextField) {

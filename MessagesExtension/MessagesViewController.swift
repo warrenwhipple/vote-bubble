@@ -148,7 +148,6 @@ class MessagesViewController:
             reportViewController.delegate = self
         }
 
-
         if let oldChildViewController = primaryChildViewController {
             oldChildViewController.willMove(toParentViewController: nil)
             oldChildViewController.view.removeFromSuperview()
