@@ -10,41 +10,36 @@ import UIKit
 import Messages
 
 protocol VoteViewControllerDelegate: class {
-    func didVote(voter: UUID, ballot: Ballot)
-    func didDeclineToVote(decliner: UUID, ballot: Ballot)
-    func didCancelVote(ballot: Ballot)
+    var ballot: Ballot? { get }
     var activeConversation: MSConversation? { get }
+    func didVote(voter: UUID)
+    func didDeclineToVote(decliner: UUID)
+    func didCancelVote()
 }
 
 class VoteViewController: UIViewController {
 
     @IBOutlet weak var questionLabel: UILabel!
-    weak var delegate: VoteViewControllerDelegate!
-    private(set) var ballot: Ballot!
-
-    var localParticipantIdentifier: UUID {
-        guard let conversation = delegate.activeConversation else {
-            fatalError("Active conversation not found")
-        }
-        return conversation.localParticipantIdentifier
-    }
-
-    func loadBallot(_ ballot: Ballot) {
-        self.ballot = ballot
-    }
+    weak var delegate: VoteViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionLabel.text = ballot.questionText
+        questionLabel.text = delegate?.ballot?.questionText
     }
 
     @IBAction func voteYesPressed(_ sender: AnyObject) {
+        guard let ballot = delegate?.ballot,
+            let localParticipantIdentifier =
+                delegate?.activeConversation?.localParticipantIdentifier else { return }
         ballot.recordVote(voterID: localParticipantIdentifier, candidate: ballot.candidates[0])
-        delegate.didVote(voter: localParticipantIdentifier, ballot: ballot)
+        delegate?.didVote(voter: localParticipantIdentifier)
     }
 
     @IBAction func voteNoPressed(_ sender: AnyObject) {
+        guard let ballot = delegate?.ballot,
+            let localParticipantIdentifier =
+            delegate?.activeConversation?.localParticipantIdentifier else { return }
         ballot.recordVote(voterID: localParticipantIdentifier, candidate: ballot.candidates[1])
-        delegate.didVote(voter: localParticipantIdentifier, ballot: ballot)
+        delegate?.didVote(voter: localParticipantIdentifier)
     }
 }

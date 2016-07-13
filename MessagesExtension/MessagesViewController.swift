@@ -131,24 +131,23 @@ class MessagesViewController:
             storyboard?.instantiateViewController(withIdentifier: storyboardID) else {
                 fatalError("Failed to instantiate storyboard \(storyboardID)")
         }
+
         switch state {
         case .browsing:
             let browseViewController = childViewController as! BrowseViewController
             browseViewController.delegate = self
         case .building:
-            let buildViewController  = childViewController as! BuildViewController
-            buildViewController.buildViewControllerDelegate = self
-            buildViewController.loadBallot(ballot!)
+            let buildViewController = childViewController as! BuildViewController
+            buildViewController.delegate = self
             if presentationStyle == .compact { requestPresentationStyle(.expanded) }
         case .voting:
-            let voteViewController   = childViewController as! VoteViewController
+            let voteViewController = childViewController as! VoteViewController
             voteViewController.delegate = self
-            voteViewController.loadBallot(ballot!)
         case .reporting:
             let reportViewController = childViewController as! ReportViewController
             reportViewController.delegate = self
-            reportViewController.loadBallot(ballot!)
         }
+
 
         if let oldChildViewController = primaryChildViewController {
             oldChildViewController.willMove(toParentViewController: nil)
@@ -191,26 +190,27 @@ class MessagesViewController:
         transistionState(ballot: ballot)
     }
 
-    func didAproveBallot(_ ballot: Ballot) {
+    func didAproveBallot() {
         transistionState(ballot: ballot)
     }
 
-    func didVote(voter: UUID, ballot: Ballot) {
-        insert(ballot.message(sender: voter))
+    func didVote(voter: UUID) {
+        guard let message = ballot?.message(sender: voter) else { return }
+        insert(message)
         dismiss()
     }
 
-    func didDeclineToVote(decliner: UUID, ballot: Ballot) {
+    func didDeclineToVote(decliner: UUID) {
         transistionState(ballot: ballot)
         dismiss()
     }
 
-    func didCancelVote(ballot: Ballot) {
+    func didCancelVote() {
         transistionState(ballot: ballot)
         dismiss()
     }
     
-    func didDismissBallotReport(ballot: Ballot) {
+    func didDismissBallotReport() {
         dismiss()
     }
 }

@@ -9,20 +9,15 @@
 import UIKit
 
 protocol ReportViewControllerDelegate: class {
-    func didDismissBallotReport(ballot: Ballot)
+    var ballot: Ballot? { get }
+    func didDismissBallotReport()
 }
 
 class ReportViewController: UIViewController {
 
     weak var delegate: ReportViewControllerDelegate!
-    private(set) var ballot: Ballot!
-
-    func loadBallot(_ ballot: Ballot) {
-        self.ballot = ballot
-    }
 
     @IBAction func donePressed(_ sender: AnyObject) {
-        delegate.didDismissBallotReport(ballot: ballot)
+        delegate.didDismissBallotReport()
     }
-
 }

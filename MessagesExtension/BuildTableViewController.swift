@@ -8,6 +8,15 @@
 
 import UIKit
 
+protocol BuildTableViewControllerDelegate {
+    var ballot: Ballot? { get }
+}
+
 class BuildTableViewController: UITableViewController {
 
+    var delegate: BuildTableViewControllerDelegate?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

@@ -9,29 +9,24 @@
 import UIKit
 
 protocol BuildViewControllerDelegate: class {
-    func didAproveBallot(_ ballot: Ballot)
+    var ballot: Ballot? { get }
+    func didAproveBallot()
 }
 
 class BuildViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
-
-    weak var buildViewControllerDelegate: BuildViewControllerDelegate!
-    private(set) var ballot: Ballot!
+    weak var tableViewController: BuildTableViewController!
+    weak var delegate: BuildViewControllerDelegate?
     var lastQuestionCharacterWasSpace = false
-
-
-    func loadBallot(_ ballot: Ballot) {
-        self.ballot = ballot
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let ballot = delegate?.ballot else { return }
         questionTextField.text = ballot.questionText
     }
-
+    
     @IBAction func questionTextEditingDidChange(_ sender: UITextField) {
         if var chars = sender.text?.characters {
             let lastChar = chars.popLast()
@@ -49,11 +44,11 @@ class BuildViewController: UIViewController {
         } else {
             lastQuestionCharacterWasSpace = false
         }
-        ballot.questionText = sender.text
+        delegate?.ballot?.questionText = sender.text
     }
 
     @IBAction func doneAction(_ sender: AnyObject) {
-        ballot.state = .votingUnsent
-        buildViewControllerDelegate.didAproveBallot(ballot)
+        delegate?.ballot?.state = .votingUnsent
+        delegate?.didAproveBallot()
     }
 }
