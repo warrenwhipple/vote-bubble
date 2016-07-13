@@ -25,6 +25,7 @@
 		2D5952741D33F0370000DF98 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952711D33F0370000DF98 /* Candidate.swift */; };
 		2D5952751D33F0370000DF98 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
 		2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952761D33F07F0000DF98 /* MainInterface.storyboard */; };
+		2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		2D5952711D33F0370000DF98 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		2D5952721D33F0370000DF98 /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 		2D5952761D33F07F0000DF98 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareness.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				2D5952591D33EF4F0000DF98 /* Model */,
 				2D5952481D33EEEE0000DF98 /* MessagesViewController.swift */,
+				2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */,
 				2D5952661D33F01F0000DF98 /* BrowseViewController.swift */,
 				2D5952681D33F02A0000DF98 /* BuildViewController.swift */,
 				2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */,
@@ -267,6 +270,7 @@
 				2D59525F1D33EFE80000DF98 /* Bubble.swift in Sources */,
 				2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */,
 				2D59526E1D33F02A0000DF98 /* VoteViewController.swift in Sources */,
+				2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */,
 				2D5952651D33EFFC0000DF98 /* CGRect+stackedRects.swift in Sources */,
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
 				2D5952731D33F0370000DF98 /* Ballot.swift in Sources */,
@@ -444,6 +448,7 @@
 				2D5952541D33EEEE0000DF98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D5952561D33EEEE0000DF98 /* Build configuration list for PBXNativeTarget "Vote Bubble" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +457,7 @@
 				2D5952581D33EEEE0000DF98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,7 +15,15 @@ protocol BrowseViewControllerDelegate: class {
 class BrowseViewController: UIViewController {
 
     weak var delegate: BrowseViewControllerDelegate!
-    
+
+    func keyboardWillShow(notification: NSNotification) {
+        print(notification)
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+        print(notification)
+    }
+
     @IBAction func newVotePressed(_ sender: UIButton, forEvent event: UIEvent) {
         delegate.didSelectBallot(Ballot.simpleYesNo())
     }

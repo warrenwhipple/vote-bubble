@@ -24,7 +24,13 @@ class BuildViewController: UIViewController {
         self.ballot = ballot
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        questionTextField.text = ballot.questionText
+    }
+
     @IBAction func doneAction(_ sender: AnyObject) {
-        print("done action")
+        ballot.state = .votingUnsent
+        buildViewControllerDelegate.didAproveBallot(ballot)
     }
 }
