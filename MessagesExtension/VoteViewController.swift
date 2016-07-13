@@ -33,6 +33,11 @@ class VoteViewController: UIViewController {
         self.ballot = ballot
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        questionLabel.text = ballot.questionText
+    }
+
     @IBAction func voteYesPressed(_ sender: AnyObject) {
         ballot.recordVote(voterID: localParticipantIdentifier, candidate: ballot.candidates[0])
         delegate.didVote(voter: localParticipantIdentifier, ballot: ballot)

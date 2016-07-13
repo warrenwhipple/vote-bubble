@@ -97,12 +97,15 @@
                                     <segue destination="VHN-4r-oBd" kind="embed" id="15d-q9-bq4"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Question?" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-Sy-8nn" userLabel="Question Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Question?" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-Sy-8nn" userLabel="Question Text Field">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="HdJ-Lc-lfo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <action selector="questionTextEditingDidChange:" destination="f9d-Yw-mf8" eventType="editingChanged" id="FHR-6G-uV1"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiR-YL-ddN" userLabel="Done Button" customClass="BubbleButton" customModule="MessagesExtension" customModuleProvider="target">
                                 <constraints>
