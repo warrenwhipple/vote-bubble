@@ -54,8 +54,10 @@ class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
         delegate?.ballot?.questionText = sender.text
     }
 
-    @IBAction func doneAction(_ sender: AnyObject) {
-        delegate?.ballot?.state = .votingUnsent
+
+    // MARK: - BuildViewControllerDelegate methods
+
+    func didApproveBallot() {
         delegate?.didAproveBallot()
     }
 }

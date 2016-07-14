@@ -10,14 +10,21 @@ import UIKit
 
 protocol QuestionBuildTableViewCellDelegate {
     var ballot: Ballot? { get }
+    func didApproveBallot()
 }
 
 class QuestionBuildTableViewCell: UITableViewCell {
+
+
 
     @IBOutlet weak var textField: UITextField!
     var delegate: QuestionBuildTableViewCellDelegate?
 
     func load() {
         textField.text = delegate?.ballot?.questionText
+    }
+
+    @IBAction func didPressStartVote(_ sender: UIButton) {
+        delegate?.didApproveBallot()
     }
 }

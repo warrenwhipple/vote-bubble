@@ -10,6 +10,7 @@ import UIKit
 
 protocol BuildTableViewControllerDelegate {
     var ballot: Ballot? { get }
+    func didApproveBallot()
 }
 
 class BuildTableViewController:
@@ -59,5 +60,9 @@ class BuildTableViewController:
 
 
     // MARK: - QuestionBuildTableViewCellDelegate methods
+
+    func didApproveBallot() {
+        delegate?.didApproveBallot()
+    }
 
 }

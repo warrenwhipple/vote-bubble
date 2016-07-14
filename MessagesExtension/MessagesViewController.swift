@@ -190,6 +190,7 @@ class MessagesViewController:
     }
 
     func didAproveBallot() {
+        ballot?.state = .votingUnsent
         transistionState(ballot: ballot)
     }
 

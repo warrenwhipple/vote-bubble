@@ -98,31 +98,15 @@
                                     <segue destination="X0I-Wm-AaP" kind="embed" id="ydC-lo-Yg3"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiR-YL-ddN" userLabel="Done Button" customClass="BubbleButton" customModule="MessagesExtension" customModuleProvider="target">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="9ay-gq-Fia"/>
-                                    <constraint firstAttribute="width" constant="60" id="lTp-y3-D7c"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Ready"/>
-                                <connections>
-                                    <action selector="doneAction:" destination="f9d-Yw-mf8" eventType="primaryActionTriggered" id="AFw-fU-ofb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0sN-dy-Yo9" firstAttribute="top" secondItem="cuu-k4-N8z" secondAttribute="bottom" id="KPL-cF-ZSS"/>
-                            <constraint firstItem="GiR-YL-ddN" firstAttribute="top" secondItem="0sN-dy-Yo9" secondAttribute="bottom" constant="8" id="Mdj-7L-7ry"/>
-                            <constraint firstItem="GiR-YL-ddN" firstAttribute="bottom" secondItem="1fH-hs-Jar" secondAttribute="top" constant="-4" id="N9W-gY-koc"/>
-                            <constraint firstAttribute="trailing" secondItem="0sN-dy-Yo9" secondAttribute="trailing" id="SuS-3m-sym"/>
-                            <constraint firstItem="GiR-YL-ddN" firstAttribute="centerX" secondItem="VLO-Ki-ppC" secondAttribute="centerX" id="d2v-Bh-Rdt"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="trailing" secondItem="VLO-Ki-ppC" secondAttribute="trailing" id="SuS-3m-sym"/>
                             <constraint firstItem="0sN-dy-Yo9" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" id="dez-CI-d2F"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="bottom" secondItem="1fH-hs-Jar" secondAttribute="top" id="qqM-tf-pe1"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="doneButton" destination="GiR-YL-ddN" id="Uu7-8R-VrM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qY-qV-uNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -242,7 +226,7 @@
             <objects>
                 <viewController id="X0I-Wm-AaP" customClass="BuildTableViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="SKy-8Q-8YW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -296,12 +280,40 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOz-4u-UnM">
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="aOz-4u-UnM" secondAttribute="height" id="JMq-1R-f6k"/>
+                                            </constraints>
+                                            <state key="normal">
+                                                <attributedString key="attributedTitle">
+                                                    <fragment>
+                                                        <string key="content">Start
+Vote</string>
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="16"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.numberOfLines">
+                                                    <integer key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="didPressStartVote:" destination="i5V-xN-1aI" eventType="primaryActionTriggered" id="TQt-30-hN8"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="A7e-CP-M3f" secondAttribute="trailing" constant="16" id="2rd-xt-tHQ"/>
-                                        <constraint firstItem="A7e-CP-M3f" firstAttribute="leading" secondItem="Exa-VT-VjS" secondAttribute="leading" constant="16" id="84j-vT-P3T"/>
-                                        <constraint firstAttribute="bottom" secondItem="A7e-CP-M3f" secondAttribute="bottom" constant="8" id="XPK-sI-8IQ"/>
+                                        <constraint firstItem="A7e-CP-M3f" firstAttribute="leading" secondItem="aOz-4u-UnM" secondAttribute="trailing" constant="16" id="FKu-e0-ech"/>
+                                        <constraint firstAttribute="trailing" secondItem="A7e-CP-M3f" secondAttribute="trailing" constant="16" id="O2m-1w-7zc"/>
+                                        <constraint firstItem="A7e-CP-M3f" firstAttribute="bottom" secondItem="Exa-VT-VjS" secondAttribute="bottom" constant="-8" id="XPK-sI-8IQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="aOz-4u-UnM" secondAttribute="bottom" id="XiH-78-VeV"/>
+                                        <constraint firstItem="aOz-4u-UnM" firstAttribute="top" secondItem="Exa-VT-VjS" secondAttribute="top" id="abG-a7-ilQ"/>
                                         <constraint firstItem="A7e-CP-M3f" firstAttribute="top" secondItem="Exa-VT-VjS" secondAttribute="top" constant="8" id="bQR-PD-apR"/>
+                                        <constraint firstItem="aOz-4u-UnM" firstAttribute="leading" secondItem="Exa-VT-VjS" secondAttribute="leading" id="qCl-ns-aPh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
