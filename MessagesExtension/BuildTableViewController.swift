@@ -65,7 +65,13 @@ class BuildTableViewController:
     // MARK: - CandidateBuildTableViewCellDelegate methods
 
     func newCandidate() -> Candidate {
-        return Candidate(color: UIColor.white(), backgroundColor: UIColor.blue())
+        let candidate = Candidate(color: UIColor.white(), backgroundColor: UIColor.randomHue())
+        guard let ballot = ballot else { fatalError("New candidate require ballot") }
+        guard let tableView = view as? UITableView else { fatalError("View must be UITableView") }
+        ballot.candidates.append(candidate)
+        let indexPath = IndexPath(item: ballot.candidates.count , section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        return candidate
     }
 
     // MARK: - QuestionBuildTableViewCellDelegate methods

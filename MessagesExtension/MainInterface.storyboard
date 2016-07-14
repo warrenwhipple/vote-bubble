@@ -242,6 +242,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <action selector="figureTextFieldEditingChanged:" destination="clM-Xr-L0b" eventType="editingChanged" id="Im0-3v-7ai"/>
+                                                <action selector="figureTextFieldEditingDidBegin:" destination="clM-Xr-L0b" eventType="editingDidBegin" id="0uc-ZM-kr1"/>
                                                 <outlet property="delegate" destination="clM-Xr-L0b" id="JvA-Pw-IiS"/>
                                             </connections>
                                         </textField>
@@ -254,6 +255,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <connections>
                                                 <action selector="textTextFieldEditingChanged:" destination="clM-Xr-L0b" eventType="editingChanged" id="DRc-di-ivZ"/>
+                                                <action selector="textTextFieldEditingDidBegin:" destination="clM-Xr-L0b" eventType="editingDidBegin" id="fLv-i8-72T"/>
                                                 <outlet property="delegate" destination="clM-Xr-L0b" id="Bfx-nB-WKi"/>
                                             </connections>
                                         </textField>

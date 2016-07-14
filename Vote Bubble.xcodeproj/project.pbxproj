@@ -28,6 +28,7 @@
 		2D5952751D33F0370000DF98 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
 		2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952761D33F07F0000DF98 /* MainInterface.storyboard */; };
 		2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */; };
+		2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		2D5952721D33F0370000DF98 /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 		2D5952761D33F07F0000DF98 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareness.swift; sourceTree = "<group>"; };
+		2DB740761D3853D600433E15 /* UIColor+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				2D5952601D33EFF00000DF98 /* BubbleButton.swift */,
 				2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */,
 				2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */,
+				2DB740761D3853D600433E15 /* UIColor+Convenience.swift */,
 			);
 			name = "Shared Classes and Extensions";
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				2D283E7E1D36A0B700046727 /* CandidateBuildTableViewCell.swift in Sources */,
 				2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */,
 				2D5952731D33F0370000DF98 /* Ballot.swift in Sources */,
+				2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */,
 				2D59526F1D33F02A0000DF98 /* ReportViewController.swift in Sources */,
 				2D5952641D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift in Sources */,
 			);

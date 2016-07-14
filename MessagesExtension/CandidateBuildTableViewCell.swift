@@ -42,6 +42,19 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
         
     }
 
+    @IBAction func figureTextFieldEditingDidBegin(_ sender: UITextField) {
+        if candidate == nil {
+            loadCandidate(delegate?.newCandidate())
+        }
+    }
+
+    @IBAction func textTextFieldEditingDidBegin(_ sender: UITextField) {
+        if candidate == nil {
+            loadCandidate(delegate?.newCandidate())
+        }
+    }
+    
+
     @IBAction func figureTextFieldEditingChanged(_ sender: UITextField) {
         guard let candidate = candidate else { return }
         if let lastCharacter = sender.text?.characters.last {
@@ -68,8 +81,6 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
         default: break
         }
     }
-
-
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("Text field return pressed")
