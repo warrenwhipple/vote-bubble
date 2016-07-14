@@ -241,6 +241,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
+                                                <action selector="figureTextFieldEditingChanged:" destination="clM-Xr-L0b" eventType="editingChanged" id="Im0-3v-7ai"/>
                                                 <outlet property="delegate" destination="clM-Xr-L0b" id="JvA-Pw-IiS"/>
                                             </connections>
                                         </textField>
@@ -252,6 +253,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <connections>
+                                                <action selector="textTextFieldEditingChanged:" destination="clM-Xr-L0b" eventType="editingChanged" id="DRc-di-ivZ"/>
                                                 <outlet property="delegate" destination="clM-Xr-L0b" id="Bfx-nB-WKi"/>
                                             </connections>
                                         </textField>
@@ -281,7 +283,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a question" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A7e-CP-M3f">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <connections>
                                                 <action selector="textFieldEditingChanged:" destination="i5V-xN-1aI" eventType="editingChanged" id="c89-cD-DNb"/>
                                             </connections>

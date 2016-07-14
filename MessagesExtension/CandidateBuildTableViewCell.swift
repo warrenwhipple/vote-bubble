@@ -42,9 +42,50 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
         
     }
 
+    @IBAction func figureTextFieldEditingChanged(_ sender: UITextField) {
+        guard let candidate = candidate else { return }
+        if let lastCharacter = sender.text?.characters.last {
+            sender.text = String(lastCharacter)
+            candidate.figure = .customCharacter(lastCharacter)
+        } else {
+            sender.text = nil
+            candidate.figure = .none
+        }
+    }
+
+    @IBAction func textTextFieldEditingChanged(_ sender: UITextField) {
+        guard let candidate = candidate else { return }
+        candidate.text = sender.text
+        switch candidate.figure {
+        case .none, .autoCharacter:
+            if let firstCharacter = sender.text?.characters.first {
+                candidate.figure = .autoCharacter(firstCharacter)
+                figureTextField.text = String(firstCharacter)
+            } else {
+                candidate.figure = .none
+                figureTextField.text = nil
+            }
+        default: break
+        }
+    }
+
+
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("Text field return pressed")
         return false
+    }
+
+    private func sizeFigureText() {
+        let height = figureTextField.frame.height
+        guard let candidate = candidate else {
+            figureTextField.font = UIFont.systemFont(ofSize: height * 2 / 3)
+            return
+        }
+        switch candidate.figure {
+        case .none, .autoCharacter, .customCharacter: UIFont.systemFont(ofSize: height * 2 / 3)
+        case .text:                                   UIFont.systemFont(ofSize: height * 1 / 6)
+        }
     }
 
 }
