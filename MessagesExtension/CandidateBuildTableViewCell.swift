@@ -28,11 +28,13 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
             case .autoCharacter(let character):   figureTextField.text = String(character)
             case .customCharacter(let character): figureTextField.text = String(character)
             }
+            figureTextField.placeholder = "?"
             textTextField.text = candidate.text
             figureTextField.textColor = candidate.color
             textTextField.textColor = candidate.color
             contentView.backgroundColor = candidate.backgroundColor
         } else {
+            figureTextField.placeholder = "+"
             figureTextField.text = nil
             textTextField.text = nil
             contentView.backgroundColor = UIColor.lightGray()

@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -234,13 +233,13 @@
                                     <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-ao-4eH" userLabel="Figure Text Field">
-                                            <color key="backgroundColor" white="0.0" alpha="0.14690896740000001" colorSpace="calibratedWhite"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-ao-4eH" userLabel="Figure Text Field">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="VC6-8y-0PZ"/>
+                                                <constraint firstAttribute="width" secondItem="S5T-ao-4eH" secondAttribute="height" multiplier="1:1" id="hIQ-iv-Xc5"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <outlet property="delegate" destination="clM-Xr-L0b" id="JvA-Pw-IiS"/>
                                             </connections>
@@ -251,19 +250,19 @@
                                                 <constraint firstAttribute="height" constant="32" id="97r-ah-7o6"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <connections>
                                                 <outlet property="delegate" destination="clM-Xr-L0b" id="Bfx-nB-WKi"/>
                                             </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="B0O-M4-vwa" firstAttribute="leading" secondItem="S5T-ao-4eH" secondAttribute="trailing" constant="16" id="3K4-fU-Vg4"/>
                                         <constraint firstItem="B0O-M4-vwa" firstAttribute="centerY" secondItem="7pY-hr-WPR" secondAttribute="centerY" id="3ww-Oa-vfD"/>
-                                        <constraint firstItem="S5T-ao-4eH" firstAttribute="leading" secondItem="7pY-hr-WPR" secondAttribute="leading" constant="16" id="9LA-RW-fcF"/>
-                                        <constraint firstItem="S5T-ao-4eH" firstAttribute="centerY" secondItem="7pY-hr-WPR" secondAttribute="centerY" id="ETB-1F-Spw"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="B0O-M4-vwa" secondAttribute="trailing" constant="16" id="uhq-eb-5hm"/>
-                                        <constraint firstItem="B0O-M4-vwa" firstAttribute="width" secondItem="S5T-ao-4eH" secondAttribute="width" id="up0-IK-MAx"/>
+                                        <constraint firstItem="B0O-M4-vwa" firstAttribute="leading" secondItem="S5T-ao-4eH" secondAttribute="trailing" constant="16" id="S0q-bf-Ihk"/>
+                                        <constraint firstItem="S5T-ao-4eH" firstAttribute="top" secondItem="7pY-hr-WPR" secondAttribute="top" id="ZOq-me-Roy"/>
+                                        <constraint firstItem="S5T-ao-4eH" firstAttribute="bottom" secondItem="7pY-hr-WPR" secondAttribute="bottom" id="bjL-wh-EOj"/>
+                                        <constraint firstItem="S5T-ao-4eH" firstAttribute="leading" secondItem="7pY-hr-WPR" secondAttribute="leading" id="jHR-UT-iF1"/>
+                                        <constraint firstItem="B0O-M4-vwa" firstAttribute="trailing" secondItem="7pY-hr-WPR" secondAttribute="trailing" constant="-16" id="uhq-eb-5hm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
