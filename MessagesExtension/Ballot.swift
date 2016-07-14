@@ -134,13 +134,13 @@ class Ballot {
             color: #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1),
             backgroundColor: #colorLiteral(red: 0.2818343937, green: 0.5693024397, blue: 0.1281824261, alpha: 1),
             text: "Yes",
-            figure: .character("Y")
+            figure: .autoCharacter("Y")
         )
         let noCandidate = Candidate(
             color: #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1),
             backgroundColor: #colorLiteral(red: 0.7109192292, green: 0, blue: 0.1382592636, alpha: 1),
             text: "No",
-            figure: .character("N")
+            figure: .autoCharacter("N")
         )
         return Ballot(
             candidates: [yesCandidate, noCandidate],

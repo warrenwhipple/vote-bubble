@@ -58,6 +58,9 @@ class BuildTableViewController:
 
     // MARK: - CandidateBuildTableViewCellDelegate methods
 
+    func newCandidate() -> Candidate {
+        return Candidate(color: UIColor.white(), backgroundColor: UIColor.blue())
+    }
 
     // MARK: - QuestionBuildTableViewCellDelegate methods
 

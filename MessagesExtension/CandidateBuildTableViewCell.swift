@@ -9,20 +9,40 @@
 import UIKit
 
 protocol CandidateBuildTableViewCellDelegate {
-    
+    func newCandidate() -> Candidate
 }
 
-class CandidateBuildTableViewCell: UITableViewCell {
+class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
 
-    @IBOutlet weak var figureView: UIView!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var figureTextField: UITextField!
+    @IBOutlet weak var textTextField: UITextField!
     var delegate: CandidateBuildTableViewCellDelegate?
     private(set) var candidate: Candidate?
 
     func loadCandidate(_ candidate: Candidate?) {
         self.candidate = candidate
-        textField.text = candidate?.text
-        contentView.backgroundColor = candidate?.backgroundColor ?? UIColor.lightGray()
-        textField.textColor = candidate?.color ?? UIColor.white()
+        if let candidate = candidate {
+            switch candidate.figure {
+            case .none:                           figureTextField.text = nil
+            case .text(let text):                 figureTextField.text = text
+            case .autoCharacter(let character):   figureTextField.text = String(character)
+            case .customCharacter(let character): figureTextField.text = String(character)
+            }
+            textTextField.text = candidate.text
+            figureTextField.textColor = candidate.color
+            textTextField.textColor = candidate.color
+            contentView.backgroundColor = candidate.backgroundColor
+        } else {
+            figureTextField.text = nil
+            textTextField.text = nil
+            contentView.backgroundColor = UIColor.lightGray()
+        }
+        
     }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Text field return pressed")
+        return false
+    }
+
 }

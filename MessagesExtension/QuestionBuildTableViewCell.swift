@@ -13,7 +13,7 @@ protocol QuestionBuildTableViewCellDelegate {
     func didApproveBallot()
 }
 
-class QuestionBuildTableViewCell: UITableViewCell {
+class QuestionBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
     var delegate: QuestionBuildTableViewCellDelegate?
