@@ -8,7 +8,16 @@
 
 import UIKit
 
-class QuestionBuildTableViewCell: UITableViewCell {
-    @IBOutlet weak var textField: UITextField!
+protocol QuestionBuildTableViewCellDelegate {
+    var ballot: Ballot? { get }
+}
 
+class QuestionBuildTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var textField: UITextField!
+    var delegate: QuestionBuildTableViewCellDelegate?
+
+    func load() {
+        textField.text = delegate?.ballot?.questionText
+    }
 }

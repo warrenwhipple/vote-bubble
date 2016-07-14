@@ -12,9 +12,13 @@ protocol BuildTableViewControllerDelegate {
     var ballot: Ballot? { get }
 }
 
-class BuildTableViewController: UITableViewController {
+class BuildTableViewController:
+    UITableViewController,
+    CandidateBuildTableViewCellDelegate,
+    QuestionBuildTableViewCellDelegate {
 
     var delegate: BuildTableViewControllerDelegate?
+    var ballot: Ballot? { return delegate?.ballot }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -27,32 +31,33 @@ class BuildTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let candidateCount = delegate?.ballot?.candidates.count ?? 0
-        if indexPath.row == candidateCount {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: "AddBuildTableViewCell",
+        let candidateCount = ballot?.candidates.count ?? 0
+        if indexPath.row <= candidateCount {
+            let cell = tableView.dequeueReusableCell (
+                withIdentifier: "CandidateBuildTableViewCell",
                 for: indexPath
-                ) as! AddBuildTableViewCell
+            ) as! CandidateBuildTableViewCell
+            cell.delegate = self
+            if indexPath.row < candidateCount {
+                cell.loadCandidate(ballot?.candidates[indexPath.row])
+            } else {
+                cell.loadCandidate(nil)
+            }
             return cell
-        } else if indexPath.row == candidateCount + 1 {
+        } else {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "QuestionBuildTableViewCell",
                 for: indexPath
                 ) as! QuestionBuildTableViewCell
-            cell.textField.text = delegate?.ballot?.questionText
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: "CandidateBuildTableViewCell",
-                for: indexPath
-            ) as! CandidateBuildTableViewCell
-            guard let candidate = delegate?.ballot?.candidates[indexPath.row] else { return cell }
-            cell.candidate = candidate
-            cell.textField.text = candidate.text
-            cell.contentView.backgroundColor = candidate.backgroundColor
-            cell.textField.textColor = candidate.color
-            cell.textField.layer.borderColor = candidate.color.cgColor
+            cell.delegate = self
+            cell.load()
             return cell
         }
     }
+
+    // MARK: - CandidateBuildTableViewCellDelegate methods
+
+
+    // MARK: - QuestionBuildTableViewCellDelegate methods
+
 }

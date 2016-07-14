@@ -8,9 +8,21 @@
 
 import UIKit
 
+protocol CandidateBuildTableViewCellDelegate {
+    
+}
+
 class CandidateBuildTableViewCell: UITableViewCell {
 
     @IBOutlet weak var figureView: UIView!
     @IBOutlet weak var textField: UITextField!
-    var candidate: Candidate?
+    var delegate: CandidateBuildTableViewCellDelegate?
+    private(set) var candidate: Candidate?
+
+    func loadCandidate(_ candidate: Candidate?) {
+        self.candidate = candidate
+        textField.text = candidate?.text
+        contentView.backgroundColor = candidate?.backgroundColor ?? UIColor.lightGray()
+        textField.textColor = candidate?.color ?? UIColor.white()
+    }
 }
