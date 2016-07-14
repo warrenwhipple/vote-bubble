@@ -34,27 +34,6 @@ class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
 
     }
     
-    @IBAction func questionTextEditingDidChange(_ sender: UITextField) {
-        if var chars = sender.text?.characters {
-            let lastChar = chars.popLast()
-            if lastChar == " " {
-                if lastQuestionCharacterWasSpace {
-                    let secondToLastChar = chars.popLast()
-                    if secondToLastChar == "." {
-                        sender.text = String(chars) + "? "
-                    }
-                }
-                lastQuestionCharacterWasSpace = true
-            } else {
-                lastQuestionCharacterWasSpace = false
-            }
-        } else {
-            lastQuestionCharacterWasSpace = false
-        }
-        delegate?.ballot?.questionText = sender.text
-    }
-
-
     // MARK: - BuildViewControllerDelegate methods
 
     func didApproveBallot() {

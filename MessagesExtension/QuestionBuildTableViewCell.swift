@@ -15,10 +15,9 @@ protocol QuestionBuildTableViewCellDelegate {
 
 class QuestionBuildTableViewCell: UITableViewCell {
 
-
-
     @IBOutlet weak var textField: UITextField!
     var delegate: QuestionBuildTableViewCellDelegate?
+    var lastLastQuestionCharacterWasSpace = false
 
     func load() {
         textField.text = delegate?.ballot?.questionText
@@ -26,5 +25,24 @@ class QuestionBuildTableViewCell: UITableViewCell {
 
     @IBAction func didPressStartVote(_ sender: UIButton) {
         delegate?.didApproveBallot()
+    }
+
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        // Replace auto period with auto questionmark
+        if var characters = sender.text?.characters {
+            if characters.popLast() == " " {
+                if lastLastQuestionCharacterWasSpace {
+                    if characters.popLast() == "." {
+                        sender.text = String(characters) + "? "
+                    }
+                }
+                lastLastQuestionCharacterWasSpace = true
+            } else {
+                lastLastQuestionCharacterWasSpace = false
+            }
+        } else {
+            lastLastQuestionCharacterWasSpace = false
+        }
+        delegate?.ballot?.questionText = sender.text
     }
 }
