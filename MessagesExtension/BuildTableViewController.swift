@@ -21,6 +21,12 @@ class BuildTableViewController:
     var delegate: BuildTableViewControllerDelegate?
     var ballot: Ballot? { return delegate?.ballot }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let view = view as? UITableView else { return }
+        view.keyboardDismissMode = .interactive
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

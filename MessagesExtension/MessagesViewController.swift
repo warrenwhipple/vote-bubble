@@ -45,19 +45,23 @@ class MessagesViewController:
 
     // MARK: - MSMessagesAppViewController methods
 
+    /*
     override func viewDidLoad() {
         super.viewDidLoad()
         connectKeyboardNotifications()
     }
+    */
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("Vote Bubble viewDidAppear")
     }
 
+    /*
     deinit {
         disconnectKeyboardNotifications()
     }
+    */
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -100,7 +104,7 @@ class MessagesViewController:
         // Called before the extension transitions to a new presentation style.
         // Use this method to prepare for the change in presentation style.
         if presentationStyle == .compact {
-            adjustForKeyboardHide()
+            //adjustForKeyboardHide()
             if childViewControllers.first is BuildViewController {
                 transistionState(ballot: nil)
             }
@@ -110,10 +114,12 @@ class MessagesViewController:
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         // Called after the extension transitions to a new presentation style.
         // Use this method to finalize any behaviors associated with the change in presentation style.
+        /*
         if presentationStyle == .compact && bottomConstraint.constant != 0 {
             adjustForKeyboardHide()
         }
         view.setNeedsLayout()
+        */
     }
 
     // MARK: - State changes

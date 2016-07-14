@@ -9,6 +9,7 @@
 import UIKit
 import CoreGraphics
 
+/*
 private extension UIViewAnimationCurve {
     var animationOptions: UIViewAnimationOptions {
         return UIViewAnimationOptions(rawValue: UInt(rawValue) << 16)
@@ -106,3 +107,4 @@ extension MessagesViewController {
         }
     }
 }
+*/
