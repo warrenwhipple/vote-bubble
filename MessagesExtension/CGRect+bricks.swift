@@ -1,5 +1,5 @@
 //
-//  CGRect+stackedRects.swift
+//  CGRect+bricks.swift
 //  Bubble Vote
 //
 //  Created by Warren Whipple on 7/9/16.
@@ -10,7 +10,7 @@ import CoreGraphics
 
 extension CGRect {
 
-    static func stackedRects(containerWidth: CGFloat, count: Int) -> (CGSize, [CGRect]) {
+    static func bricks(containerWidth: CGFloat, count: Int) -> (CGSize, [CGRect]) {
         assert(count >= 0)
         var rects: [CGRect] = []
         rects.reserveCapacity(count)

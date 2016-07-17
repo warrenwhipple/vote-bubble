@@ -107,7 +107,7 @@ class Ballot {
     }
 
     private func messageImage() -> UIImage? {
-        let (messageSize, answerRects) = CGRect.stackedRects(
+        let (messageSize, answerRects) = CGRect.bricks(
             containerWidth: MSMessageTemplateLayout.defaultWidth,
             count: candidates.count
         )

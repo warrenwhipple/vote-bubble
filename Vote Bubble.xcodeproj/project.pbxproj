@@ -19,7 +19,7 @@
 		2D59525F1D33EFE80000DF98 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59525E1D33EFE80000DF98 /* Bubble.swift */; };
 		2D5952611D33EFF00000DF98 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952601D33EFF00000DF98 /* BubbleButton.swift */; };
 		2D5952641D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */; };
-		2D5952651D33EFFC0000DF98 /* CGRect+stackedRects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */; };
+		2D5952651D33EFFC0000DF98 /* CGRect+bricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */; };
 		2D5952671D33F01F0000DF98 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952661D33F01F0000DF98 /* BrowseViewController.swift */; };
 		2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952681D33F02A0000DF98 /* BuildViewController.swift */; };
 		2D59526D1D33F02A0000DF98 /* BuildTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */; };
@@ -30,6 +30,7 @@
 		2D5952751D33F0370000DF98 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
 		2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952761D33F07F0000DF98 /* MainInterface.storyboard */; };
 		2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */; };
+		2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */; };
 		2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +74,7 @@
 		2D59525E1D33EFE80000DF98 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		2D5952601D33EFF00000DF98 /* BubbleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
 		2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MSMessageTemplateLayout+defaults.swift"; sourceTree = "<group>"; };
-		2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+stackedRects.swift"; sourceTree = "<group>"; };
+		2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+bricks.swift"; sourceTree = "<group>"; };
 		2D5952661D33F01F0000DF98 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		2D5952681D33F02A0000DF98 /* BuildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildViewController.swift; sourceTree = "<group>"; };
 		2D5952691D33F02A0000DF98 /* BuildTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		2D5952721D33F0370000DF98 /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 		2D5952761D33F07F0000DF98 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareness.swift; sourceTree = "<group>"; };
+		2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickView.swift; sourceTree = "<group>"; };
 		2DB740761D3853D600433E15 /* UIColor+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2D59526A1D33F02A0000DF98 /* VoteViewController.swift */,
+				2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */,
 				2D54B1CF1D3BBB130002FB34 /* CandidateVoteView.swift */,
 				2D54B1C91D3AE0A90002FB34 /* CandidateCharacterTextVoteView.swift */,
 			);
@@ -151,7 +154,7 @@
 				2D59525E1D33EFE80000DF98 /* Bubble.swift */,
 				2D5952601D33EFF00000DF98 /* BubbleButton.swift */,
 				2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */,
-				2D5952631D33EFFC0000DF98 /* CGRect+stackedRects.swift */,
+				2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */,
 				2DB740761D3853D600433E15 /* UIColor+Convenience.swift */,
 			);
 			name = "Shared Classes and Extensions";
@@ -334,9 +337,10 @@
 				2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */,
 				2D59526E1D33F02A0000DF98 /* VoteViewController.swift in Sources */,
 				2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */,
-				2D5952651D33EFFC0000DF98 /* CGRect+stackedRects.swift in Sources */,
+				2D5952651D33EFFC0000DF98 /* CGRect+bricks.swift in Sources */,
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
 				2D283E7E1D36A0B700046727 /* CandidateBuildTableViewCell.swift in Sources */,
+				2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */,
 				2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */,
 				2D5952731D33F0370000DF98 /* Ballot.swift in Sources */,
 				2D54B1CA1D3AE0A90002FB34 /* CandidateCharacterTextVoteView.swift in Sources */,
