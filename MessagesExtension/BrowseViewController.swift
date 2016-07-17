@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BrowseViewControllerDelegate: class {
-    func didSelectBallot(_ ballot: Ballot)
+    func browseSelectBallot(_ ballot: Ballot)
 }
 
 class BrowseViewController: UIViewController {
@@ -25,6 +25,6 @@ class BrowseViewController: UIViewController {
     }
 
     @IBAction func newVotePressed(_ sender: UIButton, forEvent event: UIEvent) {
-        delegate.didSelectBallot(Ballot.simpleYesNo())
+        delegate.browseSelectBallot(Ballot.simpleYesNo())
     }
 }

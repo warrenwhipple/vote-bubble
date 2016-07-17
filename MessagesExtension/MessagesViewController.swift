@@ -19,7 +19,7 @@ class MessagesViewController:
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
-    private(set) var ballot: Ballot?
+    var ballot: Ballot?
     private(set) var primaryChildViewController: UIViewController?
 
     enum State {
@@ -70,10 +70,11 @@ class MessagesViewController:
 
     override func willBecomeActive(with conversation: MSConversation) {
         if let selectedMessage = conversation.selectedMessage {
-            transistionState(ballot: Ballot(message: selectedMessage))
+            ballot = Ballot(message: selectedMessage)
         } else {
-            transistionState(ballot: nil)
+            ballot = nil
         }
+        transistionState(animate: false)
     }
 
     override func didResignActive(with conversation: MSConversation) {
@@ -106,7 +107,7 @@ class MessagesViewController:
         if presentationStyle == .compact {
             //adjustForKeyboardHide()
             if childViewControllers.first is BuildViewController {
-                transistionState(ballot: nil)
+                transistionState()
             }
         }
     }
@@ -124,8 +125,7 @@ class MessagesViewController:
 
     // MARK: - State changes
 
-    func transistionState(ballot: Ballot?, animate: Bool = true) {
-        self.ballot = ballot
+    func transistionState(animate: Bool = true) {
         let storyboardID: String
         switch state {
         case .browsing:  storyboardID = "BrowseViewController"
@@ -191,32 +191,42 @@ class MessagesViewController:
 
     // MARK: - Child view controller delegate methods
 
-    func didSelectBallot(_ ballot: Ballot) {
-        transistionState(ballot: ballot)
+    func browseSelectBallot(_ ballot: Ballot) {
+        self.ballot = ballot
+        transistionState()
     }
 
-    func didAproveBallot() {
+    func aproveBallot() {
         ballot?.state = .votingUnsent
-        transistionState(ballot: ballot)
+        transistionState()
     }
 
-    func didVote(voter: UUID) {
-        guard let message = ballot?.message(sender: voter) else { return }
+    func vote(candidate: Candidate) {
+        guard let sender = activeConversation?.localParticipantIdentifier else { return }
+        guard let message = ballot?.message(sender: sender) else { return }
         insert(message)
-        dismiss()
+        ballot = nil
+        transistionState()
+        requestPresentationStyle(.compact)
     }
 
-    func didDeclineToVote(decliner: UUID) {
-        transistionState(ballot: ballot)
-        dismiss()
+    func declineToVote() {
+        guard let sender = activeConversation?.localParticipantIdentifier else { return }
+        guard let message = ballot?.message(sender: sender) else { return }
+        insert(message)
+        ballot = nil
+        transistionState()
+        requestPresentationStyle(.compact)
     }
 
-    func didCancelVote() {
-        transistionState(ballot: ballot)
-        dismiss()
+    func cancelVote() {
+        ballot?.state = .building
+        transistionState()
     }
     
-    func didDismissBallotReport() {
-        dismiss()
+    func dismissBallotReport() {
+        ballot = nil
+        transistionState()
+        requestPresentationStyle(.compact)
     }
 }

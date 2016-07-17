@@ -10,7 +10,7 @@ import UIKit
 
 protocol QuestionBuildTableViewCellDelegate {
     var ballot: Ballot? { get }
-    func didApproveBallot()
+    func approveBallot()
 }
 
 class QuestionBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
@@ -24,7 +24,7 @@ class QuestionBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     @IBAction func didPressStartVote(_ sender: UIButton) {
-        delegate?.didApproveBallot()
+        delegate?.approveBallot()
     }
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {

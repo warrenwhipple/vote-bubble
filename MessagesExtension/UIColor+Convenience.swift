@@ -13,7 +13,7 @@ extension UIColor {
         return UIColor(
             hue: CGFloat(arc4random()) / CGFloat(UInt32.max),
             saturation: 1,
-            brightness: 0.5,
+            brightness: 0.75,
             alpha: 1
         )
     }

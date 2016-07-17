@@ -10,7 +10,7 @@ import UIKit
 
 protocol BuildTableViewControllerDelegate {
     var ballot: Ballot? { get }
-    func didApproveBallot()
+    func approveBallot()
 }
 
 class BuildTableViewController:
@@ -62,6 +62,23 @@ class BuildTableViewController:
         }
     }
 
+    override func tableView(_ tableView: UITableView,
+                   canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let ballot = ballot else { return false }
+        return indexPath.row < ballot.candidates.count
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        guard let ballot = ballot else { return }
+        guard let tableView = view as? UITableView else { return }
+        if editingStyle == .delete {
+            ballot.candidates.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+
     // MARK: - CandidateBuildTableViewCellDelegate methods
 
     func newCandidate() -> Candidate {
@@ -76,8 +93,8 @@ class BuildTableViewController:
 
     // MARK: - QuestionBuildTableViewCellDelegate methods
 
-    func didApproveBallot() {
-        delegate?.didApproveBallot()
+    func approveBallot() {
+        delegate?.approveBallot()
     }
 
 }

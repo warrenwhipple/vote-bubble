@@ -10,7 +10,7 @@ import UIKit
 
 protocol BuildViewControllerDelegate: class {
     var ballot: Ballot? { get }
-    func didAproveBallot()
+    func aproveBallot()
 }
 
 class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
@@ -27,16 +27,15 @@ class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
             if let buildTableViewController = viewController as? BuildTableViewController {
                 self.buildTableViewController = buildTableViewController
                 buildTableViewController.delegate = self
-                print(buildTableViewController)
                 break
             }
         }
 
     }
     
-    // MARK: - BuildViewControllerDelegate methods
+    // MARK: - BuildTableViewControllerDelegate methods
 
-    func didApproveBallot() {
-        delegate?.didAproveBallot()
+    func approveBallot() {
+        delegate?.aproveBallot()
     }
 }

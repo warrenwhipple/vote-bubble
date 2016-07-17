@@ -11,35 +11,23 @@ import Messages
 
 protocol VoteViewControllerDelegate: class {
     var ballot: Ballot? { get }
-    var activeConversation: MSConversation? { get }
-    func didVote(voter: UUID)
-    func didDeclineToVote(decliner: UUID)
-    func didCancelVote()
+    func vote(candidate: Candidate)
+    func declineToVote()
+    func cancelVote()
 }
 
 class VoteViewController: UIViewController {
 
+    @IBOutlet weak var candidatesView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
     weak var delegate: VoteViewControllerDelegate?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        questionLabel.text = delegate?.ballot?.questionText
+    @IBAction func backButtonPrimaryActionTriggered(_ sender: UIButton) {
+        delegate?.cancelVote()
     }
 
-    @IBAction func voteYesPressed(_ sender: AnyObject) {
-        guard let ballot = delegate?.ballot,
-            let localParticipantIdentifier =
-                delegate?.activeConversation?.localParticipantIdentifier else { return }
-        ballot.recordVote(voterID: localParticipantIdentifier, candidate: ballot.candidates[0])
-        delegate?.didVote(voter: localParticipantIdentifier)
+    @IBAction func declineVoteButtonPrimaryActionTriggered(_ sender: UIButton) {
+        delegate?.declineToVote()
     }
 
-    @IBAction func voteNoPressed(_ sender: AnyObject) {
-        guard let ballot = delegate?.ballot,
-            let localParticipantIdentifier =
-            delegate?.activeConversation?.localParticipantIdentifier else { return }
-        ballot.recordVote(voterID: localParticipantIdentifier, candidate: ballot.candidates[1])
-        delegate?.didVote(voter: localParticipantIdentifier)
-    }
 }
