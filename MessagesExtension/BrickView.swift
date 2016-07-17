@@ -10,6 +10,8 @@ import UIKit
 
 class BrickView: UIView {
 
+    var aspectRatioConstraint: NSLayoutConstraint?
+
     override func layoutSubviews() {
     }
 

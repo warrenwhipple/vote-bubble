@@ -18,9 +18,25 @@ protocol VoteViewControllerDelegate: class {
 
 class VoteViewController: UIViewController {
 
-    @IBOutlet weak var candidatesView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var candidatesBrickView: BrickView!
+    @IBOutlet weak var candidatesBrickViewAspectRationConstraint: NSLayoutConstraint!
+
     weak var delegate: VoteViewControllerDelegate?
+
+    override func viewDidLoad() {
+        //candidatesBrickView.aspectRatioConstraint = candidatesBrickViewAspectRationConstraint
+        guard let ballot = delegate?.ballot else { return }
+        for candidate in ballot.candidates {
+            /*
+            guard let candidateView =
+                candidateCharacterTextPrototypeView.copy() as? CandidateCharacterTextVoteView
+            else { continue }
+            candidateView.loadCandidate(candidate)
+            candidatesBrickView.addSubview(candidateView)
+            */
+        }
+    }
 
     @IBAction func backButtonPrimaryActionTriggered(_ sender: UIButton) {
         delegate?.cancelVote()

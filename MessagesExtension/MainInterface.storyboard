@@ -143,7 +143,7 @@
                                         <subviews>
                                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sk-S3-LOp" userLabel="Bubble View">
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" userLabel="Candidates View">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" userLabel="Candidates Brick View" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="2:1" id="My7-Qa-nL6"/>
@@ -233,10 +233,6 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="500"/>
-                    <connections>
-                        <outlet property="candidatesView" destination="4eF-dQ-Z7k" id="5r0-iP-7o7"/>
-                        <outlet property="questionLabel" destination="Ono-cU-CH7" id="WD5-Fh-TZI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-rL-YBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" restorationIdentifier="CandidateCharacterTextVoteView" id="llw-f7-Eqj" userLabel="Candidate Character Text View" customClass="CandidateCharacterTextVoteView" customModule="MessagesExtension" customModuleProvider="target">
@@ -272,10 +268,6 @@
                         <constraint firstAttribute="trailing" secondItem="M2R-Jy-f3N" secondAttribute="trailing" id="fxl-lE-Jd3"/>
                         <constraint firstItem="M2R-Jy-f3N" firstAttribute="top" secondItem="llw-f7-Eqj" secondAttribute="top" id="qlx-l9-qXM"/>
                     </constraints>
-                    <connections>
-                        <outlet property="characterLabel" destination="M2R-Jy-f3N" id="QoN-Gm-6Gf"/>
-                        <outlet property="textLabel" destination="yrO-on-xkc" id="iiG-7i-Kcw"/>
-                    </connections>
                 </view>
             </objects>
             <point key="canvasLocation" x="1196.8" y="112.44377811094454"/>
