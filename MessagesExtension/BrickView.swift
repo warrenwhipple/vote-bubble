@@ -12,6 +12,17 @@ class BrickView: UIView {
 
     private(set) var aspectRatioConstraint: NSLayoutConstraint?
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let (_, rects) = CGRect.bricks(
+            containerWidth: bounds.width,
+            count: subviews.count
+        )
+        for (subview, rect) in zip(subviews, rects) {
+            subview.frame = rect
+        }
+    }
+
     func updateAspectRatioConstraint() {
         if aspectRatioConstraint == nil {
             for constraint in constraints {
@@ -42,15 +53,5 @@ class BrickView: UIView {
         )
         addConstraint(constraint)
         aspectRatioConstraint = constraint
-    }
-
-    func arrangeSubviewsAsBricks(containerWidth: CGFloat) {
-        let (_, rects) = CGRect.bricks(
-            containerWidth: containerWidth,
-            count: subviews.count
-        )
-        for (subview, rect) in zip(subviews, rects) {
-            subview.frame = rect
-        }
     }
 }

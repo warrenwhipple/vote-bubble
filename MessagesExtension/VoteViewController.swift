@@ -34,10 +34,6 @@ class VoteViewController: UIViewController, CandidateVoteViewDelegate {
         candidatesBrickView.updateAspectRatioConstraint()
     }
 
-    override func viewDidLayoutSubviews() {
-        candidatesBrickView.arrangeSubviewsAsBricks(containerWidth: candidatesBrickView.frame.width)
-    }
-
     @IBAction func backButtonPrimaryActionTriggered(_ sender: UIButton) {
         delegate?.cancelVote()
     }
