@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2D283E7E1D36A0B700046727 /* CandidateBuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D283E7D1D36A0B700046727 /* CandidateBuildTableViewCell.swift */; };
 		2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BFB61D36BC49008C9950 /* QuestionBuildTableViewCell.swift */; };
-		2D54B1CA1D3AE0A90002FB34 /* CandidateCharacterTextVoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D54B1C91D3AE0A90002FB34 /* CandidateCharacterTextVoteView.swift */; };
 		2D54B1D01D3BBB130002FB34 /* CandidateVoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D54B1CF1D3BBB130002FB34 /* CandidateVoteView.swift */; };
 		2D59523A1D33EEEE0000DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952391D33EEEE0000DF98 /* Assets.xcassets */; };
 		2D5952411D33EEEE0000DF98 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D5952401D33EEEE0000DF98 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -61,7 +60,6 @@
 /* Begin PBXFileReference section */
 		2D283E7D1D36A0B700046727 /* CandidateBuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBuildTableViewCell.swift; sourceTree = "<group>"; };
 		2D47BFB61D36BC49008C9950 /* QuestionBuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionBuildTableViewCell.swift; sourceTree = "<group>"; };
-		2D54B1C91D3AE0A90002FB34 /* CandidateCharacterTextVoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCharacterTextVoteView.swift; sourceTree = "<group>"; };
 		2D54B1CF1D3BBB130002FB34 /* CandidateVoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateVoteView.swift; sourceTree = "<group>"; };
 		2D5952361D33EEEE0000DF98 /* Vote Bubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vote Bubble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5952391D33EEEE0000DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				2D59526A1D33F02A0000DF98 /* VoteViewController.swift */,
 				2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */,
 				2D54B1CF1D3BBB130002FB34 /* CandidateVoteView.swift */,
-				2D54B1C91D3AE0A90002FB34 /* CandidateCharacterTextVoteView.swift */,
 			);
 			name = "Vote View";
 			sourceTree = "<group>";
@@ -343,7 +340,6 @@
 				2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */,
 				2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */,
 				2D5952731D33F0370000DF98 /* Ballot.swift in Sources */,
-				2D54B1CA1D3AE0A90002FB34 /* CandidateCharacterTextVoteView.swift in Sources */,
 				2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */,
 				2D59526F1D33F02A0000DF98 /* ReportViewController.swift in Sources */,
 				2D5952641D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift in Sources */,

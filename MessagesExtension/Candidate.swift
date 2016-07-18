@@ -47,8 +47,6 @@ class Candidate {
         switch figure {
         case .none:
             break
-        case .text(let word):
-            textBox(text: word, fontSizeRatio: 1/6)
         case .autoCharacter(let character):
             textBox(text: String(character), fontSizeRatio: 2/3)
         case .customCharacter(let character):

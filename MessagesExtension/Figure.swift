@@ -7,5 +7,5 @@
 //
 
 enum Figure {
-    case none, text(String), autoCharacter(Character), customCharacter(Character)
+    case none, autoCharacter(Character), customCharacter(Character)
 }

@@ -24,7 +24,6 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
         if let candidate = candidate {
             switch candidate.figure {
             case .none:                           figureTextField.text = nil
-            case .text(let text):                 figureTextField.text = text
             case .autoCharacter(let character):   figureTextField.text = String(character)
             case .customCharacter(let character): figureTextField.text = String(character)
             }
@@ -95,7 +94,6 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
         switch candidate.figure {
         case .none, .autoCharacter, .customCharacter: UIFont.systemFont(ofSize: height * 2 / 3)
-        case .text:                                   UIFont.systemFont(ofSize: height * 1 / 6)
         }
     }
 

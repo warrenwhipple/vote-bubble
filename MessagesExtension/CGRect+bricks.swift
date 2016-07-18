@@ -40,4 +40,10 @@ extension CGRect {
         )
         return (containerSize, rects)
     }
+
+    static func aspectRatioForBrickCount(_ count: Int) -> CGFloat {
+        let rowCount = Int(floor(sqrt(Float(count))))
+        let columnCount = (count + rowCount - 1) / rowCount
+        return CGFloat(columnCount) / CGFloat(rowCount)
+    }
 }

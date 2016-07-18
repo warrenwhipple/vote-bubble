@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lX-RS-awA" userLabel="Build New Vote">
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Sj7-ub-YD3"/>
                                     <constraint firstAttribute="width" constant="100" id="Tt1-y0-dpM"/>
@@ -144,9 +143,9 @@
                                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sk-S3-LOp" userLabel="Bubble View">
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" userLabel="Candidates Brick View" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="2:1" id="My7-Qa-nL6"/>
+                                                            <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="2:1" id="3ZY-go-7hE"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-gg-8lH" userLabel="Question View">
@@ -183,6 +182,9 @@
                                             <stackView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMW-yA-LUf" userLabel="Button Stack View">
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDL-z4-3w4" userLabel="Back Button">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="FDL-z4-3w4" secondAttribute="height" multiplier="1:1" id="Rht-8Q-UYs"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                         <state key="normal" title="&lt;"/>
                                                         <connections>
@@ -190,15 +192,13 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ges-Cy-1XQ" userLabel="Decline Vote Button">
-                                                        <state key="normal" title="Ready"/>
+                                                        <state key="normal" title="Start without my vote"/>
                                                         <connections>
                                                             <action selector="declineVoteButtonPrimaryActionTriggered:" destination="qai-uj-Bst" eventType="primaryActionTriggered" id="evD-f3-Ffh"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="FDL-z4-3w4" firstAttribute="width" secondItem="FMW-yA-LUf" secondAttribute="width" multiplier="1:2" id="F1y-o3-31V"/>
-                                                    <constraint firstItem="ges-Cy-1XQ" firstAttribute="width" secondItem="FMW-yA-LUf" secondAttribute="width" multiplier="1:2" id="Ohi-e1-Dbn"/>
                                                     <constraint firstAttribute="height" constant="64" id="qXm-9L-ymy"/>
                                                 </constraints>
                                             </stackView>
@@ -233,42 +233,11 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="500"/>
+                    <connections>
+                        <outlet property="candidatesBrickView" destination="4eF-dQ-Z7k" id="at8-Pb-et4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-rL-YBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" restorationIdentifier="CandidateCharacterTextVoteView" id="llw-f7-Eqj" userLabel="Candidate Character Text View" customClass="CandidateCharacterTextVoteView" customModule="MessagesExtension" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2R-Jy-f3N" userLabel="Character Label">
-                            <accessibility key="accessibilityConfiguration">
-                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
-                            </accessibility>
-                            <fontDescription key="fontDescription" type="system" pointSize="64"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Candidate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrO-on-xkc" userLabel="Text Label">
-                            <accessibility key="accessibilityConfiguration">
-                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
-                            </accessibility>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="M2R-Jy-f3N" firstAttribute="leading" secondItem="llw-f7-Eqj" secondAttribute="leading" id="JHB-DY-RWD"/>
-                        <constraint firstAttribute="trailing" secondItem="yrO-on-xkc" secondAttribute="trailing" id="N2Q-OS-gSJ"/>
-                        <constraint firstItem="yrO-on-xkc" firstAttribute="leading" secondItem="llw-f7-Eqj" secondAttribute="leading" id="N70-fL-hze"/>
-                        <constraint firstItem="M2R-Jy-f3N" firstAttribute="height" secondItem="llw-f7-Eqj" secondAttribute="height" multiplier="2:3" id="NCr-wg-HTA"/>
-                        <constraint firstAttribute="bottom" secondItem="yrO-on-xkc" secondAttribute="bottom" id="Y5p-qU-2g6"/>
-                        <constraint firstItem="yrO-on-xkc" firstAttribute="top" secondItem="M2R-Jy-f3N" secondAttribute="bottom" id="Ytb-QQ-s5V"/>
-                        <constraint firstItem="yrO-on-xkc" firstAttribute="height" secondItem="llw-f7-Eqj" secondAttribute="height" multiplier="1:3" id="aaF-Qg-hPg"/>
-                        <constraint firstAttribute="trailing" secondItem="M2R-Jy-f3N" secondAttribute="trailing" id="fxl-lE-Jd3"/>
-                        <constraint firstItem="M2R-Jy-f3N" firstAttribute="top" secondItem="llw-f7-Eqj" secondAttribute="top" id="qlx-l9-qXM"/>
-                    </constraints>
-                </view>
             </objects>
             <point key="canvasLocation" x="1196.8" y="112.44377811094454"/>
         </scene>
