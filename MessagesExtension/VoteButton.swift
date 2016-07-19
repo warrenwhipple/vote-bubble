@@ -1,5 +1,5 @@
 //
-//  CandidateVoteView.swift
+//  VoteButton.swift
 //  Vote Bubble
 //
 //  Created by Warren Whipple on 7/17/16.
@@ -8,20 +8,18 @@
 
 import UIKit
 
-protocol CandidateVoteViewDelegate: class {
+protocol VoteButtonDelegate: class {
     func vote(candidate: Candidate)
 }
 
-class CandidateVoteView: UIView {
+class VoteButton: UIButton {
 
-    weak var delegate: CandidateVoteViewDelegate?
-    var candidate: Candidate?
-    var characterLabel, textLabel: UILabel?
+    weak var delegate: VoteButtonDelegate?
+    let candidate: Candidate
+    let characterLabel, textLabel: UILabel?
 
     init(frame: CGRect, candidate: Candidate) {
-        super.init(frame: frame)
         self.candidate = candidate
-        backgroundColor = candidate.backgroundColor
         let figureCharacter: Character?
         switch candidate.figure {
         case .none:                           figureCharacter = nil
@@ -33,8 +31,9 @@ class CandidateVoteView: UIView {
             label.textColor = candidate.color
             label.textAlignment = .center
             label.text = String(figureCharacter)
-            addSubview(label)
             characterLabel = label
+        } else {
+            characterLabel = nil
         }
         if let text = candidate.text {
             let label = UILabel()
@@ -42,8 +41,22 @@ class CandidateVoteView: UIView {
             label.textAlignment = .center
             label.lineBreakMode = .byWordWrapping
             label.text = text
-            addSubview(label)
             textLabel = label
+        } else {
+            textLabel = nil
+        }
+        super.init(frame: frame)
+        addTarget(
+            self,
+            action: #selector(VoteButton.primaryActionTriggered),
+            for: .primaryActionTriggered
+        )
+        backgroundColor = candidate.backgroundColor
+        if let characterLabel = characterLabel {
+            addSubview(characterLabel)
+        }
+        if let textLabel = textLabel {
+            addSubview(textLabel)
         }
     }
 
@@ -82,5 +95,9 @@ class CandidateVoteView: UIView {
                 textLabel.font = UIFont.systemFont(ofSize: textLabel.frame.height * 1/3)
             }
         }
+    }
+
+    func primaryActionTriggered() {
+        delegate?.vote(candidate: candidate)
     }
 }

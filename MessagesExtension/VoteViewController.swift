@@ -16,7 +16,7 @@ protocol VoteViewControllerDelegate: class {
     func cancelVote()
 }
 
-class VoteViewController: UIViewController, CandidateVoteViewDelegate {
+class VoteViewController: UIViewController, VoteButtonDelegate {
 
     @IBOutlet weak var candidatesBrickView: BrickView!
     weak var delegate: VoteViewControllerDelegate?
@@ -24,7 +24,7 @@ class VoteViewController: UIViewController, CandidateVoteViewDelegate {
     override func viewDidLoad() {
         guard let ballot = delegate?.ballot else { return }
         for candidate in ballot.candidates {
-            let candidateView = CandidateVoteView(candidate: candidate)
+            let candidateView = VoteButton(candidate: candidate)
             candidateView.delegate = self
             candidatesBrickView.addSubview(candidateView)
         }
