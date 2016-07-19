@@ -143,8 +143,8 @@ class Ballot {
             figure: .autoCharacter("N")
         )
         return Ballot(
-            candidates: [yesCandidate, noCandidate],
-            state: .building
+            state: .building,
+            candidates: [yesCandidate, noCandidate]
         )
     }
 }
