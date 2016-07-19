@@ -15,7 +15,7 @@ protocol CandidateVoteViewDelegate: class {
 class CandidateVoteView: UIView {
 
     weak var delegate: CandidateVoteViewDelegate?
-    private(set) var candidate: Candidate?
+    var candidate: Candidate?
     var characterLabel, textLabel: UILabel?
 
     init(frame: CGRect, candidate: Candidate) {
@@ -33,6 +33,7 @@ class CandidateVoteView: UIView {
             label.textColor = candidate.color
             label.textAlignment = .center
             label.text = String(figureCharacter)
+            addSubview(label)
             characterLabel = label
         }
         if let text = candidate.text {
@@ -41,6 +42,7 @@ class CandidateVoteView: UIView {
             label.textAlignment = .center
             label.lineBreakMode = .byWordWrapping
             label.text = text
+            addSubview(label)
             textLabel = label
         }
     }
@@ -60,14 +62,14 @@ class CandidateVoteView: UIView {
                 characterLabel.frame = CGRect(
                     x: 0,
                     y: 0,
-                    width: frame.width,
-                    height: frame.height * 2/3
+                    width: bounds.width,
+                    height: bounds.height * 2/3
                 )
                 textLabel.frame = CGRect(
                     x: 0,
                     y: characterLabel.frame.height,
-                    width: frame.width,
-                    height: frame.height - characterLabel.frame.height
+                    width: bounds.width,
+                    height: bounds.height - characterLabel.frame.height
                 )
                 textLabel.font = UIFont.systemFont(ofSize: textLabel.frame.height * 1/3)
             } else {
