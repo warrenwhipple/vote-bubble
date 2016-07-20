@@ -29,7 +29,6 @@
 		2D5952741D33F0370000DF98 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952711D33F0370000DF98 /* Candidate.swift */; };
 		2D5952751D33F0370000DF98 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
 		2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952761D33F07F0000DF98 /* MainInterface.storyboard */; };
-		2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */; };
 		2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */; };
 		2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 		2DC71A4D1D3F18E800D1A366 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
@@ -423,7 +422,6 @@
 				2D59525F1D33EFE80000DF98 /* Bubble.swift in Sources */,
 				2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */,
 				2D59526E1D33F02A0000DF98 /* VoteViewController.swift in Sources */,
-				2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */,
 				2DEAC4581D3FC81000823E0E /* Candidate+urlQueryItems.swift in Sources */,
 				2D5952651D33EFFC0000DF98 /* CGRect+bricks.swift in Sources */,
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,

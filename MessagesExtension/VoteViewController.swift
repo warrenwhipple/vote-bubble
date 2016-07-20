@@ -19,6 +19,7 @@ protocol VoteViewControllerDelegate: class {
 class VoteViewController: UIViewController, VoteButtonDelegate {
 
     @IBOutlet weak var candidatesBrickView: BrickView!
+    @IBOutlet weak var questionLabel: UILabel!
     weak var delegate: VoteViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class VoteViewController: UIViewController, VoteButtonDelegate {
             candidateView.delegate = self
             candidatesBrickView.addSubview(candidateView)
         }
+        questionLabel.text = delegate?.ballot?.questionText
     }
 
     override func viewWillLayoutSubviews() {

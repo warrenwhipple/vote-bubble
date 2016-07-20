@@ -45,23 +45,10 @@ class MessagesViewController:
 
     // MARK: - MSMessagesAppViewController methods
 
-    /*
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        connectKeyboardNotifications()
-    }
-    */
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("Vote Bubble viewDidAppear")
     }
-
-    /*
-    deinit {
-        disconnectKeyboardNotifications()
-    }
-    */
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

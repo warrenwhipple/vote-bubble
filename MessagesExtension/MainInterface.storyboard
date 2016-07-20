@@ -137,7 +137,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ClV-2X-fzE" userLabel="Guide Pinned View">
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-mw-WKd" userLabel="Vertical Centered View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-mw-WKd" userLabel="Bubble Button Wrapper">
                                         <subviews>
                                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sk-S3-LOp" userLabel="Bubble View">
                                                 <subviews>
@@ -148,7 +148,7 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-gg-8lH" userLabel="Question View">
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Label?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ono-cU-CH7" userLabel="Question Label">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ono-cU-CH7" userLabel="Question Label">
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="Cyy-7s-daZ"/>
                                                                 </constraints>
@@ -233,6 +233,7 @@
                     <size key="freeformSize" width="320" height="500"/>
                     <connections>
                         <outlet property="candidatesBrickView" destination="4eF-dQ-Z7k" id="at8-Pb-et4"/>
+                        <outlet property="questionLabel" destination="Ono-cU-CH7" id="F99-Lr-WyA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-rL-YBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
