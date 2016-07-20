@@ -69,8 +69,8 @@ class MessagesViewController:
     }
 
     override func willBecomeActive(with conversation: MSConversation) {
-        if let selectedMessage = conversation.selectedMessage {
-            ballot = Ballot(message: selectedMessage)
+        if let message = conversation.selectedMessage {
+            ballot = Ballot(message: message)
         } else {
             ballot = nil
         }

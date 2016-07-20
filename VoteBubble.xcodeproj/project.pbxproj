@@ -41,6 +41,8 @@
 		2DDF11031D3EC193005BE375 /* CGRect+bricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */; };
 		2DDF11051D3ED266005BE375 /* Ballot+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF11041D3ED266005BE375 /* Ballot+url.swift */; };
 		2DDF11061D3ED266005BE375 /* Ballot+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF11041D3ED266005BE375 /* Ballot+url.swift */; };
+		2DEAC4581D3FC81000823E0E /* Candidate+urlQueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */; };
+		2DEAC4591D3FC81C00823E0E /* Candidate+urlQueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,7 @@
 		2DDF11041D3ED266005BE375 /* Ballot+url.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ballot+url.swift"; sourceTree = "<group>"; };
 		2DDF11071D3EEEA4005BE375 /* String+split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+split.swift"; sourceTree = "<group>"; };
 		2DDF110A1D3EFED1005BE375 /* Int+urlCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+urlCharacter.swift"; sourceTree = "<group>"; };
+		2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Candidate+urlQueryItems.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,7 @@
 				2D5952701D33F0370000DF98 /* Ballot.swift */,
 				2DDF11041D3ED266005BE375 /* Ballot+url.swift */,
 				2D5952711D33F0370000DF98 /* Candidate.swift */,
+				2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */,
 				2D5952721D33F0370000DF98 /* Figure.swift */,
 			);
 			name = Model;
@@ -401,6 +405,7 @@
 				2D055AA81D3EBEE100E08DCC /* VoteBubbleTests.swift in Sources */,
 				2DDF11021D3EC18E005BE375 /* MSMessageTemplateLayout+defaults.swift in Sources */,
 				2DDF10FE1D3EC106005BE375 /* Ballot.swift in Sources */,
+				2DEAC4591D3FC81C00823E0E /* Candidate+urlQueryItems.swift in Sources */,
 				2DDF11061D3ED266005BE375 /* Ballot+url.swift in Sources */,
 				2DC71A4D1D3F18E800D1A366 /* UIColor+Convenience.swift in Sources */,
 			);
@@ -419,6 +424,7 @@
 				2D59526C1D33F02A0000DF98 /* BuildViewController.swift in Sources */,
 				2D59526E1D33F02A0000DF98 /* VoteViewController.swift in Sources */,
 				2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */,
+				2DEAC4581D3FC81000823E0E /* Candidate+urlQueryItems.swift in Sources */,
 				2D5952651D33EFFC0000DF98 /* CGRect+bricks.swift in Sources */,
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
 				2D283E7E1D36A0B700046727 /* CandidateBuildTableViewCell.swift in Sources */,

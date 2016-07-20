@@ -27,12 +27,9 @@ class Ballot {
         self.voterIDs = voterIDs
     }
 
-    init(message: MSMessage) {
-        // TODO: TODO: Init Ballot from message
-        state = .building
-        questionText = "Ballot init(message:) incomplete"
-        candidates = []
-        voterIDs = []
+    convenience init?(message: MSMessage) {
+        guard let url = message.url else { return nil }
+        self.init(url: url)
     }
 
     func didVote(_ voterID: UUID) -> Bool {
@@ -78,6 +75,7 @@ class Ballot {
         let message = MSMessage()
         message.summaryText = summaryText
         message.layout = layout
+        message.url = url()
         return message
     }
 
