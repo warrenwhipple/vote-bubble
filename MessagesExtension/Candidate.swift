@@ -13,13 +13,13 @@ class Candidate {
     var color, backgroundColor: UIColor
     var text: String?
     var figure: Figure
-    var votes: [UUID?]
+    var votes: [Int]
 
     init(color: UIColor,
          backgroundColor: UIColor,
          text: String? = nil,
          figure: Figure = .none,
-         votes: [UUID?] = []) {
+         votes: [Int] = []) {
 
         self.color = color
         self.backgroundColor = backgroundColor

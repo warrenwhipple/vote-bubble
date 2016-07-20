@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D055AA81D3EBEE100E08DCC /* VoteBubbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D055AA71D3EBEE100E08DCC /* VoteBubbleTests.swift */; };
 		2D283E7E1D36A0B700046727 /* CandidateBuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D283E7D1D36A0B700046727 /* CandidateBuildTableViewCell.swift */; };
 		2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BFB61D36BC49008C9950 /* QuestionBuildTableViewCell.swift */; };
 		2D54B1D01D3BBB130002FB34 /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D54B1CF1D3BBB130002FB34 /* VoteButton.swift */; };
@@ -31,6 +32,15 @@
 		2D59527B1D3425FB0000DF98 /* KeyboardAwareness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */; };
 		2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */; };
 		2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
+		2DC71A4D1D3F18E800D1A366 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
+		2DDF10FE1D3EC106005BE375 /* Ballot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952701D33F0370000DF98 /* Ballot.swift */; };
+		2DDF10FF1D3EC109005BE375 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952711D33F0370000DF98 /* Candidate.swift */; };
+		2DDF11001D3EC10B005BE375 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
+		2DDF11011D3EC164005BE375 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5952451D33EEEE0000DF98 /* Messages.framework */; };
+		2DDF11021D3EC18E005BE375 /* MSMessageTemplateLayout+defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */; };
+		2DDF11031D3EC193005BE375 /* CGRect+bricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */; };
+		2DDF11051D3ED266005BE375 /* Ballot+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF11041D3ED266005BE375 /* Ballot+url.swift */; };
+		2DDF11061D3ED266005BE375 /* Ballot+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF11041D3ED266005BE375 /* Ballot+url.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +68,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D055AA51D3EBEE000E08DCC /* VoteBubbleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoteBubbleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D055AA71D3EBEE100E08DCC /* VoteBubbleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteBubbleTests.swift; sourceTree = "<group>"; };
+		2D055AA91D3EBEE100E08DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D283E7D1D36A0B700046727 /* CandidateBuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBuildTableViewCell.swift; sourceTree = "<group>"; };
 		2D47BFB61D36BC49008C9950 /* QuestionBuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionBuildTableViewCell.swift; sourceTree = "<group>"; };
 		2D54B1CF1D3BBB130002FB34 /* VoteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
-		2D5952361D33EEEE0000DF98 /* Vote Bubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vote Bubble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5952361D33EEEE0000DF98 /* VoteBubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoteBubble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5952391D33EEEE0000DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D59523B1D33EEEE0000DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D5952401D33EEEE0000DF98 /* MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MessagesExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,9 +98,20 @@
 		2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareness.swift; sourceTree = "<group>"; };
 		2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickView.swift; sourceTree = "<group>"; };
 		2DB740761D3853D600433E15 /* UIColor+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenience.swift"; sourceTree = "<group>"; };
+		2DDF11041D3ED266005BE375 /* Ballot+url.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ballot+url.swift"; sourceTree = "<group>"; };
+		2DDF11071D3EEEA4005BE375 /* String+split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+split.swift"; sourceTree = "<group>"; };
+		2DDF110A1D3EFED1005BE375 /* Int+urlCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+urlCharacter.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2D055AA21D3EBEE000E08DCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DDF11011D3EC164005BE375 /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D59523D1D33EEEE0000DF98 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D055AA61D3EBEE100E08DCC /* VoteBubbleTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D055AA71D3EBEE100E08DCC /* VoteBubbleTests.swift */,
+				2D055AA91D3EBEE100E08DCC /* Info.plist */,
+			);
+			path = VoteBubbleTests;
+			sourceTree = "<group>";
+		};
 		2D2C803E1D367D5A0070DB41 /* Report View */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +186,8 @@
 				2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */,
 				2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */,
 				2DB740761D3853D600433E15 /* UIColor+Convenience.swift */,
+				2DDF11071D3EEEA4005BE375 /* String+split.swift */,
+				2DDF110A1D3EFED1005BE375 /* Int+urlCharacter.swift */,
 			);
 			name = "Shared Classes and Extensions";
 			sourceTree = "<group>";
@@ -160,8 +195,9 @@
 		2D59522F1D33EEEE0000DF98 = {
 			isa = PBXGroup;
 			children = (
-				2D5952381D33EEEE0000DF98 /* Vote Bubble */,
+				2D5952381D33EEEE0000DF98 /* VoteBubbleApp */,
 				2D5952471D33EEEE0000DF98 /* MessagesExtension */,
+				2D055AA61D3EBEE100E08DCC /* VoteBubbleTests */,
 				2D5952441D33EEEE0000DF98 /* Frameworks */,
 				2D5952371D33EEEE0000DF98 /* Products */,
 			);
@@ -170,18 +206,20 @@
 		2D5952371D33EEEE0000DF98 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D5952361D33EEEE0000DF98 /* Vote Bubble.app */,
+				2D5952361D33EEEE0000DF98 /* VoteBubble.app */,
 				2D5952401D33EEEE0000DF98 /* MessagesExtension.appex */,
+				2D055AA51D3EBEE000E08DCC /* VoteBubbleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2D5952381D33EEEE0000DF98 /* Vote Bubble */ = {
+		2D5952381D33EEEE0000DF98 /* VoteBubbleApp */ = {
 			isa = PBXGroup;
 			children = (
 				2D5952391D33EEEE0000DF98 /* Assets.xcassets */,
 				2D59523B1D33EEEE0000DF98 /* Info.plist */,
 			);
+			name = VoteBubbleApp;
 			path = "Vote Bubble";
 			sourceTree = "<group>";
 		};
@@ -214,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				2D5952701D33F0370000DF98 /* Ballot.swift */,
+				2DDF11041D3ED266005BE375 /* Ballot+url.swift */,
 				2D5952711D33F0370000DF98 /* Candidate.swift */,
 				2D5952721D33F0370000DF98 /* Figure.swift */,
 			);
@@ -223,9 +262,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D5952351D33EEEE0000DF98 /* Vote Bubble */ = {
+		2D055AA41D3EBEE000E08DCC /* VoteBubbleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D5952561D33EEEE0000DF98 /* Build configuration list for PBXNativeTarget "Vote Bubble" */;
+			buildConfigurationList = 2D055AAA1D3EBEE100E08DCC /* Build configuration list for PBXNativeTarget "VoteBubbleTests" */;
+			buildPhases = (
+				2D055AA11D3EBEE000E08DCC /* Sources */,
+				2D055AA21D3EBEE000E08DCC /* Frameworks */,
+				2D055AA31D3EBEE000E08DCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VoteBubbleTests;
+			productName = VoteBubbleTests;
+			productReference = 2D055AA51D3EBEE000E08DCC /* VoteBubbleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2D5952351D33EEEE0000DF98 /* VoteBubble */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D5952561D33EEEE0000DF98 /* Build configuration list for PBXNativeTarget "VoteBubble" */;
 			buildPhases = (
 				2D5952341D33EEEE0000DF98 /* Resources */,
 				2D5952551D33EEEE0000DF98 /* Embed App Extensions */,
@@ -235,9 +291,9 @@
 			dependencies = (
 				2D5952431D33EEEE0000DF98 /* PBXTargetDependency */,
 			);
-			name = "Vote Bubble";
+			name = VoteBubble;
 			productName = "Vote Bubble";
-			productReference = 2D5952361D33EEEE0000DF98 /* Vote Bubble.app */;
+			productReference = 2D5952361D33EEEE0000DF98 /* VoteBubble.app */;
 			productType = "com.apple.product-type.application.messages";
 		};
 		2D59523F1D33EEEE0000DF98 /* MessagesExtension */ = {
@@ -267,6 +323,12 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Warren Whipple";
 				TargetAttributes = {
+					2D055AA41D3EBEE000E08DCC = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = J627TVEKXG;
+						DevelopmentTeamName = "Warren Whipple";
+						ProvisioningStyle = Automatic;
+					};
 					2D5952351D33EEEE0000DF98 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J627TVEKXG;
@@ -281,7 +343,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2D5952331D33EEEE0000DF98 /* Build configuration list for PBXProject "Vote Bubble" */;
+			buildConfigurationList = 2D5952331D33EEEE0000DF98 /* Build configuration list for PBXProject "VoteBubble" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -294,13 +356,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D5952351D33EEEE0000DF98 /* Vote Bubble */,
+				2D5952351D33EEEE0000DF98 /* VoteBubble */,
 				2D59523F1D33EEEE0000DF98 /* MessagesExtension */,
+				2D055AA41D3EBEE000E08DCC /* VoteBubbleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2D055AA31D3EBEE000E08DCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D5952341D33EEEE0000DF98 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,6 +391,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2D055AA11D3EBEE000E08DCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DDF10FF1D3EC109005BE375 /* Candidate.swift in Sources */,
+				2DDF11031D3EC193005BE375 /* CGRect+bricks.swift in Sources */,
+				2DDF11001D3EC10B005BE375 /* Figure.swift in Sources */,
+				2D055AA81D3EBEE100E08DCC /* VoteBubbleTests.swift in Sources */,
+				2DDF11021D3EC18E005BE375 /* MSMessageTemplateLayout+defaults.swift in Sources */,
+				2DDF10FE1D3EC106005BE375 /* Ballot.swift in Sources */,
+				2DDF11061D3ED266005BE375 /* Ballot+url.swift in Sources */,
+				2DC71A4D1D3F18E800D1A366 /* UIColor+Convenience.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D59523C1D33EEEE0000DF98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,6 +429,7 @@
 				2D59526F1D33F02A0000DF98 /* ReportViewController.swift in Sources */,
 				2D5952641D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift in Sources */,
 				2D54B1D01D3BBB130002FB34 /* VoteButton.swift in Sources */,
+				2DDF11051D3ED266005BE375 /* Ballot+url.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +444,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2D055AAB1D3EBEE100E08DCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VoteBubbleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubbleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2D055AAC1D3EBEE100E08DCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VoteBubbleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubbleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		2D5952501D33EEEE0000DF98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -451,7 +559,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenwhipple.Vote-Bubble.MessagesExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubble.MessagesExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -464,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenwhipple.Vote-Bubble.MessagesExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubble.MessagesExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -477,7 +585,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Vote Bubble/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenwhipple.Vote-Bubble";
+				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -490,7 +598,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Vote Bubble/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenwhipple.Vote-Bubble";
+				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,7 +608,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D5952331D33EEEE0000DF98 /* Build configuration list for PBXProject "Vote Bubble" */ = {
+		2D055AAA1D3EBEE100E08DCC /* Build configuration list for PBXNativeTarget "VoteBubbleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D055AAB1D3EBEE100E08DCC /* Debug */,
+				2D055AAC1D3EBEE100E08DCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D5952331D33EEEE0000DF98 /* Build configuration list for PBXProject "VoteBubble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D5952501D33EEEE0000DF98 /* Debug */,
@@ -518,7 +635,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D5952561D33EEEE0000DF98 /* Build configuration list for PBXNativeTarget "Vote Bubble" */ = {
+		2D5952561D33EEEE0000DF98 /* Build configuration list for PBXNativeTarget "VoteBubble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D5952571D33EEEE0000DF98 /* Debug */,

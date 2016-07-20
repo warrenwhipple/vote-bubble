@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0800"
+   wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,7 +18,7 @@
                BlueprintIdentifier = "2D59523F1D33EEEE0000DF98"
                BuildableName = "MessagesExtension.appex"
                BlueprintName = "MessagesExtension"
-               ReferencedContainer = "container:Vote Bubble.xcodeproj">
+               ReferencedContainer = "container:VoteBubble.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D5952351D33EEEE0000DF98"
-               BuildableName = "Vote Bubble.app"
-               BlueprintName = "Vote Bubble"
-               ReferencedContainer = "container:Vote Bubble.xcodeproj">
+               BuildableName = "VoteBubble.app"
+               BlueprintName = "VoteBubble"
+               ReferencedContainer = "container:VoteBubble.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +50,7 @@
             BlueprintIdentifier = "2D59523F1D33EEEE0000DF98"
             BuildableName = "MessagesExtension.appex"
             BlueprintName = "MessagesExtension"
-            ReferencedContainer = "container:Vote Bubble.xcodeproj">
+            ReferencedContainer = "container:VoteBubble.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -71,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D5952351D33EEEE0000DF98"
-            BuildableName = "Vote Bubble.app"
-            BlueprintName = "Vote Bubble"
-            ReferencedContainer = "container:Vote Bubble.xcodeproj">
+            BuildableName = "VoteBubble.app"
+            BlueprintName = "VoteBubble"
+            ReferencedContainer = "container:VoteBubble.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -91,9 +92,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D5952351D33EEEE0000DF98"
-            BuildableName = "Vote Bubble.app"
-            BlueprintName = "Vote Bubble"
-            ReferencedContainer = "container:Vote Bubble.xcodeproj">
+            BuildableName = "VoteBubble.app"
+            BlueprintName = "VoteBubble"
+            ReferencedContainer = "container:VoteBubble.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -10,21 +10,21 @@ import Messages
 
 class Ballot {
 
-    enum State { case building, votingUnsent, votingSent, reporting }
+    enum State: Int { case building , votingUnsent, votingSent, reporting }
     
     var state: State
     var questionText: String?
     var candidates: [Candidate]
-    var didVoteVoterIDs: [UUID]
+    var voterIDs: [UUID]
 
     init(state: State = .building,
          questionText: String? = nil,
          candidates: [Candidate] = [],
-         didVoteVoterIDs: [UUID] = []) {
+         voterIDs: [UUID] = []) {
         self.state = state
         self.questionText = questionText
         self.candidates = candidates
-        self.didVoteVoterIDs = didVoteVoterIDs
+        self.voterIDs = voterIDs
     }
 
     init(message: MSMessage) {
@@ -32,11 +32,11 @@ class Ballot {
         state = .building
         questionText = "Ballot init(message:) incomplete"
         candidates = []
-        didVoteVoterIDs = []
+        voterIDs = []
     }
 
     func didVote(_ voterID: UUID) -> Bool {
-        return didVoteVoterIDs.contains({ $0 == voterID })
+        return voterIDs.contains({ $0 == voterID })
     }
 
     func isCandidate(_ candidate: Candidate) -> Bool {
@@ -46,33 +46,8 @@ class Ballot {
     func recordVote(voterID: UUID, candidate: Candidate) {
         guard !didVote(voterID) else { print("Voter already voted"); return }
         guard isCandidate(candidate) else { print("Not a condidate"); return }
-        candidate.votes.append(voterID)
-        didVoteVoterIDs.append(voterID)
-    }
-
-    func url() -> URL {
-        var queryItems: [URLQueryItem] = []
-        let stateString: String
-        switch state {
-        case .building:     stateString = "b"
-        case .votingUnsent: stateString = "u"
-        case .votingSent:   stateString = "v"
-        case .reporting:    stateString = "r"
-        }
-        queryItems.append(URLQueryItem(name: "s", value: stateString))
-        if let questionString = questionText {
-            queryItems.append(URLQueryItem(name: "q", value: questionString))
-        }
-        var components = URLComponents()
-        components.queryItems = queryItems
-        guard let url = components.url else {
-            fatalError("Failed to create URL from ballot components")
-        }
-        return url
-    }
-
-    init?(url: URL) {
-        return nil
+        candidate.votes.append(voterIDs.count)
+        voterIDs.append(voterID)
     }
 
     func message(sender: UUID) -> MSMessage {
@@ -84,7 +59,7 @@ class Ballot {
             actionText = "$\(sender.uuidString) started a vote."
             summaryText = questionText == nil ? actionText : "\(actionText)\n\(questionText)"
         case .votingSent:
-            if sender == didVoteVoterIDs.last {
+            if sender == voterIDs.last {
                 actionText = "$\(sender.uuidString) voted."
                 summaryText = actionText
             } else {
