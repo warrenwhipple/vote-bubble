@@ -137,45 +137,51 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ClV-2X-fzE" userLabel="Guide Pinned View">
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-mw-WKd" userLabel="Bubble Button Wrapper">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-mw-WKd" userLabel="Wrapper">
                                         <subviews>
-                                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sk-S3-LOp" userLabel="Bubble View">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6D-yr-30j" userLabel="Bubble View">
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" userLabel="Candidates Brick View" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="2:1" id="3ZY-go-7hE"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-gg-8lH" userLabel="Question View">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wUB-zK-jbW">
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ono-cU-CH7" userLabel="Question Label">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="32" id="Cyy-7s-daZ"/>
+                                                                    <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="2:1" id="QBR-VE-SPd"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-gg-8lH" userLabel="Question View">
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ono-cU-CH7" userLabel="Question Label">
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="32" id="1d2-c1-x6M"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="Ono-cU-CH7" secondAttribute="bottom" constant="8" id="CTc-aY-OOO"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Ono-cU-CH7" secondAttribute="trailing" constant="8" id="LYQ-N9-60T"/>
+                                                                    <constraint firstItem="Ono-cU-CH7" firstAttribute="top" secondItem="bRn-gg-8lH" secondAttribute="top" constant="8" id="QLZ-S1-AlK"/>
+                                                                    <constraint firstItem="Ono-cU-CH7" firstAttribute="leading" secondItem="bRn-gg-8lH" secondAttribute="leading" constant="8" id="Rlv-Ve-wCi"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="Ono-cU-CH7" secondAttribute="trailing" constant="8" id="1bV-Qk-68d"/>
-                                                            <constraint firstItem="Ono-cU-CH7" firstAttribute="leading" secondItem="bRn-gg-8lH" secondAttribute="leading" constant="8" id="IcD-eD-FWe"/>
-                                                            <constraint firstItem="Ono-cU-CH7" firstAttribute="top" secondItem="bRn-gg-8lH" secondAttribute="top" constant="8" id="Utm-XN-Auc"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Ono-cU-CH7" secondAttribute="bottom" constant="8" id="lRv-E7-Kov"/>
-                                                        </constraints>
-                                                    </view>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="4eF-dQ-Z7k" firstAttribute="top" secondItem="5sk-S3-LOp" secondAttribute="top" id="0L9-TS-hsk"/>
-                                                    <constraint firstItem="4eF-dQ-Z7k" firstAttribute="leading" secondItem="5sk-S3-LOp" secondAttribute="leading" id="1oI-0E-qZv"/>
-                                                    <constraint firstAttribute="bottom" secondItem="bRn-gg-8lH" secondAttribute="bottom" id="66Q-kC-H3U"/>
-                                                    <constraint firstItem="bRn-gg-8lH" firstAttribute="leading" secondItem="5sk-S3-LOp" secondAttribute="leading" id="Dz3-Ur-nuB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bRn-gg-8lH" secondAttribute="trailing" id="GMQ-lM-cpX"/>
-                                                    <constraint firstItem="bRn-gg-8lH" firstAttribute="top" secondItem="4eF-dQ-Z7k" secondAttribute="bottom" id="bGM-hs-jcO"/>
-                                                    <constraint firstAttribute="trailing" secondItem="4eF-dQ-Z7k" secondAttribute="trailing" id="kM3-7Y-sWH"/>
+                                                    <constraint firstItem="wUB-zK-jbW" firstAttribute="top" secondItem="W6D-yr-30j" secondAttribute="top" id="4Cc-fa-H1j"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wUB-zK-jbW" secondAttribute="bottom" id="FKl-IB-bEx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wUB-zK-jbW" secondAttribute="trailing" id="hwu-aJ-WTA"/>
+                                                    <constraint firstItem="wUB-zK-jbW" firstAttribute="leading" secondItem="W6D-yr-30j" secondAttribute="leading" id="tfO-pU-IDF"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="32"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMW-yA-LUf" userLabel="Button Stack View">
                                                 <subviews>
@@ -196,28 +202,25 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="64" id="qXm-9L-ymy"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="FMW-yA-LUf" secondAttribute="trailing" id="6dd-nf-nMG"/>
-                                            <constraint firstAttribute="trailing" secondItem="5sk-S3-LOp" secondAttribute="trailing" id="Brs-y4-afU"/>
-                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="top" secondItem="5sk-S3-LOp" secondAttribute="bottom" id="KAW-Wx-PK2"/>
-                                            <constraint firstAttribute="bottom" secondItem="FMW-yA-LUf" secondAttribute="bottom" id="N0o-TJ-3q3"/>
-                                            <constraint firstItem="5sk-S3-LOp" firstAttribute="leading" secondItem="y7K-mw-WKd" secondAttribute="leading" id="VkC-l1-hXr"/>
-                                            <constraint firstItem="5sk-S3-LOp" firstAttribute="top" secondItem="y7K-mw-WKd" secondAttribute="top" id="zAi-pf-amz"/>
-                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="leading" secondItem="y7K-mw-WKd" secondAttribute="leading" id="zNA-5R-Kc8"/>
+                                            <constraint firstAttribute="trailing" secondItem="W6D-yr-30j" secondAttribute="trailing" id="0uk-yL-paH"/>
+                                            <constraint firstAttribute="bottom" secondItem="FMW-yA-LUf" secondAttribute="bottom" id="1Kg-xJ-lBT"/>
+                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="top" secondItem="W6D-yr-30j" secondAttribute="bottom" id="Nmk-Hd-7me"/>
+                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="leading" secondItem="y7K-mw-WKd" secondAttribute="leading" id="oeo-EA-S0w"/>
+                                            <constraint firstItem="W6D-yr-30j" firstAttribute="top" secondItem="y7K-mw-WKd" secondAttribute="top" id="pIE-nC-2ji"/>
+                                            <constraint firstAttribute="trailing" secondItem="FMW-yA-LUf" secondAttribute="trailing" id="pSH-ZG-Wfl"/>
+                                            <constraint firstItem="W6D-yr-30j" firstAttribute="leading" secondItem="y7K-mw-WKd" secondAttribute="leading" id="wTx-cS-fUG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="y7K-mw-WKd" secondAttribute="trailing" id="8JA-Of-KC3"/>
-                                    <constraint firstItem="y7K-mw-WKd" firstAttribute="centerY" secondItem="ClV-2X-fzE" secondAttribute="centerY" id="yf6-j8-ufl"/>
-                                    <constraint firstItem="y7K-mw-WKd" firstAttribute="leading" secondItem="ClV-2X-fzE" secondAttribute="leading" id="zG7-oU-cW1"/>
+                                    <constraint firstItem="y7K-mw-WKd" firstAttribute="centerY" secondItem="ClV-2X-fzE" secondAttribute="centerY" id="Ao2-WZ-So2"/>
+                                    <constraint firstItem="y7K-mw-WKd" firstAttribute="leading" secondItem="ClV-2X-fzE" secondAttribute="leading" id="YIh-Gj-V7W"/>
+                                    <constraint firstAttribute="trailing" secondItem="y7K-mw-WKd" secondAttribute="trailing" id="dkr-9t-C9Q"/>
                                 </constraints>
                             </view>
                         </subviews>

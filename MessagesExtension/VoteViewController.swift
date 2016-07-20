@@ -29,7 +29,11 @@ class VoteViewController: UIViewController, VoteButtonDelegate {
             candidateView.delegate = self
             candidatesBrickView.addSubview(candidateView)
         }
-        questionLabel.text = delegate?.ballot?.questionText
+        if let text = delegate?.ballot?.questionText {
+            questionLabel.text = text
+        } else {
+            questionLabel.removeFromSuperview()
+        }
     }
 
     override func viewWillLayoutSubviews() {
