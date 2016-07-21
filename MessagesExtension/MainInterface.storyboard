@@ -110,10 +110,10 @@
                             </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="top" secondItem="cuu-k4-N8z" secondAttribute="bottom" constant="8" id="KPL-cF-ZSS"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="top" secondItem="cuu-k4-N8z" secondAttribute="bottom" id="KPL-cF-ZSS"/>
                             <constraint firstItem="0sN-dy-Yo9" firstAttribute="trailing" secondItem="VLO-Ki-ppC" secondAttribute="trailing" id="SuS-3m-sym"/>
                             <constraint firstItem="0sN-dy-Yo9" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" id="dez-CI-d2F"/>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="bottom" secondItem="1fH-hs-Jar" secondAttribute="top" constant="-8" id="qqM-tf-pe1"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="bottom" secondItem="1fH-hs-Jar" secondAttribute="top" id="qqM-tf-pe1"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qY-qV-uNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607" y="114"/>
+            <point key="canvasLocation" x="606" y="114"/>
         </scene>
         <!--Vote View Controller-->
         <scene sceneID="ddK-9T-gVX">
@@ -241,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-rL-YBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1196.8" y="112.44377811094454"/>
+            <point key="canvasLocation" x="1202" y="114"/>
         </scene>
         <!--Report View Controller-->
         <scene sceneID="DB3-WT-mG5">
@@ -286,14 +286,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atF-ok-YhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796.8" y="111.54422788605699"/>
+            <point key="canvasLocation" x="1797" y="114"/>
         </scene>
         <!--Build Table View Controller-->
         <scene sceneID="5kK-SL-BIW">
             <objects>
                 <viewController id="X0I-Wm-AaP" customClass="BuildTableViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="SKy-8Q-8YW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="464"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -408,7 +408,7 @@ Vote</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rl-qu-bsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607" y="-368"/>
+            <point key="canvasLocation" x="605" y="-397"/>
         </scene>
     </scenes>
 </document>
