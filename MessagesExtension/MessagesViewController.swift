@@ -108,11 +108,9 @@ class MessagesViewController:
         print("MSMessagesAppViewController.willTransition()")
         // Called before the extension transitions to a new presentation style.
         // Use this method to prepare for the change in presentation style.
-        if presentationStyle == .compact {
-            //adjustForKeyboardHide()
-            if childViewControllers.first is BuildViewController {
-                transistionState()
-            }
+        if presentationStyle == .compact && state != .browsing {
+            ballot = nil
+            transistionState()
         }
     }
 

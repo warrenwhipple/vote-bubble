@@ -11,6 +11,7 @@ import UIKit
 protocol BuildTableViewControllerDelegate {
     var ballot: Ballot? { get }
     func approveBallot()
+    func tableContentHeightDidChange(height: CGFloat)
 }
 
 class BuildTableViewController:
@@ -88,6 +89,7 @@ class BuildTableViewController:
         ballot.candidates.append(candidate)
         let indexPath = IndexPath(item: ballot.candidates.count , section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        delegate?.tableContentHeightDidChange(height: tableView.contentSize.height)
         return candidate
     }
 

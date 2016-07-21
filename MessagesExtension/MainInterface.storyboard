@@ -99,6 +99,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sN-dy-Yo9">
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="300" id="u6s-Py-CHR"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="32"/>
@@ -110,14 +113,17 @@
                             </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="top" secondItem="cuu-k4-N8z" secondAttribute="bottom" id="KPL-cF-ZSS"/>
                             <constraint firstItem="0sN-dy-Yo9" firstAttribute="trailing" secondItem="VLO-Ki-ppC" secondAttribute="trailing" id="SuS-3m-sym"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="centerY" secondItem="VLO-Ki-ppC" secondAttribute="centerY" id="cor-ae-q22"/>
                             <constraint firstItem="0sN-dy-Yo9" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" id="dez-CI-d2F"/>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="bottom" secondItem="1fH-hs-Jar" secondAttribute="top" id="qqM-tf-pe1"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="height" relation="lessThanOrEqual" secondItem="VLO-Ki-ppC" secondAttribute="height" id="fqP-H9-OPR"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="500"/>
+                    <connections>
+                        <outlet property="bubbleHeightConstraint" destination="u6s-Py-CHR" id="w8W-kj-6C1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qY-qV-uNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -293,7 +299,7 @@
             <objects>
                 <viewController id="X0I-Wm-AaP" customClass="BuildTableViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="SKy-8Q-8YW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

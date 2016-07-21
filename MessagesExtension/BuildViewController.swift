@@ -15,8 +15,9 @@ protocol BuildViewControllerDelegate: class {
 
 class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
 
-    @IBOutlet weak var doneButton: UIButton!
-    weak var buildTableViewController: BuildTableViewController?
+    @IBOutlet var bubbleHeightConstraint: NSLayoutConstraint!
+    
+    var buildTableViewController: BuildTableViewController?
     weak var delegate: BuildViewControllerDelegate?
     var ballot: Ballot? { return delegate?.ballot }
     var lastQuestionCharacterWasSpace = false
@@ -30,12 +31,23 @@ class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
                 break
             }
         }
-
     }
-    
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let tableView = buildTableViewController?.tableView {
+            print(tableView.contentSize)
+            bubbleHeightConstraint.constant = tableView.contentSize.height
+        }
+    }
+
     // MARK: - BuildTableViewControllerDelegate methods
 
     func approveBallot() {
         delegate?.aproveBallot()
+    }
+
+    func tableContentHeightDidChange(height: CGFloat) {
+        bubbleHeightConstraint.constant = height
     }
 }
