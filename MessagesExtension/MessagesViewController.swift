@@ -16,20 +16,10 @@ class MessagesViewController:
     VoteViewControllerDelegate,
     ReportViewControllerDelegate {
 
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-
     var ballot: Ballot?
     private(set) var primaryChildViewController: UIViewController?
 
-    enum State {
-        case
-        browsing,
-        building,
-        voting,
-        reporting
-    }
-
+    enum State { case browsing, building, voting, reporting }
     var state: State {
         guard let ballot = ballot else { return .browsing }
         switch ballot.state {
@@ -39,9 +29,9 @@ class MessagesViewController:
         }
     }
 
-    var keyboardHeight: CGFloat?
-    var keyboardAnimationDuration: TimeInterval?
-    var keyboardAnimationCurve: UIViewAnimationCurve?
+    //var keyboardHeight: CGFloat?
+    //var keyboardAnimationDuration: TimeInterval?
+    //var keyboardAnimationCurve: UIViewAnimationCurve?
 
     // MARK: - MSMessagesAppViewController methods
 
@@ -169,13 +159,13 @@ class MessagesViewController:
         guard let childView = childViewController.view else {
             fatalError("Child view controller has no view")
         }
-        childView.frame = containerView.bounds
+        childView.frame = view.bounds
         childView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(childView)
-        childView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        childView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        childView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        childView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        view.addSubview(childView)
+        childView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        childView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        childView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        childView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         childViewController.didMove(toParentViewController: self)
     }
 

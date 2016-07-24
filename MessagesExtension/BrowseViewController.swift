@@ -12,19 +12,54 @@ protocol BrowseViewControllerDelegate: class {
     func browseSelectBallot(_ ballot: Ballot)
 }
 
-class BrowseViewController: UIViewController {
+class BrowseViewController: UICollectionViewController {
 
     weak var delegate: BrowseViewControllerDelegate!
+    var ballots: [Ballot] = []
 
-    func keyboardWillShow(notification: NSNotification) {
-        print(notification)
+    override func viewDidLoad() {
+        ballots.append(Ballot.simpleYesNo())
+        ballots.append(Ballot.simpleYesNo())
+        ballots.append(Ballot.simpleYesNo())
+        ballots.append(Ballot.simpleYesNo())
+        ballots.append(Ballot.simpleYesNo())
+        ballots.append(Ballot.simpleYesNo())
+        ballots.append(Ballot.simpleYesNo())
+        ballots.append(Ballot.simpleYesNo())
     }
 
-    func keyboardWillHide(notification: NSNotification) {
-        print(notification)
+    // MARK: - UICollectionViewDelegate methods
+
+    override func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            delegate?.browseSelectBallot(Ballot.simpleYesNo())
+        } else {
+            delegate?.browseSelectBallot(Ballot.simpleYesNo())
+        }
     }
 
-    @IBAction func newVotePressed(_ sender: UIButton, forEvent event: UIEvent) {
-        delegate.browseSelectBallot(Ballot.simpleYesNo())
+    // MARK: - UICollectionViewDataSource methods
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+        return ballots.count + 1
+    }
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "NewBallotCell",
+                for: indexPath
+            )
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "SavedBallotCell",
+                for: indexPath
+            )
+            return cell
+        }
     }
 }

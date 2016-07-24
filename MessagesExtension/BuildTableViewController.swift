@@ -11,7 +11,6 @@ import UIKit
 protocol BuildTableViewControllerDelegate {
     var ballot: Ballot? { get }
     func approveBallot()
-    func tableContentHeightDidChange(height: CGFloat)
 }
 
 class BuildTableViewController:
@@ -21,12 +20,6 @@ class BuildTableViewController:
 
     var delegate: BuildTableViewControllerDelegate?
     var ballot: Ballot? { return delegate?.ballot }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        guard let view = view as? UITableView else { return }
-        view.keyboardDismissMode = .interactive
-    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -89,7 +82,6 @@ class BuildTableViewController:
         ballot.candidates.append(candidate)
         let indexPath = IndexPath(item: ballot.candidates.count , section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
-        delegate?.tableContentHeightDidChange(height: tableView.contentSize.height)
         return candidate
     }
 

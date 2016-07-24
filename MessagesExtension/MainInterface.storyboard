@@ -18,73 +18,93 @@
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="zMn-AG-sqS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7es-GK-WFg" userLabel="Container View">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="7es-GK-WFg" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="Ble-zq-4gg"/>
-                            <constraint firstItem="7es-GK-WFg" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" id="CyY-n0-2IT"/>
-                            <constraint firstItem="n38-gi-rB5" firstAttribute="top" secondItem="7es-GK-WFg" secondAttribute="bottom" id="egV-JG-BQ5"/>
-                            <constraint firstItem="7es-GK-WFg" firstAttribute="trailing" secondItem="zMn-AG-sqS" secondAttribute="trailing" id="iB6-0n-tpu"/>
-                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
-                    <connections>
-                        <outlet property="bottomConstraint" destination="egV-JG-BQ5" id="d3e-SK-lUO"/>
-                        <outlet property="containerView" destination="7es-GK-WFg" id="rjk-eh-cdq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-574.39999999999998" y="114.24287856071965"/>
+            <point key="canvasLocation" x="-638" y="112"/>
         </scene>
         <!--Browse View Controller-->
-        <scene sceneID="yLp-Vd-dE2">
+        <scene sceneID="xho-Gc-ueF">
             <objects>
-                <viewController storyboardIdentifier="BrowseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jeK-rv-3lQ" customClass="BrowseViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="q5n-Uq-Ytp"/>
-                        <viewControllerLayoutGuide type="bottom" id="BcC-Nv-OUC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="L7v-Fu-iPv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+                <collectionViewController storyboardIdentifier="BrowseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WYe-dG-Kyg" customClass="BrowseViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="msY-17-hxx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lX-RS-awA" userLabel="Build New Vote">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="qG0-Gz-dTv">
+                            <size key="itemSize" width="96" height="96"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewBallotCell" id="kG4-Sb-B6R" userLabel="New Ballot Cell">
+                                <frame key="frameInset" minX="8" minY="8" width="96" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G91-ha-qWO" customClass="PlusIconView" customModule="MessagesExtension" customModuleProvider="target">
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="L4m-Md-tV9"/>
+                                                <constraint firstAttribute="width" constant="32" id="mFe-nC-MHt"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </view>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Sj7-ub-YD3"/>
-                                    <constraint firstAttribute="width" constant="100" id="Tt1-y0-dpM"/>
+                                    <constraint firstItem="G91-ha-qWO" firstAttribute="centerY" secondItem="kG4-Sb-B6R" secondAttribute="centerY" id="7iN-Zy-j4G"/>
+                                    <constraint firstItem="G91-ha-qWO" firstAttribute="centerX" secondItem="kG4-Sb-B6R" secondAttribute="centerX" id="WuP-We-NpY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="16"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="newVotePressed:forEvent:" destination="jeK-rv-3lQ" eventType="touchUpInside" id="eit-UJ-lRs"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3lX-RS-awA" firstAttribute="top" secondItem="q5n-Uq-Ytp" secondAttribute="bottom" constant="16" id="OAG-Pw-l6p"/>
-                            <constraint firstItem="3lX-RS-awA" firstAttribute="leading" secondItem="L7v-Fu-iPv" secondAttribute="leading" constant="16" id="jxZ-KC-SNa"/>
-                        </constraints>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="260"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YXB-Tz-Csu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SavedBallotCell" reuseIdentifier="SavedBallotCell" id="hDn-vK-8y0" userLabel="Saved Ballot Cell">
+                                <frame key="frameInset" minX="140" minY="8" width="96" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtA-Wk-VDt">
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="16"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="LtA-Wk-VDt" firstAttribute="leading" secondItem="hDn-vK-8y0" secondAttribute="leading" id="8Gu-NW-YRR"/>
+                                    <constraint firstItem="LtA-Wk-VDt" firstAttribute="top" secondItem="hDn-vK-8y0" secondAttribute="top" id="ieG-bL-ZCl"/>
+                                    <constraint firstAttribute="trailing" secondItem="LtA-Wk-VDt" secondAttribute="trailing" id="pZN-3h-QqF"/>
+                                    <constraint firstAttribute="bottom" secondItem="LtA-Wk-VDt" secondAttribute="bottom" id="u6Y-E7-YBu"/>
+                                </constraints>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="WYe-dG-Kyg" id="oWK-Xj-8et"/>
+                            <outlet property="delegate" destination="WYe-dG-Kyg" id="3Ku-4Z-ZZg"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BD6-GH-1mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="115"/>
+            <point key="canvasLocation" x="-16" y="111.54422788605699"/>
         </scene>
         <!--Build View Controller-->
         <scene sceneID="LjG-xs-pgg">
@@ -95,13 +115,10 @@
                         <viewControllerLayoutGuide type="bottom" id="1fH-hs-Jar"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="VLO-Ki-ppC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sN-dy-Yo9">
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="999" constant="300" id="u6s-Py-CHR"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="32"/>
@@ -113,21 +130,16 @@
                             </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="trailing" secondItem="VLO-Ki-ppC" secondAttribute="trailing" id="SuS-3m-sym"/>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="centerY" secondItem="VLO-Ki-ppC" secondAttribute="centerY" id="cor-ae-q22"/>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" id="dez-CI-d2F"/>
-                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="height" relation="lessThanOrEqual" secondItem="VLO-Ki-ppC" secondAttribute="height" id="fqP-H9-OPR"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="leading" secondItem="VLO-Ki-ppC" secondAttribute="leading" id="QgO-TH-agL"/>
+                            <constraint firstItem="0sN-dy-Yo9" firstAttribute="top" secondItem="VLO-Ki-ppC" secondAttribute="top" id="eoi-ny-Bxs"/>
+                            <constraint firstAttribute="trailing" secondItem="0sN-dy-Yo9" secondAttribute="trailing" id="j2x-RG-Zoe"/>
+                            <constraint firstAttribute="bottom" secondItem="0sN-dy-Yo9" secondAttribute="bottom" id="kWp-hn-sb2"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="500"/>
-                    <connections>
-                        <outlet property="bubbleHeightConstraint" destination="u6s-Py-CHR" id="w8W-kj-6C1"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qY-qV-uNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="114"/>
+            <point key="canvasLocation" x="605" y="114"/>
         </scene>
         <!--Vote View Controller-->
         <scene sceneID="ddK-9T-gVX">
@@ -138,7 +150,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lyw-az-s9S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xi7-Ro-kwY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ClV-2X-fzE" userLabel="Guide Pinned View">
@@ -189,20 +201,46 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <stackView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMW-yA-LUf" userLabel="Button Stack View">
+                                            <stackView contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FMW-yA-LUf" userLabel="Button Stack View">
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDL-z4-3w4" userLabel="Back Button">
+                                                    <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDL-z4-3w4" userLabel="Back Button" customClass="ArrowButton" customModule="MessagesExtension" customModuleProvider="target">
+                                                        <color key="backgroundColor" red="0.094117647060000004" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="FDL-z4-3w4" secondAttribute="height" multiplier="1:1" id="Rht-8Q-UYs"/>
+                                                            <constraint firstAttribute="width" constant="48" id="bRe-8k-UMd"/>
+                                                            <constraint firstAttribute="height" constant="48" id="dl1-1J-PKU"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                        <state key="normal" title="&lt;"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rotation">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                                                <real key="value" value="32"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="backButtonPrimaryActionTriggered:" destination="qai-uj-Bst" eventType="primaryActionTriggered" id="vYr-tB-sTK"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ges-Cy-1XQ" userLabel="Decline Vote Button">
-                                                        <state key="normal" title="Start without my vote"/>
+                                                    <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ges-Cy-1XQ" userLabel="Changing Text Button" customClass="RoundButton" customModule="MessagesExtension" customModuleProvider="target">
+                                                        <color key="backgroundColor" red="0.094117647060000004" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <state key="normal" title="Start without my vote">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="declineVoteButtonPrimaryActionTriggered:" destination="qai-uj-Bst" eventType="primaryActionTriggered" id="evD-f3-Ffh"/>
                                                         </connections>
@@ -214,10 +252,10 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="W6D-yr-30j" secondAttribute="trailing" id="0uk-yL-paH"/>
                                             <constraint firstAttribute="bottom" secondItem="FMW-yA-LUf" secondAttribute="bottom" id="1Kg-xJ-lBT"/>
-                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="top" secondItem="W6D-yr-30j" secondAttribute="bottom" id="Nmk-Hd-7me"/>
-                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="leading" secondItem="y7K-mw-WKd" secondAttribute="leading" id="oeo-EA-S0w"/>
+                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="top" secondItem="W6D-yr-30j" secondAttribute="bottom" constant="8" id="Nmk-Hd-7me"/>
+                                            <constraint firstItem="FMW-yA-LUf" firstAttribute="leading" secondItem="y7K-mw-WKd" secondAttribute="leading" constant="8" id="oeo-EA-S0w"/>
                                             <constraint firstItem="W6D-yr-30j" firstAttribute="top" secondItem="y7K-mw-WKd" secondAttribute="top" id="pIE-nC-2ji"/>
-                                            <constraint firstAttribute="trailing" secondItem="FMW-yA-LUf" secondAttribute="trailing" id="pSH-ZG-Wfl"/>
+                                            <constraint firstAttribute="trailing" secondItem="FMW-yA-LUf" secondAttribute="trailing" constant="8" id="pSH-ZG-Wfl"/>
                                             <constraint firstItem="W6D-yr-30j" firstAttribute="leading" secondItem="y7K-mw-WKd" secondAttribute="leading" id="wTx-cS-fUG"/>
                                         </constraints>
                                     </view>
@@ -238,8 +276,6 @@
                             <constraint firstItem="lyw-az-s9S" firstAttribute="top" secondItem="ClV-2X-fzE" secondAttribute="bottom" id="ySZ-pM-LkK"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="500"/>
                     <connections>
                         <outlet property="candidatesBrickView" destination="4eF-dQ-Z7k" id="at8-Pb-et4"/>
                         <outlet property="questionLabel" destination="Ono-cU-CH7" id="F99-Lr-WyA"/>
@@ -247,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-rL-YBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1202" y="114"/>
+            <point key="canvasLocation" x="1838" y="113"/>
         </scene>
         <!--Report View Controller-->
         <scene sceneID="DB3-WT-mG5">
@@ -258,7 +294,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ptv-he-Mri"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1AA-pr-YUP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ReportView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHt-hk-MBB">
@@ -267,7 +303,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqf-G5-G3r">
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.094117647058823528" green="0.47843137254901963" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="32S-9O-osV"/>
                                 </constraints>
@@ -287,28 +323,26 @@
                             <constraint firstItem="jqf-G5-G3r" firstAttribute="centerX" secondItem="1AA-pr-YUP" secondAttribute="centerX" id="mhV-91-zhw"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="500"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atF-ok-YhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797" y="114"/>
+            <point key="canvasLocation" x="2469" y="113"/>
         </scene>
         <!--Build Table View Controller-->
         <scene sceneID="5kK-SL-BIW">
             <objects>
-                <viewController id="X0I-Wm-AaP" customClass="BuildTableViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="SKy-8Q-8YW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" id="X0I-Wm-AaP" customClass="BuildTableViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="26" sectionFooterHeight="26" id="SKy-8Q-8YW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CandidateBuildTableViewCell" id="clM-Xr-L0b" userLabel="Candidate Cell" customClass="CandidateBuildTableViewCell" customModule="MessagesExtension" customModuleProvider="target">
-                                <frame key="frameInset" minY="28" width="320" height="80"/>
+                                <frame key="frameInset" minY="26" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="clM-Xr-L0b" id="7pY-hr-WPR">
-                                    <frame key="frameInset" width="320" height="80"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-ao-4eH" userLabel="Figure Text Field">
@@ -354,10 +388,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QuestionBuildTableViewCell" id="i5V-xN-1aI" userLabel="Question Cell" customClass="QuestionBuildTableViewCell" customModule="MessagesExtension" customModuleProvider="target">
-                                <frame key="frameInset" minY="108" width="320" height="80"/>
+                                <frame key="frameInset" minY="106" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i5V-xN-1aI" id="Exa-VT-VjS">
-                                    <frame key="frameInset" width="320" height="80"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOz-4u-UnM">
@@ -411,10 +445,11 @@ Vote</string>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rl-qu-bsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="605" y="-397"/>
+            <point key="canvasLocation" x="1226" y="114"/>
         </scene>
     </scenes>
 </document>

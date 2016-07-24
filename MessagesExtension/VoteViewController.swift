@@ -20,6 +20,7 @@ class VoteViewController: UIViewController, VoteButtonDelegate {
 
     @IBOutlet weak var candidatesBrickView: BrickView!
     @IBOutlet weak var questionLabel: UILabel!
+
     weak var delegate: VoteViewControllerDelegate?
 
     override func viewDidLoad() {
