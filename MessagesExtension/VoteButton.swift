@@ -9,7 +9,7 @@
 import UIKit
 
 protocol VoteButtonDelegate: class {
-    func vote(candidate: Candidate)
+    func vote(for candidate: Candidate)
 }
 
 class VoteButton: UIButton {
@@ -98,6 +98,6 @@ class VoteButton: UIButton {
     }
 
     func primaryActionTriggered() {
-        delegate?.vote(candidate: candidate)
+        delegate?.vote(for: candidate)
     }
 }

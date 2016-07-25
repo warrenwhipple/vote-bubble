@@ -69,7 +69,7 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SavedBallotCell" reuseIdentifier="SavedBallotCell" id="hDn-vK-8y0" userLabel="Saved Ballot Cell">
-                                <frame key="frameInset" minX="140" minY="8" width="96" height="96"/>
+                                <frame key="frameInset" minX="139.5" minY="8" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
@@ -94,6 +94,11 @@
                                     <constraint firstAttribute="trailing" secondItem="LtA-Wk-VDt" secondAttribute="trailing" id="pZN-3h-QqF"/>
                                     <constraint firstAttribute="bottom" secondItem="LtA-Wk-VDt" secondAttribute="bottom" id="u6Y-E7-YBu"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </collectionViewCell>
                         </cells>
                         <connections>

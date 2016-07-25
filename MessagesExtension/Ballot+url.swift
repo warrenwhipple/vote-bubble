@@ -33,7 +33,7 @@ extension Ballot {
 
             switch queryItem.name {
             case "s":
-                state = State(rawValue: Int(value) ?? 0)
+                if value == "c" { state = .closed }
             case "q":
                 questionText = value
             case "u":
@@ -53,7 +53,7 @@ extension Ballot {
             candidates.append(candidate)
         }
         self.init(
-            state: state ?? .votingSent,
+            state: state ?? .open,
             questionText: questionText,
             candidates: candidates,
             voterIDs: didVoteVoterIDs
@@ -68,7 +68,9 @@ extension Ballot {
             queryItems.append(URLQueryItem(name: name, value: value))
         }
 
-        add("s", state.rawValue.description)
+        if state == .closed {
+            add("s", "c")
+        }
 
         add("q", questionText)
 

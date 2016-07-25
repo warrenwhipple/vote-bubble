@@ -11,7 +11,7 @@ import Messages
 
 protocol VoteViewControllerDelegate: class {
     var ballot: Ballot? { get }
-    func vote(candidate: Candidate)
+    func vote(for candidate: Candidate)
     func declineToVote()
     func cancelVote()
 }
@@ -20,17 +20,18 @@ class VoteViewController: UIViewController, VoteButtonDelegate {
 
     @IBOutlet weak var candidatesBrickView: BrickView!
     @IBOutlet weak var questionLabel: UILabel!
-
     weak var delegate: VoteViewControllerDelegate?
 
     override func viewDidLoad() {
-        guard let ballot = delegate?.ballot else { return }
+        guard let ballot = delegate?.ballot else {
+            fatalError("VoteViewController failed to find ballot")
+        }
         for candidate in ballot.candidates {
             let candidateView = VoteButton(candidate: candidate)
             candidateView.delegate = self
             candidatesBrickView.addSubview(candidateView)
         }
-        if let text = delegate?.ballot?.questionText {
+        if let text = ballot.questionText {
             questionLabel.text = text
         } else {
             questionLabel.removeFromSuperview()
@@ -51,7 +52,7 @@ class VoteViewController: UIViewController, VoteButtonDelegate {
 
     // MARK: - CandidateVoteViewDelegate methods
 
-    func vote(candidate: Candidate) {
-        delegate?.vote(candidate: candidate)
+    func vote(for candidate: Candidate) {
+        delegate?.vote(for: candidate)
     }
 }

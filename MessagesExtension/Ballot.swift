@@ -10,8 +10,7 @@ import Messages
 
 class Ballot {
 
-    enum State: Int { case building , votingUnsent, votingSent, reporting }
-    
+    enum State: Int { case building, open, closed }
     var state: State
     var questionText: String?
     var candidates: [Candidate]
@@ -42,7 +41,7 @@ class Ballot {
 
     func recordVote(voterID: UUID, candidate: Candidate) {
         guard !didVote(voterID) else { print("Voter already voted"); return }
-        guard isCandidate(candidate) else { print("Not a condidate"); return }
+        guard isCandidate(candidate) else { print("Not a candidate"); return }
         candidate.votes.append(voterIDs.count)
         voterIDs.append(voterID)
     }
@@ -52,10 +51,10 @@ class Ballot {
         let summaryText: String
 
         switch state {
-        case .building, .votingUnsent:
+        case .building:
             actionText = "$\(sender.uuidString) started a vote."
             summaryText = questionText == nil ? actionText : "\(actionText)\n\(questionText)"
-        case .votingSent:
+        case .open:
             if sender == voterIDs.last {
                 actionText = "$\(sender.uuidString) voted."
                 summaryText = actionText
@@ -63,7 +62,7 @@ class Ballot {
                 actionText = "$\(sender.uuidString) sent a vote."
                 summaryText = questionText == nil ? actionText : "\(actionText)\n\(questionText)"
             }
-        case .reporting:
+        case .closed:
             actionText = "$\(sender.uuidString) sent vote results."
             summaryText = actionText
         }

@@ -15,20 +15,25 @@ protocol BuildViewControllerDelegate: class {
 
 class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
 
-    var buildTableViewController: BuildTableViewController?
-    weak var delegate: BuildViewControllerDelegate?
-    var ballot: Ballot? { return delegate?.ballot }
-    var lastQuestionCharacterWasSpace = false
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        for viewController in childViewControllers {
-            if let buildTableViewController = viewController as? BuildTableViewController {
-                self.buildTableViewController = buildTableViewController
-                buildTableViewController.delegate = self
-                break
+    weak var delegate: BuildViewControllerDelegate? {
+        didSet {
+            if ballot != nil {
+                buildTableViewController?.tableView?.reloadData()
             }
         }
+    }
+
+    var ballot: Ballot? {
+        return delegate?.ballot
+    }
+    
+    var buildTableViewController: BuildTableViewController? {
+        return childViewControllers.first as? BuildTableViewController
+    }
+
+    override func viewDidLoad() {
+        buildTableViewController?.delegate = self
+        super.viewDidLoad()
     }
 
     // MARK: - BuildTableViewControllerDelegate methods

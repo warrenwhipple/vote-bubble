@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BuildTableViewControllerDelegate {
+protocol BuildTableViewControllerDelegate: class {
     var ballot: Ballot? { get }
     func approveBallot()
 }
@@ -18,8 +18,19 @@ class BuildTableViewController:
     CandidateBuildTableViewCellDelegate,
     QuestionBuildTableViewCellDelegate {
 
-    var delegate: BuildTableViewControllerDelegate?
-    var ballot: Ballot? { return delegate?.ballot }
+    weak var delegate: BuildTableViewControllerDelegate? {
+        didSet {
+            if ballot != nil {
+                tableView?.reloadData()
+            }
+        }
+    }
+
+    var ballot: Ballot? {
+        return delegate?.ballot
+    }
+
+    // MARK: - UITableViewDataSource methods
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -27,7 +38,8 @@ class BuildTableViewController:
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return (delegate?.ballot?.candidates.count ?? 0) + 2
+        guard let ballot = ballot else { return 0 }
+        return ballot.candidates.count + 2
     }
 
     override func tableView(_ tableView: UITableView,
@@ -77,7 +89,7 @@ class BuildTableViewController:
 
     func newCandidate() -> Candidate {
         let candidate = Candidate(color: UIColor.white(), backgroundColor: UIColor.randomHue())
-        guard let ballot = ballot else { fatalError("New candidate require ballot") }
+        guard let ballot = ballot else { fatalError("New candidate requires ballot") }
         guard let tableView = view as? UITableView else { fatalError("View must be UITableView") }
         ballot.candidates.append(candidate)
         let indexPath = IndexPath(item: ballot.candidates.count , section: 0)
@@ -90,5 +102,4 @@ class BuildTableViewController:
     func approveBallot() {
         delegate?.approveBallot()
     }
-
 }

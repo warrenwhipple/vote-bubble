@@ -9,33 +9,22 @@
 import UIKit
 
 protocol BrowseViewControllerDelegate: class {
-    func browseSelectBallot(_ ballot: Ballot)
+    func browseSelect(ballot: Ballot)
 }
 
 class BrowseViewController: UICollectionViewController {
 
-    weak var delegate: BrowseViewControllerDelegate!
+    weak var delegate: BrowseViewControllerDelegate?
     var ballots: [Ballot] = []
-
-    override func viewDidLoad() {
-        ballots.append(Ballot.simpleYesNo())
-        ballots.append(Ballot.simpleYesNo())
-        ballots.append(Ballot.simpleYesNo())
-        ballots.append(Ballot.simpleYesNo())
-        ballots.append(Ballot.simpleYesNo())
-        ballots.append(Ballot.simpleYesNo())
-        ballots.append(Ballot.simpleYesNo())
-        ballots.append(Ballot.simpleYesNo())
-    }
 
     // MARK: - UICollectionViewDelegate methods
 
     override func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            delegate?.browseSelectBallot(Ballot.simpleYesNo())
+            delegate?.browseSelect(ballot: Ballot.simpleYesNo())
         } else {
-            delegate?.browseSelectBallot(Ballot.simpleYesNo())
+            delegate?.browseSelect(ballot: Ballot.simpleYesNo())
         }
     }
 

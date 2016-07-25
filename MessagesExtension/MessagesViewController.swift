@@ -16,24 +16,32 @@ class MessagesViewController:
     VoteViewControllerDelegate,
     ReportViewControllerDelegate {
 
-    var ballot: Ballot?
+    private(set) var ballot: Ballot?
     private(set) var primaryChildViewController: UIViewController?
 
-    enum State { case browsing, building, voting, reporting }
-    var state: State {
-        guard let ballot = ballot else { return .browsing }
-        switch ballot.state {
-        case .building:                  return .building
-        case .votingUnsent, .votingSent: return .voting
-        case .reporting:                 return .reporting
-        }
+    enum ViewMode { case browsing, building, voting, reporting }
+    var viewMode: ViewMode? {
+        guard let childViewController = primaryChildViewController else { return nil        }
+        if childViewController is BrowseViewController                  { return .browsing  }
+        if childViewController is BuildViewController                   { return .building  }
+        if childViewController is VoteViewController                    { return .voting    }
+        if childViewController is ReportViewController                  { return .reporting }
+        return nil
     }
 
-    //var keyboardHeight: CGFloat?
-    //var keyboardAnimationDuration: TimeInterval?
-    //var keyboardAnimationCurve: UIViewAnimationCurve?
+    var localParticipantIdentifier: UUID {
+        guard let activeConversation = activeConversation else {
+            fatalError("Local participant identifier requires active conversation")
+        }
+        return activeConversation.localParticipantIdentifier
+    }
 
-    // MARK: - MSMessagesAppViewController methods
+    var remoteParticipantIdentifiers: [UUID] {
+        guard let activeConversation = activeConversation else {
+            fatalError("Remote participant identifiers array requires active conversation")
+        }
+        return activeConversation.remoteParticipantIdentifiers
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -45,14 +53,35 @@ class MessagesViewController:
         print("MSMessagesAppViewController.didReceiveMemoryWarning()")
     }
 
+    func startView(for ballot: Ballot) {
+        switch ballot.state {
+        case .building:
+            transition(to: .building)
+        case .open:
+            if ballot.didVote(localParticipantIdentifier) {
+                transition(to: .reporting)
+            } else {
+                transition(to: .voting)
+            }
+        case .closed:
+            transition(to: .reporting)
+        }
+    }
+
+    func startBrowseView() {
+        transition(to: .browsing)
+    }
+
+    // MARK: - MSMessagesAppViewController methods
+
     override func willBecomeActive(with conversation: MSConversation) {
         print("MSMessagesAppViewController.willBecomeActive()")
-        if let message = conversation.selectedMessage {
-            ballot = Ballot(message: message)
+        if let message = conversation.selectedMessage,
+            let ballot = Ballot(message: message) {
+            startView(for: ballot)
         } else {
-            ballot = nil
+            startBrowseView()
         }
-        transistionState(animate: false)
     }
 
     override func didResignActive(with conversation: MSConversation) {
@@ -67,13 +96,15 @@ class MessagesViewController:
 
     override func willSelect(_ message: MSMessage, conversation: MSConversation) {
         print("MSMessagesAppViewController.willSelect()")
-        ballot = Ballot(message: message)
-        transistionState(animate: false)
     }
 
     override func didSelect(_ message: MSMessage, conversation: MSConversation) {
         print("MSMessagesAppViewController.didSelect()")
-
+        if let ballot = Ballot(message: message) {
+            startView(for: ballot)
+        } else {
+            startBrowseView()
+        }
     }
 
     override func didReceive(_ message: MSMessage, conversation: MSConversation) {
@@ -98,9 +129,8 @@ class MessagesViewController:
         print("MSMessagesAppViewController.willTransition()")
         // Called before the extension transitions to a new presentation style.
         // Use this method to prepare for the change in presentation style.
-        if presentationStyle == .compact && state != .browsing {
-            ballot = nil
-            transistionState()
+        if presentationStyle == .compact && viewMode != .browsing {
+            transition(to: .browsing)
         }
     }
 
@@ -108,56 +138,53 @@ class MessagesViewController:
         print("MSMessagesAppViewController.didTransition()")
         // Called after the extension transitions to a new presentation style.
         // Use this method to finalize any behaviors associated with the change in presentation style.
-        /*
-        if presentationStyle == .compact && bottomConstraint.constant != 0 {
-            adjustForKeyboardHide()
-        }
-        view.setNeedsLayout()
-        */
     }
 
-    // MARK: - State changes
+    // MARK: - View mode transitions
 
-    func transistionState(animate: Bool = true) {
+    private func transition(to newViewMode: ViewMode) {
         let storyboardID: String
-        switch state {
+        switch newViewMode {
         case .browsing:  storyboardID = "BrowseViewController"
         case .building:  storyboardID = "BuildViewController"
         case .voting:    storyboardID = "VoteViewController"
         case .reporting: storyboardID = "ReportViewController"
         }
-        guard let childViewController =
+        guard let newChildViewController =
             storyboard?.instantiateViewController(withIdentifier: storyboardID) else {
                 fatalError("Failed to instantiate storyboard \(storyboardID)")
         }
 
-        switch state {
+        switch newViewMode {
         case .browsing:
-            let browseViewController = childViewController as! BrowseViewController
+            let browseViewController = newChildViewController as! BrowseViewController
             browseViewController.delegate = self
+            browseViewController.ballots = [Ballot.simpleYesNo(), Ballot.simpleYesNo()]
         case .building:
-            let buildViewController = childViewController as! BuildViewController
+            let buildViewController = newChildViewController as! BuildViewController
             buildViewController.delegate = self
             if presentationStyle == .compact { requestPresentationStyle(.expanded) }
         case .voting:
-            let voteViewController = childViewController as! VoteViewController
+            let voteViewController = newChildViewController as! VoteViewController
             voteViewController.delegate = self
+            if presentationStyle == .compact { requestPresentationStyle(.expanded) }
         case .reporting:
-            let reportViewController = childViewController as! ReportViewController
+            let reportViewController = newChildViewController as! ReportViewController
             reportViewController.delegate = self
+            if presentationStyle == .compact { requestPresentationStyle(.expanded) }
         }
 
         if let oldChildViewController = primaryChildViewController {
             oldChildViewController.willMove(toParentViewController: nil)
-            oldChildViewController.view.removeFromSuperview()
             oldChildViewController.removeFromParentViewController()
+            oldChildViewController.view.removeFromSuperview()
         }
 
-        primaryChildViewController = childViewController
+        primaryChildViewController = newChildViewController
 
-        addChildViewController(childViewController)
-        guard let childView = childViewController.view else {
-            fatalError("Child view controller has no view")
+        guard let childView = newChildViewController.view else {
+            print("Child view controller has no view")
+            return
         }
         childView.frame = view.bounds
         childView.translatesAutoresizingMaskIntoConstraints = false
@@ -166,7 +193,8 @@ class MessagesViewController:
         childView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         childView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         childView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        childViewController.didMove(toParentViewController: self)
+        addChildViewController(newChildViewController)
+        newChildViewController.didMove(toParentViewController: self)
     }
 
     func insert(_ message: MSMessage) {
@@ -184,42 +212,39 @@ class MessagesViewController:
 
     // MARK: - Child view controller delegate methods
 
-    func browseSelectBallot(_ ballot: Ballot) {
+    func browseSelect(ballot: Ballot) {
         self.ballot = ballot
-        transistionState()
+        transition(to: .building)
     }
 
     func aproveBallot() {
-        ballot?.state = .votingUnsent
-        transistionState()
+        transition(to: .voting)
     }
 
-    func vote(candidate: Candidate) {
-        guard let sender = activeConversation?.localParticipantIdentifier else { return }
-        guard let message = ballot?.message(sender: sender) else { return }
-        insert(message)
-        ballot = nil
-        transistionState()
+    func vote(for candidate: Candidate) {
+        guard let ballot = ballot else {
+            fatalError("Cannot vote without ballot")
+        }
+        insert(ballot.message(sender: localParticipantIdentifier))
+        transition(to: .browsing)
         requestPresentationStyle(.compact)
     }
 
     func declineToVote() {
-        guard let sender = activeConversation?.localParticipantIdentifier else { return }
-        guard let message = ballot?.message(sender: sender) else { return }
-        insert(message)
-        ballot = nil
-        transistionState()
+        guard let ballot = ballot else {
+            fatalError("Cannot decline to vote without ballot")
+        }
+        insert(ballot.message(sender: localParticipantIdentifier))
+        transition(to: .browsing)
         requestPresentationStyle(.compact)
     }
 
     func cancelVote() {
-        ballot?.state = .building
-        transistionState()
+        transition(to: .building)
     }
-    
-    func dismissBallotReport() {
-        ballot = nil
-        transistionState()
+
+    func dismissReport() {
+        transition(to: .browsing)
         requestPresentationStyle(.compact)
     }
 }
