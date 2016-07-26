@@ -12,11 +12,8 @@ protocol ReportViewControllerDelegate: class {
     func dismissReport()
 }
 
-class ReportViewController: UIViewController {
+class ReportViewController: UITableViewController {
 
     weak var delegate: ReportViewControllerDelegate?
     
-    @IBAction func donePressed(_ sender: AnyObject) {
-        delegate?.dismissReport()
-    }
 }
