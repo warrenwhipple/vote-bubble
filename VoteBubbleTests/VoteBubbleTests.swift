@@ -13,7 +13,7 @@ class VoteBubbleTests: XCTestCase {
     func testExample() {
         let voterIDs = [UUID(),UUID(),UUID(),UUID()]
         let ballot = Ballot.init(
-            state: .votingSent,
+            status: .open,
             questionText: "What's the deal yo?",
             candidates: [
                 Candidate(
@@ -35,5 +35,12 @@ class VoteBubbleTests: XCTestCase {
         )
         let ballotCopy = Ballot(url: ballot.url())
         XCTAssert(ballot.url() == ballotCopy?.url())
+    }
+
+    func testUUIDBase64String() {
+        let uuids = (0 ..< 1000).map { _ in UUID() }
+        let compressedUUIDs = uuids.map { $0.base64String }
+        let decompressedUUIDs = compressedUUIDs.flatMap { UUID(base64String: $0) }
+        XCTAssert(uuids == decompressedUUIDs)
     }
 }

@@ -10,17 +10,17 @@ import Messages
 
 class Ballot {
 
-    enum State: Int { case building, open, closed }
-    var state: State
+    enum Status: Int { case unsent, open, closed }
+    var status: Status
     var questionText: String?
     var candidates: [Candidate]
     var voterIDs: [UUID]
 
-    init(state: State = .building,
+    init(status: Status = .unsent,
          questionText: String? = nil,
          candidates: [Candidate] = [],
          voterIDs: [UUID] = []) {
-        self.state = state
+        self.status = status
         self.questionText = questionText
         self.candidates = candidates
         self.voterIDs = voterIDs
@@ -50,8 +50,8 @@ class Ballot {
         let actionText: String
         let summaryText: String
 
-        switch state {
-        case .building:
+        switch status {
+        case .unsent:
             actionText = "$\(sender.uuidString) started a vote."
             summaryText = questionText == nil ? actionText : "\(actionText)\n\(questionText)"
         case .open:
@@ -115,7 +115,7 @@ class Ballot {
             figure: .autoCharacter("N")
         )
         return Ballot(
-            state: .building,
+            status: .unsent,
             candidates: [yesCandidate, noCandidate]
         )
     }

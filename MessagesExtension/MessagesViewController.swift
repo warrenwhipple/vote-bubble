@@ -26,7 +26,7 @@ class MessagesViewController:
         if childViewController is BuildViewController                   { return .building  }
         if childViewController is VoteViewController                    { return .voting    }
         if childViewController is ReportViewController                  { return .reporting }
-        return nil
+        fatalError("Unrecognized child view controller")
     }
 
     var localParticipantIdentifier: UUID {
@@ -43,6 +43,25 @@ class MessagesViewController:
         return activeConversation.remoteParticipantIdentifiers
     }
 
+    func loadNewViewMode() {
+        guard let ballot = ballot else {
+            transition(to: .browsing)
+            return
+        }
+        switch ballot.status {
+        case .unsent: transition(to: .building)
+        case .open:
+            if ballot.didVote(localParticipantIdentifier) {
+                transition(to: .reporting)
+            } else {
+                transition(to: .voting)
+            }
+        case .closed: transition(to: .reporting)
+        }
+    }
+
+    // MARK: - UIViewController methods
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("MSMessagesAppViewController.viewDidAppear()")
@@ -53,35 +72,14 @@ class MessagesViewController:
         print("MSMessagesAppViewController.didReceiveMemoryWarning()")
     }
 
-    func startView(for ballot: Ballot) {
-        switch ballot.state {
-        case .building:
-            transition(to: .building)
-        case .open:
-            if ballot.didVote(localParticipantIdentifier) {
-                transition(to: .reporting)
-            } else {
-                transition(to: .voting)
-            }
-        case .closed:
-            transition(to: .reporting)
-        }
-    }
-
-    func startBrowseView() {
-        transition(to: .browsing)
-    }
-
     // MARK: - MSMessagesAppViewController methods
 
     override func willBecomeActive(with conversation: MSConversation) {
         print("MSMessagesAppViewController.willBecomeActive()")
-        if let message = conversation.selectedMessage,
-            let ballot = Ballot(message: message) {
-            startView(for: ballot)
-        } else {
-            startBrowseView()
+        if let message = conversation.selectedMessage {
+            ballot = Ballot(message: message)
         }
+        loadNewViewMode()
     }
 
     override func didResignActive(with conversation: MSConversation) {
@@ -100,11 +98,8 @@ class MessagesViewController:
 
     override func didSelect(_ message: MSMessage, conversation: MSConversation) {
         print("MSMessagesAppViewController.didSelect()")
-        if let ballot = Ballot(message: message) {
-            startView(for: ballot)
-        } else {
-            startBrowseView()
-        }
+        ballot = Ballot(message: message)
+        loadNewViewMode()
     }
 
     override func didReceive(_ message: MSMessage, conversation: MSConversation) {
@@ -175,25 +170,25 @@ class MessagesViewController:
         }
 
         if let oldChildViewController = primaryChildViewController {
+            oldChildViewController.view.removeFromSuperview()
             oldChildViewController.willMove(toParentViewController: nil)
             oldChildViewController.removeFromParentViewController()
-            oldChildViewController.view.removeFromSuperview()
         }
 
         primaryChildViewController = newChildViewController
 
-        guard let childView = newChildViewController.view else {
-            print("Child view controller has no view")
-            return
-        }
-        childView.frame = view.bounds
-        childView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(childView)
-        childView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        childView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        childView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        childView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        newChildViewController.willMove(toParentViewController: self)
         addChildViewController(newChildViewController)
+
+        let newChildView = newChildViewController.view!
+        newChildView.translatesAutoresizingMaskIntoConstraints = false
+        newChildViewController.view.frame = view.bounds
+        view.addSubview(newChildView)
+        newChildView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        newChildView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        newChildView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        newChildView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
         newChildViewController.didMove(toParentViewController: self)
     }
 
@@ -225,6 +220,7 @@ class MessagesViewController:
         guard let ballot = ballot else {
             fatalError("Cannot vote without ballot")
         }
+        ballot.recordVote(voterID: localParticipantIdentifier, candidate: candidate)
         insert(ballot.message(sender: localParticipantIdentifier))
         transition(to: .browsing)
         requestPresentationStyle(.compact)

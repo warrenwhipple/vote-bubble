@@ -22,7 +22,7 @@ extension Ballot {
             return nil
         }
 
-        var state: State?
+        var status: Status?
         var questionText: String?
         var didVoteVoterIDs: [UUID] = []
         var candidateQueryItems: [URLQueryItem] = []
@@ -33,12 +33,12 @@ extension Ballot {
 
             switch queryItem.name {
             case "s":
-                if value == "c" { state = .closed }
+                if value == "c" { status = .closed }
             case "q":
                 questionText = value
             case "u":
                 let voterIDComponents = value.components(separatedBy: ",")
-                didVoteVoterIDs = voterIDComponents.flatMap { UUID(uuidString: $0) }
+                didVoteVoterIDs = voterIDComponents.flatMap { UUID(base64String: $0) }
             case "c":
                 if let candidate = Candidate(urlQueryItems: candidateQueryItems) {
                     candidates.append(candidate)
@@ -53,7 +53,7 @@ extension Ballot {
             candidates.append(candidate)
         }
         self.init(
-            state: state ?? .open,
+            status: status ?? .open,
             questionText: questionText,
             candidates: candidates,
             voterIDs: didVoteVoterIDs
@@ -68,13 +68,13 @@ extension Ballot {
             queryItems.append(URLQueryItem(name: name, value: value))
         }
 
-        if state == .closed {
+        if status == .closed {
             add("s", "c")
         }
 
         add("q", questionText)
 
-        let voterIDWords = voterIDs.map { $0.uuidString }
+        let voterIDWords = voterIDs.map { $0.base64String }
         let voterIDString = voterIDWords.joined(separator: ",")
         add("u", voterIDString)
 
@@ -87,6 +87,7 @@ extension Ballot {
         guard let url = components.url else {
             fatalError("Failed to create URL from ballot components")
         }
+        print("Ballot to URL: \(url.relativeString)")
         return url
     }
 }
