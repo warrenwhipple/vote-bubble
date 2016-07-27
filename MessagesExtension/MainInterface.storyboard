@@ -291,7 +291,7 @@
         <!--Report View Controller-->
         <scene sceneID="Kvr-Nz-tK0">
             <objects>
-                <viewController id="p1m-7u-z6J" customClass="ReportViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p1m-7u-z6J" customClass="ReportViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="alr-8c-sWh"/>
                         <viewControllerLayoutGuide type="bottom" id="5PV-iE-Y2G"/>
@@ -329,7 +329,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CandidateBuildTableViewCell" id="clM-Xr-L0b" userLabel="Candidate Cell" customClass="CandidateBuildTableViewCell" customModule="MessagesExtension" customModuleProvider="target">
-                                <frame key="frameInset" minY="28" width="320" height="80"/>
+                                <frame key="frameInset" minY="28" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="clM-Xr-L0b" id="7pY-hr-WPR">
                                     <frame key="frameInset" width="320" height="80"/>
@@ -376,7 +376,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QuestionBuildTableViewCell" id="i5V-xN-1aI" userLabel="Question Cell" customClass="QuestionBuildTableViewCell" customModule="MessagesExtension" customModuleProvider="target">
-                                <frame key="frameInset" minY="108" width="320" height="80"/>
+                                <frame key="frameInset" minY="108" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i5V-xN-1aI" id="Exa-VT-VjS">
                                     <frame key="frameInset" width="320" height="80"/>
@@ -465,13 +465,37 @@ Vote</string>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tfR-yv-jZN">
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-Ug-4OV" userLabel="Text Label">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFZ-My-iIV" userLabel="Votes Label">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="0ts-TB-Iyx" firstAttribute="top" secondItem="oZy-Au-e5v" secondAttribute="top" id="4pg-ET-pWd"/>
+                                        <constraint firstAttribute="bottom" secondItem="tfR-yv-jZN" secondAttribute="bottom" constant="8" id="7Qt-Jo-cR5"/>
+                                        <constraint firstAttribute="trailing" secondItem="tfR-yv-jZN" secondAttribute="trailing" constant="16" id="9Rp-yn-mij"/>
                                         <constraint firstItem="0ts-TB-Iyx" firstAttribute="leading" secondItem="oZy-Au-e5v" secondAttribute="leading" id="GHu-QQ-caf"/>
+                                        <constraint firstItem="tfR-yv-jZN" firstAttribute="leading" secondItem="0ts-TB-Iyx" secondAttribute="trailing" constant="16" id="IBz-VW-aD9"/>
+                                        <constraint firstItem="tfR-yv-jZN" firstAttribute="top" secondItem="oZy-Au-e5v" secondAttribute="top" constant="8" id="LGV-dX-9BH"/>
                                         <constraint firstAttribute="bottom" secondItem="0ts-TB-Iyx" secondAttribute="bottom" id="RwF-zh-wH9"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="candidateTextLabel" destination="YTr-Ug-4OV" id="mRk-nc-SuZ"/>
+                                    <outlet property="figureLabel" destination="0ts-TB-Iyx" id="zey-RD-Dbj"/>
+                                    <outlet property="stackView" destination="tfR-yv-jZN" id="sa1-9g-rSt"/>
+                                    <outlet property="votesLabel" destination="aFZ-My-iIV" id="MMC-H0-TAq"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionReportTableViewCell" id="4JZ-uZ-Ebv" userLabel="Question Cell" customClass="QuestionReportTableViewCell" customModule="MessagesExtension" customModuleProvider="target">
                                 <frame key="frameInset" minY="108" width="320" height="80"/>
@@ -480,7 +504,7 @@ Vote</string>
                                     <frame key="frameInset" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFO-yG-0S2" userLabel="Back Button" customClass="ArrowButton" customModule="MessagesExtension" customModuleProvider="target">
+                                        <button clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFO-yG-0S2" userLabel="Dismiss Button" customClass="ArrowButton" customModule="MessagesExtension" customModuleProvider="target">
                                             <color key="backgroundColor" white="0.83022638199999998" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="tFO-yG-0S2" secondAttribute="height" multiplier="1:1" id="K0b-19-paf"/>
@@ -496,6 +520,9 @@ Vote</string>
                                                     <color key="value" red="0.094117647060000004" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="dismissButtonPrimaryActionTriggered:" destination="4JZ-uZ-Ebv" eventType="primaryActionTriggered" id="Piq-3V-nvU"/>
+                                            </connections>
                                         </button>
                                         <label clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6c-n1-MpC">
                                             <color key="backgroundColor" white="0.83022638199999998" alpha="1" colorSpace="calibratedWhite"/>
@@ -516,13 +543,16 @@ Vote</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.83022638199999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="questionLabel" destination="b6c-n1-MpC" id="pW5-QU-WJ3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3H6-at-sIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="110"/>
+            <point key="canvasLocation" x="1844" y="109.29535232383809"/>
         </scene>
     </scenes>
 </document>

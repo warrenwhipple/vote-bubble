@@ -8,17 +8,24 @@
 
 import UIKit
 
+protocol QuestionReportTableViewCellDelegate: class {
+    var ballot: Ballot? { get }
+    func dismissReport()
+}
+
 class QuestionReportTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    weak var delegate: QuestionReportTableViewCellDelegate?
+    @IBOutlet var questionLabel: UILabel!
+
+    func load() {
+        guard let ballot = delegate?.ballot else {
+            fatalError("Question report cell requires ballot")
+        }
+        questionLabel.text = ballot.questionText
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func dismissButtonPrimaryActionTriggered(_ sender: ArrowButton) {
+        delegate?.dismissReport()
     }
-
 }

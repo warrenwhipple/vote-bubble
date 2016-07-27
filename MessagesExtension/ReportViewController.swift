@@ -9,11 +9,36 @@
 import UIKit
 
 protocol ReportViewControllerDelegate: class {
+    var ballot: Ballot? { get }
     func dismissReport()
 }
 
-class ReportViewController: UITableViewController {
+class ReportViewController: UIViewController, ReportTableViewControllerDelegate {
 
-    weak var delegate: ReportViewControllerDelegate?
-    
+    weak var delegate: ReportViewControllerDelegate? {
+        didSet {
+            if ballot != nil {
+                tableViewController?.tableView?.reloadData()
+            }
+        }
+    }
+
+    var ballot: Ballot? {
+        return delegate?.ballot
+    }
+
+    var tableViewController: ReportTableViewController? {
+        return childViewControllers.first as? ReportTableViewController
+    }
+
+    override func viewDidLoad() {
+        tableViewController?.delegate = self
+        super.viewDidLoad()
+    }
+
+    // MARK: ReportViewControllerDelegate methods
+
+    func dismissReport() {
+        delegate?.dismissReport()
+    }
 }
