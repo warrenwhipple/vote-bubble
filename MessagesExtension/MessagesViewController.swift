@@ -132,7 +132,6 @@ class MessagesViewController:
             controller = instantiateReportViewController(ballot: ballot, conversation: conversation)
         }
         embed(newChildViewController: controller)
-        requestPresentationStyle(.expanded)
     }
 
     // MARK: - MSMessagesAppViewController methods
@@ -235,7 +234,7 @@ class MessagesViewController:
     func declineToVote(on ballot: Ballot, with conversation: MSConversation) {
         let message = ballot.message(sender: conversation.localParticipantIdentifier)
         conversation.insert(message)
-        transition(to: .browsing, for: ballot, with: conversation)
+        transitionToBrowseViewMode(with: conversation)
         requestPresentationStyle(.compact)
     }
 
@@ -244,7 +243,7 @@ class MessagesViewController:
     }
 
     func dismissReport(ballot: Ballot, with conversation: MSConversation) {
-        transition(to: .browsing, for: ballot, with: conversation)
+        transitionToBrowseViewMode(with: conversation)
         requestPresentationStyle(.compact)
     }
 }
