@@ -12,19 +12,13 @@ protocol BrowseViewControllerDelegate: class {
     func browseSelect(ballot: Ballot, with conversation: MSConversation)
 }
 
-class BrowseViewController: UICollectionViewController {
+class BrowseViewController:
+    UICollectionViewController,
+    MessagesChildViewController {
 
-    private(set) weak var delegate: BrowseViewControllerDelegate!
-    private(set) var ballots: [Ballot]!
-    private(set) var conversation: MSConversation!
-
-    func initConnect(delegate: BrowseViewControllerDelegate,
-                     ballots: [Ballot],
-                     conversation: MSConversation) {
-        self.delegate = delegate
-        self.ballots = ballots
-        self.conversation = conversation
-    }
+    weak var delegate: BrowseViewControllerDelegate!
+    var ballots: [Ballot]!
+    var conversation: MSConversation!
 
     // MARK: - UICollectionViewDelegate methods
 

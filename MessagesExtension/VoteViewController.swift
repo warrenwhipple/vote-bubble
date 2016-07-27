@@ -14,21 +14,16 @@ protocol VoteViewControllerDelegate: class {
     func dismissVote(on ballot: Ballot, with conversation: MSConversation)
 }
 
-class VoteViewController: UIViewController, VoteButtonDelegate {
+class VoteViewController:
+    UIViewController,
+    MessagesChildViewController,
+    VoteButtonDelegate {
 
     @IBOutlet weak var candidatesBrickView: BrickView!
     @IBOutlet weak var questionLabel: UILabel!
-    private(set) weak var delegate: VoteViewControllerDelegate!
-    private(set) var ballot: Ballot!
-    private(set) var conversation: MSConversation!
-
-    func initConnect(delegate: VoteViewControllerDelegate,
-                     ballot: Ballot,
-                     conversation: MSConversation) {
-        self.delegate = delegate
-        self.ballot = ballot
-        self.conversation = conversation
-    }
+    weak var delegate: VoteViewControllerDelegate!
+    var ballot: Ballot!
+    var conversation: MSConversation!
 
     override func viewDidLoad() {
         for candidate in ballot.candidates {

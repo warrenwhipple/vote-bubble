@@ -6,10 +6,10 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import Messages
+import UIKit
 
 protocol ReportTableViewControllerDelegate: class {
-    func dismissReport(ballot: Ballot, with conversation: MSConversation)
+    func dismissReport(ballot: Ballot)
 }
 
 class ReportTableViewController:
@@ -19,14 +19,10 @@ class ReportTableViewController:
 
     private(set) weak var delegate: ReportTableViewControllerDelegate!
     private(set) var ballot: Ballot!
-    private(set) var conversation: MSConversation!
 
-    func initConnect(delegate: ReportTableViewControllerDelegate,
-                     ballot: Ballot,
-                     conversation: MSConversation) {
+    func initConnect(delegate: ReportTableViewControllerDelegate, ballot: Ballot) {
         self.delegate = delegate
         self.ballot = ballot
-        self.conversation = conversation
     }
 
     // MARK: - UITableViewDataSource methods
@@ -63,6 +59,6 @@ class ReportTableViewController:
     // MARK: - ReportTableViewControllerDelegate methods
 
     func dismissReport(ballot: Ballot) {
-        delegate.dismissReport(ballot: ballot, with: conversation)
+        delegate.dismissReport(ballot: ballot)
     }
 }

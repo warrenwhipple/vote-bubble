@@ -12,33 +12,24 @@ protocol BuildViewControllerDelegate: class {
     func aprove(ballot: Ballot, with conversation: MSConversation)
 }
 
-class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
+class BuildViewController:
+    UIViewController,
+    MessagesChildViewController,
+    BuildTableViewControllerDelegate {
 
-    private(set) weak var delegate: BuildViewControllerDelegate!
-    private(set) var ballot: Ballot!
-    private(set) var conversation: MSConversation!
-
-    func initConnect(delegate: BuildViewControllerDelegate,
-                     ballot: Ballot,
-                     conversation: MSConversation) {
-        self.delegate = delegate
-        self.ballot = ballot
-        self.conversation = conversation
-    }
+    weak var delegate: BuildViewControllerDelegate!
+    var ballot: Ballot!
+    var conversation: MSConversation!
 
     override func viewDidLoad() {
         let tableViewController = childViewControllers.first! as! BuildTableViewController
-        tableViewController.initConnect(
-            delegate: self,
-            ballot: ballot,
-            conversation: conversation
-        )
+        tableViewController.initConnect(delegate: self, ballot: ballot)
         super.viewDidLoad()
     }
 
     // MARK: - BuildTableViewControllerDelegate methods
 
-    func approve(ballot: Ballot, with conversation: MSConversation) {
+    func approve(ballot: Ballot) {
         delegate.aprove(ballot: ballot, with: conversation)
     }
 }

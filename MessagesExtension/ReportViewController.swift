@@ -12,32 +12,24 @@ protocol ReportViewControllerDelegate: class {
     func dismissReport(ballot: Ballot, with conversation: MSConversation)
 }
 
-class ReportViewController: UIViewController, ReportTableViewControllerDelegate {
+class ReportViewController:
+    UIViewController,
+    MessagesChildViewController,
+    ReportTableViewControllerDelegate {
 
-    private(set) weak var delegate: ReportViewControllerDelegate!
-    private(set) var ballot: Ballot!
-    private(set) var conversation: MSConversation!
-
-    func initConnect(delegate: ReportViewControllerDelegate,
-                     ballot: Ballot,
-                     conversation: MSConversation) {
-        self.delegate = delegate
-        self.ballot = ballot
-        self.conversation = conversation
-    }
+    weak var delegate: ReportViewControllerDelegate!
+    var ballot: Ballot!
+    var conversation: MSConversation!
 
     override func viewDidLoad() {
         let tableViewController = childViewControllers.first! as! ReportTableViewController
-        tableViewController.initConnect(
-            delegate: self,
-            ballot: ballot, conversation: conversation
-        )
+        tableViewController.initConnect(delegate: self, ballot: ballot)
         super.viewDidLoad()
     }
 
     // MARK: ReportViewControllerDelegate methods
 
-    func dismissReport(ballot: Ballot, with conversation: MSConversation) {
+    func dismissReport(ballot: Ballot) {
         delegate.dismissReport(ballot: ballot, with: conversation)
     }
 }

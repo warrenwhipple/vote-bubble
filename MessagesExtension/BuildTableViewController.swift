@@ -6,10 +6,10 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import Messages
+import UIKit
 
 protocol BuildTableViewControllerDelegate: class {
-    func approve(ballot: Ballot, with conversation: MSConversation)
+    func approve(ballot: Ballot)
 }
 
 class BuildTableViewController:
@@ -19,14 +19,10 @@ class BuildTableViewController:
 
     private(set) weak var delegate: BuildTableViewControllerDelegate!
     private(set) var ballot: Ballot!
-    private(set) var conversation: MSConversation!
 
-    func initConnect(delegate: BuildTableViewControllerDelegate,
-                     ballot: Ballot,
-                     conversation: MSConversation) {
+    func initConnect(delegate: BuildTableViewControllerDelegate, ballot: Ballot) {
         self.delegate = delegate
         self.ballot = ballot
-        self.conversation = conversation
     }
     
     // MARK: - UITableViewDataSource methods
@@ -90,6 +86,6 @@ class BuildTableViewController:
     // MARK: - QuestionBuildTableViewCellDelegate methods
 
     func approve(ballot: Ballot) {
-        delegate.approve(ballot: ballot, with: conversation)
+        delegate.approve(ballot: ballot)
     }
 }
