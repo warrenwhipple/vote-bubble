@@ -6,39 +6,38 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import UIKit
+import Messages
 
 protocol ReportViewControllerDelegate: class {
-    var ballot: Ballot? { get }
-    func dismissReport()
+    func dismissReport(ballot: Ballot, with conversation: MSConversation)
 }
 
 class ReportViewController: UIViewController, ReportTableViewControllerDelegate {
 
-    weak var delegate: ReportViewControllerDelegate? {
-        didSet {
-            if ballot != nil {
-                tableViewController?.tableView?.reloadData()
-            }
-        }
-    }
+    private(set) weak var delegate: ReportViewControllerDelegate!
+    private(set) var ballot: Ballot!
+    private(set) var conversation: MSConversation!
 
-    var ballot: Ballot? {
-        return delegate?.ballot
-    }
-
-    var tableViewController: ReportTableViewController? {
-        return childViewControllers.first as? ReportTableViewController
+    func initConnect(delegate: ReportViewControllerDelegate,
+                     ballot: Ballot,
+                     conversation: MSConversation) {
+        self.delegate = delegate
+        self.ballot = ballot
+        self.conversation = conversation
     }
 
     override func viewDidLoad() {
-        tableViewController?.delegate = self
+        let tableViewController = childViewControllers.first! as! ReportTableViewController
+        tableViewController.initConnect(
+            delegate: self,
+            ballot: ballot, conversation: conversation
+        )
         super.viewDidLoad()
     }
 
     // MARK: ReportViewControllerDelegate methods
 
-    func dismissReport() {
-        delegate?.dismissReport()
+    func dismissReport(ballot: Ballot, with conversation: MSConversation) {
+        delegate.dismissReport(ballot: ballot, with: conversation)
     }
 }

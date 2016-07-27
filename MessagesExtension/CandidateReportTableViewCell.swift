@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CandidateReportTableViewCellDelegate: class {
-    var ballot: Ballot? { get }
+    
 }
 
 class CandidateReportTableViewCell: UITableViewCell {
@@ -19,10 +19,16 @@ class CandidateReportTableViewCell: UITableViewCell {
     @IBOutlet var candidateTextLabel: UILabel!
     @IBOutlet var votesLabel: UILabel!
 
-    weak var delegate: CandidateReportTableViewCellDelegate?
-    private(set) var candidate: Candidate?
+    private(set) weak var delegate: CandidateReportTableViewCellDelegate!
+    private(set) var candidate: Candidate!
 
-    func load(candidate: Candidate) {
+    func load(delegate: CandidateReportTableViewCellDelegate,
+              candidate: Candidate) {
+        self.delegate = delegate
+        load(candidate: candidate)
+    }
+
+    private func load(candidate: Candidate) {
         self.candidate = candidate
         contentView.backgroundColor = candidate.backgroundColor
         switch candidate.figure {
@@ -41,28 +47,9 @@ class CandidateReportTableViewCell: UITableViewCell {
             stackView.removeArrangedSubview(candidateTextLabel)
             candidateTextLabel.removeFromSuperview()
         }
-        var votesText = "\(candidate.votes.count):"
-        guard let voterIDs = delegate?.ballot?.voterIDs else {
-            fatalError("Candidate report requires ballot")
-        }
-        var useComma = false
-        for vote in candidate.votes {
-            guard vote < voterIDs.count else { continue }
-            if useComma {
-                votesText += ","
-            } else {
-                useComma = true
-            }
-            votesText += " $\(voterIDs[vote])"
-        }
-        votesLabel.text = votesText
+        votesLabel.text = "\(candidate.votes.count)"
         votesLabel.textColor = candidate.color
         votesLabel.backgroundColor = candidate.backgroundColor
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

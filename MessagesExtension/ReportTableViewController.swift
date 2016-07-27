@@ -6,11 +6,10 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import UIKit
+import Messages
 
 protocol ReportTableViewControllerDelegate: class {
-    var ballot: Ballot? { get }
-    func dismissReport()
+    func dismissReport(ballot: Ballot, with conversation: MSConversation)
 }
 
 class ReportTableViewController:
@@ -18,16 +17,16 @@ class ReportTableViewController:
     CandidateReportTableViewCellDelegate,
     QuestionReportTableViewCellDelegate {
 
-    weak var delegate: ReportTableViewControllerDelegate? {
-        didSet {
-            if ballot != nil {
-                tableView?.reloadData()
-            }
-        }
-    }
+    private(set) weak var delegate: ReportTableViewControllerDelegate!
+    private(set) var ballot: Ballot!
+    private(set) var conversation: MSConversation!
 
-    var ballot: Ballot? {
-        return delegate?.ballot
+    func initConnect(delegate: ReportTableViewControllerDelegate,
+                     ballot: Ballot,
+                     conversation: MSConversation) {
+        self.delegate = delegate
+        self.ballot = ballot
+        self.conversation = conversation
     }
 
     // MARK: - UITableViewDataSource methods
@@ -44,31 +43,26 @@ class ReportTableViewController:
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let ballot = ballot else {
-            fatalError("Candidate report requires ballot")
-        }
         if indexPath.row < ballot.candidates.count {
             let cell = tableView.dequeueReusableCell (
                 withIdentifier: "CandidateReportTableViewCell",
                 for: indexPath
                 ) as! CandidateReportTableViewCell
-            cell.delegate = self
-            cell.load(candidate: ballot.candidates[indexPath.row])
+            cell.load(delegate: self, candidate: ballot.candidates[indexPath.row])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "QuestionReportTableViewCell",
                 for: indexPath
                 ) as! QuestionReportTableViewCell
-            cell.delegate = self
-            cell.load()
+            cell.load(delegate: self, ballot: ballot)
             return cell
         }
     }
 
     // MARK: - ReportTableViewControllerDelegate methods
 
-    func dismissReport() {
-        delegate?.dismissReport()
+    func dismissReport(ballot: Ballot) {
+        delegate.dismissReport(ballot: ballot, with: conversation)
     }
 }
