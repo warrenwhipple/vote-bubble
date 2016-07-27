@@ -6,29 +6,37 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import UIKit
 import Messages
 
 protocol VoteViewControllerDelegate: class {
-    var ballot: Ballot? { get }
-    func vote(for candidate: Candidate)
-    func declineToVote()
-    func cancelVote()
+    func vote(for candidate: Candidate, on ballot: Ballot, with conversation: MSConversation)
+    func declineToVote(on ballot: Ballot, with conversation: MSConversation)
+    func dismissVote(on ballot: Ballot, with conversation: MSConversation)
 }
 
 class VoteViewController: UIViewController, VoteButtonDelegate {
 
     @IBOutlet weak var candidatesBrickView: BrickView!
     @IBOutlet weak var questionLabel: UILabel!
-    weak var delegate: VoteViewControllerDelegate?
+    private(set) weak var delegate: VoteViewControllerDelegate!
+    private(set) var ballot: Ballot!
+    private(set) var conversation: MSConversation!
+
+    func initConnect(delegate: VoteViewControllerDelegate,
+                     ballot: Ballot,
+                     conversation: MSConversation) {
+        self.delegate = delegate
+        self.ballot = ballot
+        self.conversation = conversation
+    }
 
     override func viewDidLoad() {
-        guard let ballot = delegate?.ballot else {
-            fatalError("VoteViewController failed to find ballot")
-        }
         for candidate in ballot.candidates {
-            let candidateView = VoteButton(candidate: candidate)
-            candidateView.delegate = self
+            let candidateView = VoteButton(
+                frame: CGRect.zero,
+                delegate: self,
+                candidate: candidate
+            )
             candidatesBrickView.addSubview(candidateView)
         }
         if let text = ballot.questionText {
@@ -36,6 +44,7 @@ class VoteViewController: UIViewController, VoteButtonDelegate {
         } else {
             questionLabel.removeFromSuperview()
         }
+        super.viewDidLoad()
     }
 
     override func viewWillLayoutSubviews() {
@@ -43,16 +52,16 @@ class VoteViewController: UIViewController, VoteButtonDelegate {
     }
 
     @IBAction func backButtonPrimaryActionTriggered(_ sender: UIButton) {
-        delegate?.cancelVote()
+        delegate?.dismissVote(on: ballot, with: conversation)
     }
 
     @IBAction func declineVoteButtonPrimaryActionTriggered(_ sender: UIButton) {
-        delegate?.declineToVote()
+        delegate?.declineToVote(on: ballot, with: conversation)
     }
 
     // MARK: - CandidateVoteViewDelegate methods
 
     func vote(for candidate: Candidate) {
-        delegate?.vote(for: candidate)
+        delegate?.vote(for: candidate, on: ballot, with: conversation)
     }
 }

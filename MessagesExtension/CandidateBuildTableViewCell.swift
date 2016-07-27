@@ -16,10 +16,16 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var figureTextField: UITextField!
     @IBOutlet weak var textTextField: UITextField!
-    var delegate: CandidateBuildTableViewCellDelegate?
+    private(set) var delegate: CandidateBuildTableViewCellDelegate!
     private(set) var candidate: Candidate?
 
-    func loadCandidate(_ candidate: Candidate?) {
+    func load(delegate: CandidateBuildTableViewCellDelegate,
+              candidate: Candidate?) {
+        self.delegate = delegate
+        load(candidate: candidate)
+    }
+
+    private func load(candidate: Candidate?) {
         self.candidate = candidate
         if let candidate = candidate {
             switch candidate.figure {
@@ -38,18 +44,17 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
             textTextField.text = nil
             contentView.backgroundColor = UIColor.lightGray()
         }
-        
     }
 
     @IBAction func figureTextFieldEditingDidBegin(_ sender: UITextField) {
         if candidate == nil {
-            loadCandidate(delegate?.newCandidate())
+            load(candidate: delegate.newCandidate())
         }
     }
 
     @IBAction func textTextFieldEditingDidBegin(_ sender: UITextField) {
         if candidate == nil {
-            loadCandidate(delegate?.newCandidate())
+            load(candidate: delegate.newCandidate())
         }
     }
     

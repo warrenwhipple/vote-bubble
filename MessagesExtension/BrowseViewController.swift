@@ -6,25 +6,34 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import UIKit
+import Messages
 
 protocol BrowseViewControllerDelegate: class {
-    func browseSelect(ballot: Ballot)
+    func browseSelect(ballot: Ballot, with conversation: MSConversation)
 }
 
 class BrowseViewController: UICollectionViewController {
 
-    weak var delegate: BrowseViewControllerDelegate?
-    var ballots: [Ballot] = []
+    private(set) weak var delegate: BrowseViewControllerDelegate!
+    private(set) var ballots: [Ballot]!
+    private(set) var conversation: MSConversation!
+
+    func initConnect(delegate: BrowseViewControllerDelegate,
+                     ballots: [Ballot],
+                     conversation: MSConversation) {
+        self.delegate = delegate
+        self.ballots = ballots
+        self.conversation = conversation
+    }
 
     // MARK: - UICollectionViewDelegate methods
 
     override func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            delegate?.browseSelect(ballot: Ballot.simpleYesNo())
+            delegate.browseSelect(ballot: Ballot.simpleYesNo(), with: conversation)
         } else {
-            delegate?.browseSelect(ballot: Ballot.simpleYesNo())
+            delegate.browseSelect(ballot: Ballot.simpleYesNo(), with: conversation)
         }
     }
 
@@ -32,7 +41,7 @@ class BrowseViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return ballots.count + 1
+        return (ballots.count ?? 0) + 1
     }
 
     override func collectionView(_ collectionView: UICollectionView,

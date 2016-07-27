@@ -9,22 +9,26 @@
 import UIKit
 
 protocol QuestionBuildTableViewCellDelegate {
-    var ballot: Ballot? { get }
-    func approveBallot()
+    func approve(ballot: Ballot)
 }
 
 class QuestionBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
-    var delegate: QuestionBuildTableViewCellDelegate?
+    private(set) var delegate: QuestionBuildTableViewCellDelegate!
+    private(set) var ballot: Ballot!
+
     var lastLastQuestionCharacterWasSpace = false
 
-    func load() {
-        textField.text = delegate?.ballot?.questionText
+    func load(delegate: QuestionBuildTableViewCellDelegate,
+              ballot: Ballot) {
+        self.delegate = delegate
+        self.ballot = ballot
+        textField.text = ballot.questionText
     }
 
     @IBAction func didPressStartVote(_ sender: UIButton) {
-        delegate?.approveBallot()
+        delegate.approve(ballot: ballot!)
     }
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
@@ -43,6 +47,6 @@ class QuestionBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
         } else {
             lastLastQuestionCharacterWasSpace = false
         }
-        delegate?.ballot?.questionText = sender.text
+        ballot!.questionText = sender.text
     }
 }

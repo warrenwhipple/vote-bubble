@@ -14,11 +14,12 @@ protocol VoteButtonDelegate: class {
 
 class VoteButton: UIButton {
 
-    weak var delegate: VoteButtonDelegate?
+    weak var delegate: VoteButtonDelegate!
     let candidate: Candidate
     let characterLabel, textLabel: UILabel?
 
-    init(frame: CGRect, candidate: Candidate) {
+    init(frame: CGRect, delegate: VoteButtonDelegate, candidate: Candidate) {
+        self.delegate = delegate
         self.candidate = candidate
         let figureCharacter: Character?
         switch candidate.figure {
@@ -64,10 +65,6 @@ class VoteButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(candidate: Candidate) {
-        self.init(frame: CGRect.zero, candidate: candidate)
-    }
-
     override func layoutSubviews() {
         super.layoutSubviews()
         if let characterLabel = characterLabel {
@@ -98,6 +95,6 @@ class VoteButton: UIButton {
     }
 
     func primaryActionTriggered() {
-        delegate?.vote(for: candidate)
+        delegate.vote(for: candidate)
     }
 }

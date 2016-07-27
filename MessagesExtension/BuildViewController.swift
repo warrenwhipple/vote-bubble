@@ -6,39 +6,39 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import UIKit
+import Messages
 
 protocol BuildViewControllerDelegate: class {
-    var ballot: Ballot? { get }
-    func aproveBallot()
+    func aprove(ballot: Ballot, with conversation: MSConversation)
 }
 
 class BuildViewController: UIViewController, BuildTableViewControllerDelegate {
 
-    weak var delegate: BuildViewControllerDelegate? {
-        didSet {
-            if ballot != nil {
-                buildTableViewController?.tableView?.reloadData()
-            }
-        }
-    }
+    private(set) weak var delegate: BuildViewControllerDelegate!
+    private(set) var ballot: Ballot!
+    private(set) var conversation: MSConversation!
 
-    var ballot: Ballot? {
-        return delegate?.ballot
-    }
-    
-    var buildTableViewController: BuildTableViewController? {
-        return childViewControllers.first as? BuildTableViewController
+    func initConnect(delegate: BuildViewControllerDelegate,
+                     ballot: Ballot,
+                     conversation: MSConversation) {
+        self.delegate = delegate
+        self.ballot = ballot
+        self.conversation = conversation
     }
 
     override func viewDidLoad() {
-        buildTableViewController?.delegate = self
+        let tableViewController = childViewControllers.first! as! BuildTableViewController
+        tableViewController.initConnect(
+            delegate: self,
+            ballot: ballot,
+            conversation: conversation
+        )
         super.viewDidLoad()
     }
 
     // MARK: - BuildTableViewControllerDelegate methods
 
-    func approveBallot() {
-        delegate?.aproveBallot()
+    func approve(ballot: Ballot, with conversation: MSConversation) {
+        delegate.aprove(ballot: ballot, with: conversation)
     }
 }

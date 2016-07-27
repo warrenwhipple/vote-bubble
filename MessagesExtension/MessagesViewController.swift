@@ -77,20 +77,31 @@ class MessagesViewController:
         switch newViewMode {
         case .browsing:
             let browseViewController = newChildViewController as! BrowseViewController
-            browseViewController.delegate = self
-            browseViewController.ballots = [Ballot.simpleYesNo(), Ballot.simpleYesNo()]
+            browseViewController.initConnect(
+                delegate: self,
+                ballots: [Ballot.simpleYesNo(), Ballot.simpleYesNo()],
+                conversation: conversation
+            )
         case .building:
             let buildViewController = newChildViewController as! BuildViewController
-            buildViewController.delegate = self
-            if presentationStyle == .compact { requestPresentationStyle(.expanded) }
+            buildViewController.initConnect(
+                delegate: self,
+                ballot: ballot!,
+                conversation: conversation
+            )
+            requestPresentationStyle(.expanded)
         case .voting:
             let voteViewController = newChildViewController as! VoteViewController
-            voteViewController.delegate = self
-            if presentationStyle == .compact { requestPresentationStyle(.expanded) }
+            voteViewController.initConnect(
+                delegate: self,
+                ballot: ballot!,
+                conversation: conversation
+            )
+            requestPresentationStyle(.expanded)
         case .reporting:
             let reportViewController = newChildViewController as! ReportViewController
             reportViewController.delegate = self
-            if presentationStyle == .compact { requestPresentationStyle(.expanded) }
+            requestPresentationStyle(.expanded)
         }
 
         if let oldChildViewController = primaryChildViewController {
@@ -169,35 +180,32 @@ class MessagesViewController:
 
     // MARK: - Child view controller delegate methods
 
-    func browseSelect(ballot: Ballot) {
+    func browseSelect(ballot: Ballot, with conversation: MSConversation) {
         self.ballot = ballot
-        transition(to: .building, with: activeConversation!)
+        transition(to: .building, with: conversation)
     }
 
-    func aproveBallot() {
-        transition(to: .voting, with: activeConversation!)
+    func aprove(ballot: Ballot, with conversation: MSConversation) {
+        transition(to: .voting, with: conversation)
     }
 
-    func vote(for candidate: Candidate) {
-        ballot!.recordVote(
-            voterID: activeConversation!.localParticipantIdentifier,
-            candidate: candidate
-        )
-        let message = ballot!.message(sender: activeConversation!.localParticipantIdentifier)
-        activeConversation!.insert(message)
-        transition(to: .browsing, with: activeConversation!)
+    func vote(for candidate: Candidate, on ballot: Ballot, with conversation: MSConversation) {
+        ballot.recordVote(voterID: conversation.localParticipantIdentifier, candidate: candidate)
+        let message = ballot.message(sender: conversation.localParticipantIdentifier)
+        conversation.insert(message)
+        transition(to: .browsing, with: conversation)
         requestPresentationStyle(.compact)
     }
 
-    func declineToVote() {
-        let message = ballot!.message(sender: activeConversation!.localParticipantIdentifier)
-        activeConversation!.insert(message)
-        transition(to: .browsing, with: activeConversation!)
+    func declineToVote(on ballot: Ballot, with conversation: MSConversation) {
+        let message = ballot.message(sender: conversation.localParticipantIdentifier)
+        conversation.insert(message)
+        transition(to: .browsing, with: conversation)
         requestPresentationStyle(.compact)
     }
 
-    func cancelVote() {
-        transition(to: .building, with: activeConversation!)
+    func dismissVote(on ballot: Ballot, with conversation: MSConversation) {
+        transition(to: .building, with: conversation)
     }
 
     func dismissReport() {
