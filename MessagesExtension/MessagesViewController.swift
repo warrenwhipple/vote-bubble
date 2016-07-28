@@ -217,6 +217,9 @@ class MessagesViewController:
 
     func browseSelect(ballot: Ballot, with conversation: MSConversation) {
         transition(to: .building, for: ballot, with: conversation)
+        if presentationStyle == .compact {
+            requestPresentationStyle(.expanded)
+        }
     }
 
     func aprove(ballot: Ballot, with conversation: MSConversation) {
