@@ -10,16 +10,19 @@ import Messages
 
 class Ballot {
 
-    enum Status: Int { case unsent, open, closed }
+    var session: MSSession?
+    enum Status: Int { case open, closed }
     var status: Status
     var questionText: String?
     var candidates: [Candidate]
     var voterIDs: [UUID]
 
-    init(status: Status = .unsent,
-         questionText: String? = nil,
-         candidates: [Candidate] = [],
-         voterIDs: [UUID] = []) {
+    init(session: MSSession?,
+         status: Status,
+         questionText: String?,
+         candidates: [Candidate],
+         voterIDs: [UUID]) {
+        self.session = session
         self.status = status
         self.questionText = questionText
         self.candidates = candidates
@@ -28,7 +31,7 @@ class Ballot {
 
     convenience init?(message: MSMessage) {
         guard let url = message.url else { return nil }
-        self.init(url: url)
+        self.init(session: message.session, url: url)
     }
 
     func didVote(_ voterID: UUID) -> Bool {
@@ -49,29 +52,33 @@ class Ballot {
     func message(sender: UUID) -> MSMessage {
         let actionText: String
         let summaryText: String
-
-        switch status {
-        case .unsent:
+        if session == nil {
             actionText = "$\(sender.uuidString) started a vote."
-            summaryText = questionText == nil ? actionText : "\(actionText)\n\(questionText)"
-        case .open:
-            if sender == voterIDs.last {
-                actionText = "$\(sender.uuidString) voted."
-                summaryText = actionText
+            if let questionText = questionText {
+                summaryText = "Vote started: \n" + questionText
             } else {
-                actionText = "$\(sender.uuidString) sent a vote."
-                summaryText = questionText == nil ? actionText : "\(actionText)\n\(questionText)"
+                summaryText = "Vote started"
             }
-        case .closed:
-            actionText = "$\(sender.uuidString) sent vote results."
-            summaryText = actionText
+        } else {
+            switch status {
+            case .open:
+                if sender == voterIDs.last {
+                    actionText = "$\(sender.uuidString) voted."
+                    summaryText = "Voted"
+                } else {
+                    actionText = "$\(sender.uuidString) sent a vote."
+                    summaryText = "Vote sent"
+                }
+            case .closed:
+                actionText = "$\(sender.uuidString) sent vote results."
+                summaryText = "Vote results"
+            }
         }
-
         let layout = MSMessageTemplateLayout()
         layout.image = messageImage()
         layout.caption = questionText
         layout.trailingSubcaption = actionText
-        let message = MSMessage()
+        let message = MSMessage(session: session ?? MSSession())
         message.summaryText = summaryText
         message.layout = layout
         message.url = url()
@@ -115,8 +122,11 @@ class Ballot {
             figure: .autoCharacter("N")
         )
         return Ballot(
-            status: .unsent,
-            candidates: [yesCandidate, noCandidate]
+            session: nil,
+            status: .open,
+            questionText: nil,
+            candidates: [yesCandidate, noCandidate],
+            voterIDs: []
         )
     }
 }

@@ -12,7 +12,7 @@ private let uuidStringLength = UUID().uuidString.characters.count
 
 extension Ballot {
 
-    convenience init?(url: URL) {
+    convenience init?(session: MSSession?, url: URL) {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             print("Failed to get URL components from URL: \(url.relativeString)")
             return nil
@@ -53,6 +53,7 @@ extension Ballot {
             candidates.append(candidate)
         }
         self.init(
+            session: session,
             status: status ?? .open,
             questionText: questionText,
             candidates: candidates,
@@ -87,7 +88,6 @@ extension Ballot {
         guard let url = components.url else {
             fatalError("Failed to create URL from ballot components")
         }
-        print("Ballot to URL: \(url.relativeString)")
         return url
     }
 }
