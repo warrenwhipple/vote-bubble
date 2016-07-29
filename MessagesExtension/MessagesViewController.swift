@@ -18,23 +18,14 @@ class MessagesViewController:
     VoteViewControllerDelegate,
     ReportViewControllerDelegate {
 
+    var anticipatedPresentationStyle: MSMessagesAppPresentationStyle = .compact
     var embeddedChildViewController: UIViewController!
     var browseViewController: BrowseViewController!
-
-    var cachedBrowseViewController: BrowseViewController?
-
-    enum ViewMode { case browsing, building, voting, reporting }
-    var viewMode: ViewMode {
-        if embeddedChildViewController is BrowseViewController { return .browsing  }
-        if embeddedChildViewController is BuildViewController  { return .building  }
-        if embeddedChildViewController is VoteViewController   { return .voting    }
-        if embeddedChildViewController is ReportViewController { return .reporting }
-        fatalError("Unrecognized child view controller")
-    }
 
     override func viewDidAppear(_ animated: Bool) {
         print("MSMessagesAppViewController.viewDidAppear()")
         super.viewDidAppear(animated)
+        anticipatedPresentationStyle = presentationStyle
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,47 +36,67 @@ class MessagesViewController:
         super.didReceiveMemoryWarning()
     }
 
-    func instantiateBrowseViewController(conversation: MSConversation) -> BrowseViewController {
-        let viewController = storyboard!.instantiateViewController(
-            withIdentifier: "BrowseViewController"
-            ) as! BrowseViewController
-        viewController.delegate = self
-        viewController.ballots = defaultBallots
-        viewController.conversation = conversation
-        return viewController
+    func presentInferredView(for message: MSMessage, with conversation: MSConversation) {
+        if let ballot = Ballot(message: message) {
+            switch ballot.status {
+            case .open:
+                if ballot.didVote(conversation.localParticipantIdentifier) {
+                    presentReportView(for: ballot, with: conversation)
+                } else {
+                    presentVoteView(for: ballot, with: conversation)
+                }
+            case .closed:
+                presentReportView(for: ballot, with: conversation)
+            }
+        } else {
+            print("Message could not be converted to ballot")
+            presentBrowseView(with: conversation)
+        }
     }
 
-    func instantiateBuildViewController(ballot: Ballot,
-                                        conversation: MSConversation) -> BuildViewController {
+    func presentBrowseView(with conversation: MSConversation) {
+        if browseViewController == nil {
+            browseViewController = storyboard!.instantiateViewController(
+                withIdentifier: "BrowseViewController"
+                ) as! BrowseViewController
+            browseViewController.delegate = self
+            browseViewController.ballots = defaultBallots
+        }
+        browseViewController.conversation = conversation
+        embed(newChildViewController: browseViewController)
+    }
+
+    func presentBuildView(for ballot: Ballot, conversation: MSConversation) {
         let viewController = storyboard!.instantiateViewController(
             withIdentifier: "BuildViewController"
             ) as! BuildViewController
         viewController.delegate = self
         viewController.ballot = ballot
         viewController.conversation = conversation
-        return viewController
+        embed(newChildViewController: viewController)
+        requestPresentationStyle(.expanded)
     }
 
-    func instantiateVoteViewController(ballot: Ballot,
-                                       conversation: MSConversation) -> VoteViewController {
+    func presentVoteView(for ballot: Ballot, with conversation: MSConversation) {
         let viewController = storyboard!.instantiateViewController(
             withIdentifier: "VoteViewController"
             ) as! VoteViewController
         viewController.delegate = self
         viewController.ballot = ballot
         viewController.conversation = conversation
-        return viewController
+        embed(newChildViewController: viewController)
+        requestPresentationStyle(.expanded)
     }
 
-    func instantiateReportViewController(ballot: Ballot,
-                                         conversation: MSConversation) -> ReportViewController {
+    func presentReportView(for ballot: Ballot, with conversation: MSConversation) {
         let viewController = storyboard!.instantiateViewController(
             withIdentifier: "ReportViewController"
             ) as! ReportViewController
         viewController.delegate = self
         viewController.ballot = ballot
         viewController.conversation = conversation
-        return viewController
+        embed(newChildViewController: viewController)
+        requestPresentationStyle(.expanded)
     }
 
     func embed(newChildViewController: UIViewController) {
@@ -108,60 +119,13 @@ class MessagesViewController:
         newChildViewController.didMove(toParentViewController: self)
     }
 
-    func transitionToBrowseViewMode(with conversation: MSConversation) {
-        if browseViewController == nil {
-            browseViewController = instantiateBrowseViewController(conversation: conversation)
-        } else {
-            browseViewController.conversation = conversation
-        }
-        embed(newChildViewController: browseViewController)
-    }
-
-    func transition(to newViewMode: ViewMode,
-                    for ballot: Ballot,
-                    with conversation: MSConversation) {
-        let controller: UIViewController
-        switch newViewMode {
-        case .browsing:
-            fatalError("Use transitionToBrowseViewMode() to transition to browse view mode")
-        case .building:
-            controller = instantiateBuildViewController(ballot: ballot, conversation: conversation)
-        case .voting:
-            controller = instantiateVoteViewController(ballot: ballot, conversation: conversation)
-        case.reporting:
-            controller = instantiateReportViewController(ballot: ballot, conversation: conversation)
-        }
-        embed(newChildViewController: controller)
-        if presentationStyle == .compact {
-            requestPresentationStyle(.expanded)
-        }
-    }
-
     // MARK: - MSMessagesAppViewController methods
 
     override func willBecomeActive(with conversation: MSConversation) {
-        if browseViewController == nil {
-            browseViewController = instantiateBrowseViewController(conversation: conversation)
-        }
         if let message = conversation.selectedMessage {
-            if let ballot = Ballot(message: message) {
-                switch ballot.status {
-                case .open:
-                    if ballot.didVote(conversation.localParticipantIdentifier) {
-                        transition(to: .reporting, for: ballot, with: conversation)
-                    } else {
-                        transition(to: .voting, for: ballot, with: conversation)
-                    }
-                case .closed:
-                    transition(to: .reporting, for: ballot, with: conversation)
-                }
-            } else {
-                print("Message could not be converted to ballot")
-                transitionToBrowseViewMode(with: conversation)
-            }
-
+            presentInferredView(for: message, with: conversation)
         } else {
-            transitionToBrowseViewMode(with: conversation)
+            presentBrowseView(with: conversation)
         }
         print("MSMessagesAppViewController.willBecomeActive()")
         super.willBecomeActive(with: conversation)
@@ -175,7 +139,6 @@ class MessagesViewController:
         // and store enough state information to restore your extension to its current state
         // in case it is terminated later.
         print("MSMessagesAppViewController.didResignActive()")
-        print("Save user state not yet implemented!")
         // TODO: Add save user state
         super.didResignActive(with: conversation)
     }
@@ -187,6 +150,11 @@ class MessagesViewController:
 
     override func didSelect(_ message: MSMessage, conversation: MSConversation) {
         print("MSMessagesAppViewController.didSelect()")
+        if let selectedMessage = conversation.selectedMessage {
+            presentInferredView(for: selectedMessage, with: conversation)
+        } else {
+            presentBrowseView(with: conversation)
+        }
         super.didSelect(message, conversation: conversation)
     }
 
@@ -209,53 +177,63 @@ class MessagesViewController:
     }
 
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        print("MSMessagesAppViewController.willTransition()")
+        anticipatedPresentationStyle = presentationStyle
         if presentationStyle == .compact {
-            transitionToBrowseViewMode(
+            presentBrowseView(
                 with: activeConversation ??
                     (embeddedChildViewController as! MessagesChildViewController).conversation!
             )
         }
+        print("MSMessagesAppViewController.willTransition()")
         super.willTransition(to: presentationStyle)
     }
 
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
+        anticipatedPresentationStyle = presentationStyle
         print("MSMessagesAppViewController.didTransition()")
-        view.setNeedsLayout()
         super.didTransition(to: presentationStyle)
+    }
+
+    override func requestPresentationStyle(_ presentationStyle: MSMessagesAppPresentationStyle) {
+        guard presentationStyle != anticipatedPresentationStyle else {
+            print("Requested presentation style \(presentationStyle) is already anticipated")
+            return
+        }
+        anticipatedPresentationStyle = presentationStyle
+        super.requestPresentationStyle(presentationStyle)
     }
 
     // MARK: - Child view controller delegate methods
 
     func browseSelect(ballot: Ballot, with conversation: MSConversation) {
-        transition(to: .building, for: ballot, with: conversation)
+        presentBuildView(for: ballot, conversation: conversation)
     }
 
     func aprove(ballot: Ballot, with conversation: MSConversation) {
-        transition(to: .voting, for: ballot, with: conversation)
+        presentVoteView(for: ballot, with: conversation)
     }
 
     func vote(for candidate: Candidate, on ballot: Ballot, with conversation: MSConversation) {
         ballot.recordVote(voterID: conversation.localParticipantIdentifier, candidate: candidate)
         let message = ballot.message(sender: conversation.localParticipantIdentifier)
         conversation.insert(message)
-        transitionToBrowseViewMode(with: conversation)
+        presentBrowseView(with: conversation)
         requestPresentationStyle(.compact)
     }
 
     func declineToVote(on ballot: Ballot, with conversation: MSConversation) {
         let message = ballot.message(sender: conversation.localParticipantIdentifier)
         conversation.insert(message)
-        transitionToBrowseViewMode(with: conversation)
+        presentBrowseView(with: conversation)
         requestPresentationStyle(.compact)
     }
 
     func dismissVote(on ballot: Ballot, with conversation: MSConversation) {
-        transition(to: .building, for: ballot, with: conversation)
+        presentBuildView(for: ballot, conversation: conversation)
     }
 
     func dismissReport(ballot: Ballot, with conversation: MSConversation) {
-        transitionToBrowseViewMode(with: conversation)
+        presentBrowseView(with: conversation)
         requestPresentationStyle(.compact)
     }
 }
