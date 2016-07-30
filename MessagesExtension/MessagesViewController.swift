@@ -139,12 +139,12 @@ class MessagesViewController:
     }
 
     override func willSelect(_ message: MSMessage, conversation: MSConversation) {
-        print("Messages app will select        \(message)")
+        print("Messages app will select message")
         super.willSelect(message, conversation: conversation)
     }
 
     override func didSelect(_ message: MSMessage, conversation: MSConversation) {
-        print("Messages app did select         \(message)")
+        print("Messages app did select message")
         presentInferredView(for: message, with: conversation)
         super.didSelect(message, conversation: conversation)
     }
