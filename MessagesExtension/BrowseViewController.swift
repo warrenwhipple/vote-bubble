@@ -25,9 +25,12 @@ class BrowseViewController:
     override func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            delegate.browseSelect(ballot: Ballot.simpleYesNo(), with: conversation)
+            delegate.browseSelect(ballot: Ballot.new(), with: conversation)
         } else {
-            delegate.browseSelect(ballot: Ballot.simpleYesNo(), with: conversation)
+            delegate.browseSelect(
+                ballot: ballots[indexPath.row - 1],
+                with: conversation
+            )
         }
     }
 
@@ -48,9 +51,10 @@ class BrowseViewController:
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "SavedBallotCell",
+                withReuseIdentifier: "BallotCollectionViewCell",
                 for: indexPath
-            )
+            ) as! BallotCollectionViewCell
+            cell.load(ballot: ballots[indexPath.row - 1])
             return cell
         }
     }

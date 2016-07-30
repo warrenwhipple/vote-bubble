@@ -9,8 +9,6 @@
 import UIKit
 import Messages
 
-let defaultBallots = [Ballot.simpleYesNo(), Ballot.simpleYesNo()]
-
 class MessagesViewController:
     MSMessagesAppViewController,
     BrowseViewControllerDelegate,
