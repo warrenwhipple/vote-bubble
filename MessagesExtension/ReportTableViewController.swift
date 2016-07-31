@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ReportTableViewControllerDelegate: class {
-    func dismissReport(ballot: Ballot)
+    func dismissReport(for election: Election)
 }
 
 class ReportTableViewController:
@@ -18,11 +18,11 @@ class ReportTableViewController:
     QuestionReportTableViewCellDelegate {
 
     private(set) weak var delegate: ReportTableViewControllerDelegate!
-    private(set) var ballot: Ballot!
+    private(set) var election: Election!
 
-    func initConnect(delegate: ReportTableViewControllerDelegate, ballot: Ballot) {
+    func initConnect(delegate: ReportTableViewControllerDelegate, election: Election) {
         self.delegate = delegate
-        self.ballot = ballot
+        self.election = election
     }
 
     // MARK: - UITableViewDataSource methods
@@ -33,32 +33,36 @@ class ReportTableViewController:
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        guard let ballot = ballot else { return 0 }
-        return ballot.candidates.count + 1
+        guard let election = election else { return 0 }
+        return election.ballot.candidates.count + 1
     }
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < ballot.candidates.count {
+        if indexPath.row < election.ballot.candidates.count {
             let cell = tableView.dequeueReusableCell (
                 withIdentifier: "CandidateReportTableViewCell",
                 for: indexPath
                 ) as! CandidateReportTableViewCell
-            cell.load(delegate: self, candidate: ballot.candidates[indexPath.row])
+            cell.load(
+                delegate: self,
+                candidate: election.ballot.candidates[indexPath.row],
+                candidateVoteCount: election.votes[indexPath.row].count
+            )
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "QuestionReportTableViewCell",
                 for: indexPath
                 ) as! QuestionReportTableViewCell
-            cell.load(delegate: self, ballot: ballot)
+            cell.load(delegate: self, election: election)
             return cell
         }
     }
 
     // MARK: - ReportTableViewControllerDelegate methods
 
-    func dismissReport(ballot: Ballot) {
-        delegate.dismissReport(ballot: ballot)
+    func dismissReport(for: Election) {
+        delegate.dismissReport(for: election)
     }
 }

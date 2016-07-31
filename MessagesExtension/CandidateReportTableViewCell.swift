@@ -23,12 +23,13 @@ class CandidateReportTableViewCell: UITableViewCell {
     private(set) var candidate: Candidate!
 
     func load(delegate: CandidateReportTableViewCellDelegate,
-              candidate: Candidate) {
+              candidate: Candidate,
+              candidateVoteCount: Int) {
         self.delegate = delegate
-        load(candidate: candidate)
+        load(candidate: candidate, candidateVoteCount: candidateVoteCount)
     }
 
-    private func load(candidate: Candidate) {
+    private func load(candidate: Candidate, candidateVoteCount: Int) {
         self.candidate = candidate
         contentView.backgroundColor = candidate.backgroundColor
         switch candidate.figure {
@@ -47,7 +48,7 @@ class CandidateReportTableViewCell: UITableViewCell {
             stackView.removeArrangedSubview(candidateTextLabel)
             candidateTextLabel.removeFromSuperview()
         }
-        votesLabel.text = "\(candidate.votes.count)"
+        votesLabel.text = "\(candidateVoteCount)"
         votesLabel.textColor = candidate.color
         votesLabel.backgroundColor = candidate.backgroundColor
     }

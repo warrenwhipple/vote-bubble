@@ -12,9 +12,9 @@ import CloudKit
 extension Ballot {
 
     func testCloudKit() {
-        let container = CKContainer.default()
-        let recordID = CKRecordID(recordName: UUID().uuidString)
-        let record = CKRecord(recordType: "Ballot", recordID: recordID)
-        let database = container.publicCloudDatabase
+        //let container = CKContainer.default()
+        //let recordID = CKRecordID(recordName: UUID().uuidString)
+        //let record = CKRecord(recordType: "Ballot", recordID: recordID)
+        //let database = container.publicCloudDatabase
     }
 }

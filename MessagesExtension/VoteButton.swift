@@ -9,18 +9,20 @@
 import UIKit
 
 protocol VoteButtonDelegate: class {
-    func vote(for candidate: Candidate)
+    func vote(for candidateIndex: Int)
 }
 
 class VoteButton: UIButton {
 
     weak var delegate: VoteButtonDelegate!
     let candidate: Candidate
+    let candidateIndex: Int
     let characterLabel, textLabel: UILabel?
 
-    init(frame: CGRect, delegate: VoteButtonDelegate, candidate: Candidate) {
+    init(frame: CGRect, delegate: VoteButtonDelegate, candidate: Candidate, candidateIndex: Int) {
         self.delegate = delegate
         self.candidate = candidate
+        self.candidateIndex = candidateIndex
         let figureCharacter: Character?
         switch candidate.figure {
         case .none:                           figureCharacter = nil
@@ -95,6 +97,6 @@ class VoteButton: UIButton {
     }
 
     func primaryActionTriggered() {
-        delegate.vote(for: candidate)
+        delegate.vote(for: candidateIndex)
     }
 }

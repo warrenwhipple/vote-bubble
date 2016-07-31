@@ -36,16 +36,16 @@ class MessagesViewController:
     }
 
     func presentInferredView(for message: MSMessage, with conversation: MSConversation) {
-        if let ballot = Ballot(message: message) {
-            switch ballot.status {
+        if let election = Election(message: message) {
+            switch election.status {
             case .open:
-                if ballot.didVote(conversation.localParticipantIdentifier) {
-                    presentReportView(for: ballot, with: conversation)
+                if election.didVote(conversation.localParticipantIdentifier) {
+                    presentReportView(for: election, with: conversation)
                 } else {
-                    presentVoteView(for: ballot, with: conversation)
+                    presentVoteView(for: election, with: conversation)
                 }
             case .closed:
-                presentReportView(for: ballot, with: conversation)
+                presentReportView(for: election, with: conversation)
             }
         } else {
             print("Message could not be converted to ballot")
@@ -75,22 +75,22 @@ class MessagesViewController:
         embed(newChildViewController: viewController)
     }
 
-    func presentVoteView(for ballot: Ballot, with conversation: MSConversation) {
+    func presentVoteView(for election: Election, with conversation: MSConversation) {
         let viewController = storyboard!.instantiateViewController(
             withIdentifier: "VoteViewController"
             ) as! VoteViewController
         viewController.delegate = self
-        viewController.ballot = ballot
+        viewController.election = election
         viewController.conversation = conversation
         embed(newChildViewController: viewController)
     }
 
-    func presentReportView(for ballot: Ballot, with conversation: MSConversation) {
+    func presentReportView(for election: Election, with conversation: MSConversation) {
         let viewController = storyboard!.instantiateViewController(
             withIdentifier: "ReportViewController"
             ) as! ReportViewController
         viewController.delegate = self
-        viewController.ballot = ballot
+        viewController.election = election
         viewController.conversation = conversation
         embed(newChildViewController: viewController)
     }
@@ -204,29 +204,39 @@ class MessagesViewController:
     }
 
     func aprove(ballot: Ballot, with conversation: MSConversation) {
-        presentVoteView(for: ballot, with: conversation)
+        let election = Election(
+            session: nil,
+            cloudKitID: nil,
+            status: .open,
+            voterIDs: [],
+            ballot: ballot,
+            votes: []
+        )
+        presentVoteView(for: election, with: conversation)
     }
 
-    func vote(for candidate: Candidate, on ballot: Ballot, with conversation: MSConversation) {
-        ballot.recordVote(voterID: conversation.localParticipantIdentifier, candidate: candidate)
-        let message = ballot.message(sender: conversation.localParticipantIdentifier)
+    func vote(for candidateIndex: Int, in election: Election, with conversation: MSConversation) {
+        election.recordVote(
+            voterID: conversation.localParticipantIdentifier,
+            candidateIndex: candidateIndex)
+        let message = election.message(sender: conversation.localParticipantIdentifier)
         conversation.insert(message)
         presentBrowseView(with: conversation)
         requestPresentationStyle(.compact)
     }
 
-    func declineToVote(on ballot: Ballot, with conversation: MSConversation) {
-        let message = ballot.message(sender: conversation.localParticipantIdentifier)
+    func declineToVote(in election: Election, with conversation: MSConversation) {
+        let message = election.message(sender: conversation.localParticipantIdentifier)
         conversation.insert(message)
         presentBrowseView(with: conversation)
         requestPresentationStyle(.compact)
     }
 
-    func dismissVote(on ballot: Ballot, with conversation: MSConversation) {
-        presentBuildView(for: ballot, conversation: conversation)
+    func dismissVote(in election: Election, with conversation: MSConversation) {
+        presentBuildView(for: election.ballot, conversation: conversation)
     }
 
-    func dismissReport(ballot: Ballot, with conversation: MSConversation) {
+    func dismissReport(for election: Election, with conversation: MSConversation) {
         presentBrowseView(with: conversation)
         requestPresentationStyle(.compact)
     }

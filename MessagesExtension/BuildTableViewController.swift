@@ -76,7 +76,12 @@ class BuildTableViewController:
     // MARK: - CandidateBuildTableViewCellDelegate methods
 
     func newCandidate() -> Candidate {
-        let candidate = Candidate(color: UIColor.white(), backgroundColor: UIColor.randomHue())
+        let candidate = Candidate(
+            color: UIColor.white(),
+            backgroundColor: UIColor.randomHue(),
+            text: nil,
+            figure: .none
+        )
         ballot.candidates.append(candidate)
         let indexPath = IndexPath(item: ballot.candidates.count , section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)

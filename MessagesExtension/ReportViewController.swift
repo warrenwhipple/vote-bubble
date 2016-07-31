@@ -9,7 +9,7 @@
 import Messages
 
 protocol ReportViewControllerDelegate: class {
-    func dismissReport(ballot: Ballot, with conversation: MSConversation)
+    func dismissReport(for election: Election, with conversation: MSConversation)
 }
 
 class ReportViewController:
@@ -18,18 +18,18 @@ class ReportViewController:
     ReportTableViewControllerDelegate {
 
     weak var delegate: ReportViewControllerDelegate!
-    var ballot: Ballot!
+    var election: Election!
     var conversation: MSConversation!
 
     override func viewDidLoad() {
         let tableViewController = childViewControllers.first! as! ReportTableViewController
-        tableViewController.initConnect(delegate: self, ballot: ballot)
+        tableViewController.initConnect(delegate: self, election: election)
         super.viewDidLoad()
     }
 
     // MARK: ReportViewControllerDelegate methods
 
-    func dismissReport(ballot: Ballot) {
-        delegate.dismissReport(ballot: ballot, with: conversation)
+    func dismissReport(for election: Election) {
+        delegate.dismissReport(for: election, with: conversation)
     }
 }

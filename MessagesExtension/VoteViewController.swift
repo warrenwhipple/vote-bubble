@@ -9,9 +9,9 @@
 import Messages
 
 protocol VoteViewControllerDelegate: class {
-    func vote(for candidate: Candidate, on ballot: Ballot, with conversation: MSConversation)
-    func declineToVote(on ballot: Ballot, with conversation: MSConversation)
-    func dismissVote(on ballot: Ballot, with conversation: MSConversation)
+    func vote(for candidateIndex: Int, in election: Election, with conversation: MSConversation)
+    func declineToVote(in election: Election, with conversation: MSConversation)
+    func dismissVote(in election: Election, with conversation: MSConversation)
 }
 
 class VoteViewController:
@@ -22,19 +22,20 @@ class VoteViewController:
     @IBOutlet weak var candidatesBrickView: BrickView!
     @IBOutlet weak var questionLabel: UILabel!
     weak var delegate: VoteViewControllerDelegate!
-    var ballot: Ballot!
+    var election: Election!
     var conversation: MSConversation!
 
     override func viewDidLoad() {
-        for candidate in ballot.candidates {
+        for (i, candidate) in election.ballot.candidates.enumerated() {
             let candidateView = VoteButton(
                 frame: CGRect.zero,
                 delegate: self,
-                candidate: candidate
+                candidate: candidate,
+                candidateIndex: i
             )
             candidatesBrickView.addSubview(candidateView)
         }
-        if let text = ballot.questionText {
+        if let text = election.ballot.questionText {
             questionLabel.text = text
         } else {
             questionLabel.removeFromSuperview()
@@ -47,16 +48,16 @@ class VoteViewController:
     }
 
     @IBAction func backButtonPrimaryActionTriggered(_ sender: UIButton) {
-        delegate?.dismissVote(on: ballot, with: conversation)
+        delegate?.dismissVote(in: election, with: conversation)
     }
 
     @IBAction func declineVoteButtonPrimaryActionTriggered(_ sender: UIButton) {
-        delegate?.declineToVote(on: ballot, with: conversation)
+        delegate?.declineToVote(in: election, with: conversation)
     }
 
     // MARK: - CandidateVoteViewDelegate methods
 
-    func vote(for candidate: Candidate) {
-        delegate?.vote(for: candidate, on: ballot, with: conversation)
+    func vote(for candidateIndex: Int) {
+        delegate?.vote(for: candidateIndex, in: election, with: conversation)
     }
 }

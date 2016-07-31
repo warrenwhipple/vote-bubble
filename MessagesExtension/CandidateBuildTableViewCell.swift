@@ -60,26 +60,24 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
     
 
     @IBAction func figureTextFieldEditingChanged(_ sender: UITextField) {
-        guard let candidate = candidate else { return }
         if let lastCharacter = sender.text?.characters.last {
             sender.text = String(lastCharacter)
-            candidate.figure = .customCharacter(lastCharacter)
+            candidate?.figure = .customCharacter(lastCharacter)
         } else {
             sender.text = nil
-            candidate.figure = .none
+            candidate?.figure = .none
         }
     }
 
     @IBAction func textTextFieldEditingChanged(_ sender: UITextField) {
-        guard let candidate = candidate else { return }
-        candidate.text = sender.text
-        switch candidate.figure {
+        candidate?.text = sender.text
+        switch candidate?.figure ?? .none {
         case .none, .autoCharacter:
             if let firstCharacter = sender.text?.characters.first {
-                candidate.figure = .autoCharacter(firstCharacter)
+                candidate?.figure = .autoCharacter(firstCharacter)
                 figureTextField.text = String(firstCharacter)
             } else {
-                candidate.figure = .none
+                candidate?.figure = .none
                 figureTextField.text = nil
             }
         default: break

@@ -9,23 +9,23 @@
 import UIKit
 
 protocol QuestionReportTableViewCellDelegate: class {
-    func dismissReport(ballot: Ballot)
+    func dismissReport(for election: Election)
 }
 
 class QuestionReportTableViewCell: UITableViewCell {
 
     private(set) weak var delegate: QuestionReportTableViewCellDelegate!
-    private(set) var ballot: Ballot!
+    private(set) var election: Election!
     @IBOutlet var questionLabel: UILabel!
 
     func load(delegate: QuestionReportTableViewCellDelegate,
-              ballot: Ballot) {
+              election: Election) {
         self.delegate = delegate
-        self.ballot = ballot
-        questionLabel.text = ballot.questionText
+        self.election = election
+        questionLabel.text = election.ballot.questionText
     }
 
     @IBAction func dismissButtonPrimaryActionTriggered(_ sender: ArrowButton) {
-        delegate.dismissReport(ballot: ballot)
+        delegate.dismissReport(for: election)
     }
 }
