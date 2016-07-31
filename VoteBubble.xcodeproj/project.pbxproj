@@ -51,6 +51,9 @@
 		2DDF11061D3ED266005BE375 /* Ballot+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF11041D3ED266005BE375 /* Ballot+url.swift */; };
 		2DE237721D4C536800684E9F /* BallotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE237711D4C536800684E9F /* BallotCollectionViewCell.swift */; };
 		2DE237761D4D316800684E9F /* DefaultBallots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE237751D4D316800684E9F /* DefaultBallots.swift */; };
+		2DE237791D4D3D8A00684E9F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE237781D4D3D8A00684E9F /* CloudKit.framework */; };
+		2DE2377B1D4D4E9600684E9F /* Ballot+CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2377A1D4D4E9600684E9F /* Ballot+CloudKit.swift */; };
+		2DE2377D1D4E3FB600684E9F /* Election.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2377C1D4E3FB600684E9F /* Election.swift */; };
 		2DEAC4581D3FC81000823E0E /* Candidate+urlQueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */; };
 		2DEAC4591D3FC81C00823E0E /* Candidate+urlQueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */; };
 		2DED18971D46E63A00B181E9 /* UUID+base64String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED18961D46E63A00B181E9 /* UUID+base64String.swift */; };
@@ -125,6 +128,10 @@
 		2DDF110A1D3EFED1005BE375 /* Int+urlCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+urlCharacter.swift"; sourceTree = "<group>"; };
 		2DE237711D4C536800684E9F /* BallotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DE237751D4D316800684E9F /* DefaultBallots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBallots.swift; sourceTree = "<group>"; };
+		2DE237771D4D3CD800684E9F /* MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessagesExtension.entitlements; sourceTree = "<group>"; };
+		2DE237781D4D3D8A00684E9F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		2DE2377A1D4D4E9600684E9F /* Ballot+CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ballot+CloudKit.swift"; sourceTree = "<group>"; };
+		2DE2377C1D4E3FB600684E9F /* Election.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Election.swift; sourceTree = "<group>"; };
 		2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Candidate+urlQueryItems.swift"; sourceTree = "<group>"; };
 		2DED18961D46E63A00B181E9 /* UUID+base64String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UUID+base64String.swift"; sourceTree = "<group>"; };
 		2DF1C7BA1D42B51C00F20B7C /* UIView+IBInspectables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectables.swift"; sourceTree = "<group>"; };
@@ -144,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D5952461D33EEEE0000DF98 /* Messages.framework in Frameworks */,
+				2DE237791D4D3D8A00684E9F /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +273,7 @@
 		2D5952441D33EEEE0000DF98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DE237781D4D3D8A00684E9F /* CloudKit.framework */,
 				2D5952451D33EEEE0000DF98 /* Messages.framework */,
 			);
 			name = Frameworks;
@@ -273,6 +282,7 @@
 		2D5952471D33EEEE0000DF98 /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				2DE237771D4D3CD800684E9F /* MessagesExtension.entitlements */,
 				2D2C80431D367DF90070DB41 /* Utility */,
 				2D2C80421D367D960070DB41 /* Messages View */,
 				2D2C80411D367D880070DB41 /* Browse View */,
@@ -290,8 +300,10 @@
 		2D5952591D33EF4F0000DF98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2DE2377C1D4E3FB600684E9F /* Election.swift */,
 				2D5952701D33F0370000DF98 /* Ballot.swift */,
 				2DDF11041D3ED266005BE375 /* Ballot+url.swift */,
+				2DE2377A1D4D4E9600684E9F /* Ballot+CloudKit.swift */,
 				2D5952711D33F0370000DF98 /* Candidate.swift */,
 				2DEAC4571D3FC81000823E0E /* Candidate+urlQueryItems.swift */,
 				2D5952721D33F0370000DF98 /* Figure.swift */,
@@ -380,6 +392,11 @@
 						DevelopmentTeam = J627TVEKXG;
 						DevelopmentTeamName = "Warren Whipple";
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -454,6 +471,7 @@
 			files = (
 				2D450DDB1D429ED700931F3B /* RoundButton.swift in Sources */,
 				2D59526D1D33F02A0000DF98 /* BuildTableViewController.swift in Sources */,
+				2DE2377D1D4E3FB600684E9F /* Election.swift in Sources */,
 				2D5952671D33F01F0000DF98 /* BrowseViewController.swift in Sources */,
 				2D5952611D33EFF00000DF98 /* BubbleButton.swift in Sources */,
 				2D5950B21D47995300C03BCB /* ReportTableViewController.swift in Sources */,
@@ -468,6 +486,7 @@
 				2D5952651D33EFFC0000DF98 /* CGRect+bricks.swift in Sources */,
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
 				2DC62A291D426EE900CD3F1D /* PlusIconView.swift in Sources */,
+				2DE2377B1D4D4E9600684E9F /* Ballot+CloudKit.swift in Sources */,
 				2D283E7E1D36A0B700046727 /* CandidateBuildTableViewCell.swift in Sources */,
 				2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */,
 				2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */,
@@ -611,6 +630,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = MessagesExtension/MessagesExtension.entitlements;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubble.MessagesExtension;
@@ -624,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = MessagesExtension/MessagesExtension.entitlements;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.warrenwhipple.VoteBubble.MessagesExtension;

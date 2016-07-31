@@ -11,6 +11,7 @@ import Messages
 class Ballot {
 
     var session: MSSession?
+    var cloudKitID: UUID?
     enum Status: Int { case open, closed }
     var status: Status
     var questionText: String?
@@ -18,11 +19,13 @@ class Ballot {
     var voterIDs: [UUID]
 
     init(session: MSSession?,
+         cloudKitID: UUID?,
          status: Status,
          questionText: String?,
          candidates: [Candidate],
          voterIDs: [UUID]) {
         self.session = session
+        self.cloudKitID = cloudKitID
         self.status = status
         self.questionText = questionText
         self.candidates = candidates
@@ -111,6 +114,7 @@ class Ballot {
     static func new() -> Ballot {
         return Ballot(
             session: nil,
+            cloudKitID: nil,
             status: .open,
             questionText: nil,
             candidates: [],

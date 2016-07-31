@@ -24,6 +24,7 @@ class MessagesViewController:
         print("Messages app view did appear")
         super.viewDidAppear(animated)
         anticipatedPresentationStyle = presentationStyle
+        //Ballot.new().testCloudKit()
     }
 
     override func didReceiveMemoryWarning() {

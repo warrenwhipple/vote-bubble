@@ -11,6 +11,7 @@ import Foundation
 let defaultBallots = [
     Ballot(
         session: nil,
+        cloudKitID: nil,
         status: .open,
         questionText: nil,
         candidates: [
@@ -33,6 +34,7 @@ let defaultBallots = [
     ),
     Ballot(
         session: nil,
+        cloudKitID: nil,
         status: .open,
         questionText: "feeling?",
         candidates: [

@@ -22,6 +22,7 @@ extension Ballot {
             return nil
         }
 
+        var cloudKitID: UUID?
         var status: Status?
         var questionText: String?
         var didVoteVoterIDs: [UUID] = []
@@ -32,6 +33,8 @@ extension Ballot {
             guard let value = queryItem.value else { continue }
 
             switch queryItem.name {
+            case "k":
+                cloudKitID = UUID(base64String: value)
             case "s":
                 if value == "c" { status = .closed }
             case "q":
@@ -54,6 +57,7 @@ extension Ballot {
         }
         self.init(
             session: session,
+            cloudKitID: cloudKitID,
             status: status ?? .open,
             questionText: questionText,
             candidates: candidates,
@@ -67,6 +71,10 @@ extension Ballot {
         func add(_ name: String, _ value: String?) {
             guard let value = value , !value.isEmpty else { return }
             queryItems.append(URLQueryItem(name: name, value: value))
+        }
+
+        if let cloudKitID = cloudKitID {
+            add("k", cloudKitID.base64String)
         }
 
         if status == .closed {
