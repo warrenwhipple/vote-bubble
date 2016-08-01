@@ -83,15 +83,12 @@ class VoteButton: UIButton {
                     width: bounds.width,
                     height: bounds.height - characterLabel.frame.height
                 )
-                textLabel.font = UIFont.systemFont(ofSize: textLabel.frame.height * 1/3)
             } else {
                 characterLabel.frame = bounds
             }
-            characterLabel.font = UIFont.systemFont(ofSize: characterLabel.frame.height * 2/3)
         } else {
             if let textLabel = textLabel {
                 textLabel.frame = bounds
-                textLabel.font = UIFont.systemFont(ofSize: textLabel.frame.height * 1/3)
             }
         }
     }

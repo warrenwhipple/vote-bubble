@@ -32,7 +32,7 @@ class QuestionBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        // Replace auto period with auto questionmark
+        // Replaces auto period with auto questionmark
         if var characters = sender.text?.characters {
             if characters.popLast() == " " {
                 if lastLastQuestionCharacterWasSpace {

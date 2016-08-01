@@ -12,6 +12,8 @@
 		2D450DDB1D429ED700931F3B /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D450DDA1D429ED700931F3B /* RoundButton.swift */; };
 		2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BFB61D36BC49008C9950 /* QuestionBuildTableViewCell.swift */; };
 		2D49DD441D4E973800BF7148 /* Election+CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49DD431D4E973800BF7148 /* Election+CloudKit.swift */; };
+		2D49DD461D4EEDD200BF7148 /* VoteButtonsBrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49DD451D4EEDD200BF7148 /* VoteButtonsBrickView.swift */; };
+		2D49DD481D4EF05A00BF7148 /* CandidatesThumbnailBrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49DD471D4EF05A00BF7148 /* CandidatesThumbnailBrickView.swift */; };
 		2D4C397C1D42973F005F3D53 /* DrawIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4C397B1D42973F005F3D53 /* DrawIcon.swift */; };
 		2D4C397E1D4299D0005F3D53 /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4C397D1D4299D0005F3D53 /* ArrowButton.swift */; };
 		2D54B1D01D3BBB130002FB34 /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D54B1CF1D3BBB130002FB34 /* VoteButton.swift */; };
@@ -36,7 +38,6 @@
 		2D5952741D33F0370000DF98 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952711D33F0370000DF98 /* Candidate.swift */; };
 		2D5952751D33F0370000DF98 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
 		2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952761D33F07F0000DF98 /* MainInterface.storyboard */; };
-		2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */; };
 		2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 		2DB9B7AA1D4903FC005D762E /* MessagesChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9B7A91D4903FC005D762E /* MessagesChildViewController.swift */; };
 		2DC62A291D426EE900CD3F1D /* PlusIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC62A281D426EE900CD3F1D /* PlusIconView.swift */; };
@@ -88,6 +89,8 @@
 		2D450DDA1D429ED700931F3B /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		2D47BFB61D36BC49008C9950 /* QuestionBuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionBuildTableViewCell.swift; sourceTree = "<group>"; };
 		2D49DD431D4E973800BF7148 /* Election+CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Election+CloudKit.swift"; sourceTree = "<group>"; };
+		2D49DD451D4EEDD200BF7148 /* VoteButtonsBrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteButtonsBrickView.swift; sourceTree = "<group>"; };
+		2D49DD471D4EF05A00BF7148 /* CandidatesThumbnailBrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesThumbnailBrickView.swift; sourceTree = "<group>"; };
 		2D4C397B1D42973F005F3D53 /* DrawIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawIcon.swift; sourceTree = "<group>"; };
 		2D4C397D1D4299D0005F3D53 /* ArrowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
 		2D54B1CF1D3BBB130002FB34 /* VoteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
@@ -115,7 +118,6 @@
 		2D5952721D33F0370000DF98 /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 		2D5952761D33F07F0000DF98 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareness.swift; sourceTree = "<group>"; };
-		2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickView.swift; sourceTree = "<group>"; };
 		2DB740761D3853D600433E15 /* UIColor+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenience.swift"; sourceTree = "<group>"; };
 		2DB9B7A91D4903FC005D762E /* MessagesChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesChildViewController.swift; sourceTree = "<group>"; };
 		2DC62A281D426EE900CD3F1D /* PlusIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusIconView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				2D59526A1D33F02A0000DF98 /* VoteViewController.swift */,
+				2D49DD451D4EEDD200BF7148 /* VoteButtonsBrickView.swift */,
 				2D54B1CF1D3BBB130002FB34 /* VoteButton.swift */,
 			);
 			name = "Vote View";
@@ -198,6 +201,7 @@
 			children = (
 				2D5952661D33F01F0000DF98 /* BrowseViewController.swift */,
 				2DE237711D4C536800684E9F /* BallotCollectionViewCell.swift */,
+				2D49DD471D4EF05A00BF7148 /* CandidatesThumbnailBrickView.swift */,
 				2DE237751D4D316800684E9F /* DefaultBallots.swift */,
 			);
 			name = "Browse View";
@@ -224,12 +228,11 @@
 				2D450DDA1D429ED700931F3B /* RoundButton.swift */,
 				2D5952601D33EFF00000DF98 /* BubbleButton.swift */,
 				2D5952621D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift */,
-				2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */,
 				2DB740761D3853D600433E15 /* UIColor+Convenience.swift */,
 				2DDF11071D3EEEA4005BE375 /* String+split.swift */,
 				2DDF110A1D3EFED1005BE375 /* Int+urlCharacter.swift */,
 				2DED18961D46E63A00B181E9 /* UUID+base64String.swift */,
-				2DA81C9C1D3BC88A00FC08D2 /* BrickView.swift */,
+				2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D450DDB1D429ED700931F3B /* RoundButton.swift in Sources */,
+				2D49DD481D4EF05A00BF7148 /* CandidatesThumbnailBrickView.swift in Sources */,
 				2D59526D1D33F02A0000DF98 /* BuildTableViewController.swift in Sources */,
 				2DE2377D1D4E3FB600684E9F /* Election.swift in Sources */,
 				2D5952671D33F01F0000DF98 /* BrowseViewController.swift in Sources */,
@@ -477,13 +481,13 @@
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
 				2DC62A291D426EE900CD3F1D /* PlusIconView.swift in Sources */,
 				2D283E7E1D36A0B700046727 /* CandidateBuildTableViewCell.swift in Sources */,
-				2DA81C9D1D3BC88A00FC08D2 /* BrickView.swift in Sources */,
 				2D47BFB71D36BC49008C9950 /* QuestionBuildTableViewCell.swift in Sources */,
 				2DF1C7BB1D42B51C00F20B7C /* UIView+IBInspectables.swift in Sources */,
 				2DE237721D4C536800684E9F /* BallotCollectionViewCell.swift in Sources */,
 				2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */,
 				2D5950B41D479AAF00C03BCB /* CandidateReportTableViewCell.swift in Sources */,
 				2D59526F1D33F02A0000DF98 /* ReportViewController.swift in Sources */,
+				2D49DD461D4EEDD200BF7148 /* VoteButtonsBrickView.swift in Sources */,
 				2D4C397E1D4299D0005F3D53 /* ArrowButton.swift in Sources */,
 				2DE2377F1D4E424D00684E9F /* Election+url.swift in Sources */,
 				2D4C397C1D42973F005F3D53 /* DrawIcon.swift in Sources */,

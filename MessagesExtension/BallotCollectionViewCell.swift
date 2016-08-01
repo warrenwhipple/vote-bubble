@@ -11,7 +11,7 @@ import UIKit
 class BallotCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var stackView: UIStackView!
-    @IBOutlet var candidateBrickView: BrickView!
+    @IBOutlet var candidateBrickView: CandidatesThumbnailBrickView!
     @IBOutlet var questionLabel: UILabel!
     var usedCandidateLabels: [UILabel] = []
     var unusedCandidateLabels: [UILabel] = []

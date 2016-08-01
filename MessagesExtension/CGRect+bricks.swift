@@ -10,7 +10,7 @@ import CoreGraphics
 
 extension CGRect {
     func bricks(count: Int) -> [CGRect] {
-        assert(count > 0)
+        guard count > 0 else { return [] }
         var rects: [CGRect] = []
         rects.reserveCapacity(count)
         var columnCount = 1

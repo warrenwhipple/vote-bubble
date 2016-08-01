@@ -19,26 +19,32 @@ class VoteViewController:
     MessagesChildViewController,
     VoteButtonDelegate {
 
-    @IBOutlet weak var candidatesBrickView: BrickView!
-    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet var bubbleStackView: UIStackView!
+    @IBOutlet var voteButtonsBrickView: VoteButtonsBrickView!
+    @IBOutlet var questionView: UIView!
+    @IBOutlet var questionLabel: UILabel!
+
     weak var delegate: VoteViewControllerDelegate!
     var election: Election!
     var conversation: MSConversation!
+    var voteButtons: [VoteButton] = []
 
     override func viewDidLoad() {
         for (i, candidate) in election.ballot.candidates.enumerated() {
-            let candidateView = VoteButton(
+            let voteButton = VoteButton(
                 frame: CGRect.zero,
                 delegate: self,
                 candidate: candidate,
                 candidateIndex: i
             )
-            candidatesBrickView.addSubview(candidateView)
+            voteButtons.append(voteButton)
+            voteButtonsBrickView.addSubview(voteButton)
         }
         if let text = election.ballot.questionText {
             questionLabel.text = text
         } else {
-            questionLabel.removeFromSuperview()
+            bubbleStackView.removeArrangedSubview(questionView)
+            questionView.removeFromSuperview()
         }
         super.viewDidLoad()
     }

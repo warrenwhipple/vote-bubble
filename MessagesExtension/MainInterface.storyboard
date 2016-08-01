@@ -76,7 +76,7 @@
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xOf-qG-j8C">
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDX-Fq-j77" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDX-Fq-j77" customClass="CandidatesThumbnailBrickView" customModule="MessagesExtension" customModuleProvider="target">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8i-KL-joV">
@@ -175,7 +175,7 @@
                                                 <subviews>
                                                     <stackView clearsContextBeforeDrawing="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wUB-zK-jbW">
                                                         <subviews>
-                                                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
+                                                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" customClass="VoteButtonsBrickView" customModule="MessagesExtension" customModuleProvider="target">
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="1:1" id="QBR-VE-SPd"/>
                                                                 </constraints>
@@ -290,8 +290,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="candidatesBrickView" destination="4eF-dQ-Z7k" id="at8-Pb-et4"/>
-                        <outlet property="questionLabel" destination="Ono-cU-CH7" id="F99-Lr-WyA"/>
+                        <outlet property="bubbleStackView" destination="wUB-zK-jbW" id="itQ-eD-4it"/>
+                        <outlet property="questionLabel" destination="Ono-cU-CH7" id="CG7-ZR-eJi"/>
+                        <outlet property="questionView" destination="bRn-gg-8lH" id="2x6-Jb-Q5u"/>
+                        <outlet property="voteButtonsBrickView" destination="4eF-dQ-Z7k" id="mKE-pJ-NCQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-rL-YBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
