@@ -8,7 +8,7 @@
 
 import Messages
 
-struct Ballot {
+class Ballot {
     var questionText: String?
     var candidates: [Candidate]
 

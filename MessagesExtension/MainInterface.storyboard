@@ -76,12 +76,10 @@
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xOf-qG-j8C">
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDX-Fq-j77" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
-                                                    <frame key="frameInset" width="96" height="76"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDX-Fq-j77" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Question?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8i-KL-joV">
-                                                    <frame key="frameInset" minY="76" width="96" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8i-KL-joV">
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="0Q8-c8-GdH"/>
@@ -179,7 +177,7 @@
                                                         <subviews>
                                                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-dQ-Z7k" customClass="BrickView" customModule="MessagesExtension" customModuleProvider="target">
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="2:1" id="QBR-VE-SPd"/>
+                                                                    <constraint firstAttribute="width" secondItem="4eF-dQ-Z7k" secondAttribute="height" multiplier="1:1" id="QBR-VE-SPd"/>
                                                                 </constraints>
                                                             </view>
                                                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-gg-8lH" userLabel="Question View">
