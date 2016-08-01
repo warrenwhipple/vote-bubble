@@ -9,41 +9,40 @@
 import CoreGraphics
 
 extension CGRect {
-
-    static func bricks(containerWidth: CGFloat, count: Int) -> (CGSize, [CGRect]) {
-        assert(count >= 0)
+    func bricks(count: Int) -> [CGRect] {
+        assert(count > 0)
         var rects: [CGRect] = []
         rects.reserveCapacity(count)
-        let rowCount = Int(floor(sqrt(Float(count))))
-        let columnCount = (count + rowCount - 1) / rowCount
-        let longRowCount = count % rowCount
-        let shortRowCount = longRowCount == 0 ? 0 : rowCount - longRowCount
-        let rowHeight = containerWidth / CGFloat(columnCount)
-        for i in 0 ..< rowCount {
-            let y = CGFloat(i) * rowHeight
-            let localRowColumnCount = i < shortRowCount ? columnCount - 1 : columnCount
-            let columnWidth = containerWidth / CGFloat(localRowColumnCount)
-            for j in 0 ..< localRowColumnCount {
+        var columnCount = 1
+        var rowCount = 1
+        while columnCount * rowCount < count {
+            if columnCount == rowCount {
+                columnCount += 1
+            } else {
+                rowCount += 1
+            }
+        }
+        let emptyCellCount = columnCount * rowCount - count
+        let rowHeight = size.height / CGFloat(rowCount)
+        for rowIndex in 0 ..< rowCount {
+            let thisRowColumnCount: Int
+            if rowIndex < emptyCellCount {
+                thisRowColumnCount = columnCount - 1
+            } else {
+                thisRowColumnCount = columnCount
+            }
+            let thisRowColumnWidth = size.width / CGFloat(thisRowColumnCount)
+            for columnIndex in 0 ..< thisRowColumnCount {
                 rects.append(
                     CGRect(
-                        x: CGFloat(j) * columnWidth,
-                        y: y,
-                        width: columnWidth,
+                        x: origin.x + CGFloat(columnIndex) * thisRowColumnWidth,
+                        y: origin.y + CGFloat(rowIndex) * rowHeight,
+                        width: thisRowColumnWidth,
                         height: rowHeight
                     )
                 )
             }
         }
-        let containerSize = CGSize(
-            width: containerWidth,
-            height: CGFloat(rowCount) * rowHeight
-        )
-        return (containerSize, rects)
-    }
-
-    static func aspectRatioForBrickCount(_ count: Int) -> CGFloat {
-        let rowCount = Int(floor(sqrt(Float(count))))
-        let columnCount = (count + rowCount - 1) / rowCount
-        return CGFloat(columnCount) / CGFloat(rowCount)
+        return rects
     }
 }

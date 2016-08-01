@@ -18,19 +18,18 @@ struct Ballot {
     }
 
     func messageImage() -> UIImage? {
-        let (messageSize, answerRects) = CGRect.bricks(
-            containerWidth: MSMessageTemplateLayout.defaultWidth,
-            count: candidates.count
-        )
-        let scale = MSMessageTemplateLayout.defaultScale
-        let opaque = true
-        UIGraphicsBeginImageContextWithOptions(messageSize, opaque, scale)
+        let size = MSMessageTemplateLayout.defaultImageSize
+        let rect = CGRect(origin: CGPoint.zero, size: size)
+        let brickRects = rect.bricks(count: candidates.count)
+        let scale = MSMessageTemplateLayout.defaultImageScale
+        let opacity = true
+        UIGraphicsBeginImageContextWithOptions(size, opacity, scale)
         guard let context = UIGraphicsGetCurrentContext() else {
             print("Failed to create graphics context")
             return nil
         }
-        for (answer, rect) in zip(candidates, answerRects) {
-            answer.draw(context: context, rect: rect)
+        for (candidate, brickRect) in zip(candidates, brickRects) {
+            candidate.draw(context: context, rect: brickRect)
         }
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
             print("Failed to get image from image context")

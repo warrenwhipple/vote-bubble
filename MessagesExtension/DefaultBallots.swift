@@ -23,6 +23,12 @@ let defaultBallots = [
                 backgroundColor: #colorLiteral(red: 0.8949507475, green: 0.1438436359, blue: 0.08480125666, alpha: 1),
                 text: nil,
                 figure: .customCharacter("N")
+            ),
+            Candidate(
+                color: #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1),
+                backgroundColor: #colorLiteral(red: 0.1142767668, green: 0.3181744218, blue: 0.4912756383, alpha: 1),
+                text: nil,
+                figure: .customCharacter("?")
             )
         ]
     ),
@@ -52,6 +58,12 @@ let defaultBallots = [
                 backgroundColor: #colorLiteral(red: 0.8779790998, green: 0.3812967837, blue: 0.5770481825, alpha: 1),
                 text: nil,
                 figure: .customCharacter("😡")
+            ),
+            Candidate(
+                color: #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1),
+                backgroundColor: #colorLiteral(red: 0.4776530862, green: 0.2292086482, blue: 0.9591622353, alpha: 1),
+                text: nil,
+                figure: .customCharacter("😱")
             )
         ]
     )

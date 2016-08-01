@@ -22,33 +22,17 @@ extension Election {
 
         var cloudKitID: UUID?
         var status: Status?
-        var voterIDs: [UUID] = []
-
+        var voterIDs: [UUID]?
         var ballotQuestionText: String?
 
         var candidates: [Candidate] = []
+        var newCandidateDidBegin = false
         var candidateColor: UIColor?
         var candidateBackgroundColor: UIColor?
         var candidateText: String?
         var candidateFigure: Figure?
 
-        func newCandidate() {
-            if let color = candidateColor, let backgroundColor = candidateBackgroundColor {
-                let candidate = Candidate(
-                    color: color,
-                    backgroundColor: backgroundColor,
-                    text: candidateText,
-                    figure: candidateFigure ?? .none
-                )
-                candidates.append(candidate)
-                candidateColor = nil
-                candidateBackgroundColor = nil
-                candidateText = nil
-                candidateFigure = nil
-            }
-        }
-
-        var votes: [[Int]] = []
+        var votes: [[Int]]?
 
         for queryItem in queryItems {
             guard let value = queryItem.value else { continue }
@@ -64,10 +48,24 @@ extension Election {
             case "q":
                 ballotQuestionText = value
             case "c":
-                newCandidate()
-                candidateColor = UIColor(hexString: value) ?? #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1)
+                if newCandidateDidBegin {
+                    // Save last candidate values and reset them
+                    let candidate = Candidate(
+                        color: candidateColor ?? #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1),
+                        backgroundColor: candidateBackgroundColor ?? #colorLiteral(red: 0.4266758859, green: 0.4266631007, blue: 0.4266703427, alpha: 1),
+                        text: candidateText,
+                        figure: candidateFigure ?? .none
+                    )
+                    candidates.append(candidate)
+                    candidateColor = nil
+                    candidateBackgroundColor = nil
+                    candidateText = nil
+                    candidateFigure = nil
+                    newCandidateDidBegin = true
+                }
+                candidateColor = UIColor(hexString: value)
             case "b":
-                candidateColor = UIColor(hexString: value) ?? #colorLiteral(red: 0.4266758859, green: 0.4266631007, blue: 0.4266703427, alpha: 1)
+                candidateColor = UIColor(hexString: value)
             case "t":
                 candidateText = value
             case "fa":
@@ -86,9 +84,9 @@ extension Election {
             session: session,
             cloudKitID: cloudKitID,
             status: status ?? .open,
-            voterIDs: voterIDs,
+            voterIDs: voterIDs ?? [],
             ballot: Ballot(questionText: ballotQuestionText, candidates: candidates),
-            votes: votes
+            votes: votes ?? []
         )
     }
 

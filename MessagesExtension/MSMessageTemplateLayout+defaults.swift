@@ -9,6 +9,6 @@
 import Messages
 
 extension MSMessageTemplateLayout {
-    static var defaultWidth: CGFloat { return 300 }
-    static var defaultScale: CGFloat { return 3 }
+    static var defaultImageSize: CGSize { return CGSize(width: 300, height: 300) }
+    static var defaultImageScale: CGFloat { return 3 }
 }

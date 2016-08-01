@@ -8,33 +8,27 @@
 
 import XCTest
 
+extension CGFloat {
+    static func random(from lowInclusive: CGFloat = 0, to highExclusive: CGFloat = 1) -> CGFloat {
+        let range = highExclusive - lowInclusive
+        let randomZeroToOne = CGFloat(arc4random()) / CGFloat(UInt32.max)
+        return lowInclusive + randomZeroToOne * range
+    }
+}
+
 class VoteBubbleTests: XCTestCase {
-    
-    func testExample() {
-        let voterIDs = [UUID(),UUID(),UUID(),UUID()]
-        let ballot = Ballot.init(
-            status: .open,
-            questionText: "What's the deal yo?",
-            candidates: [
-                Candidate(
-                    color: #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1),
-                    backgroundColor: #colorLiteral(red: 0.7540004253, green: 0, blue: 0.2649998069, alpha: 1),
-                    text: "It's all over man",
-                    figure: Figure.autoCharacter("😱"),
-                    votes: [0,3]
-                ),
-                Candidate(
-                    color: #colorLiteral(red: 0.1142767668, green: 0.3181744218, blue: 0.4912756383, alpha: 1),
-                    backgroundColor: #colorLiteral(red: 0.7602152824, green: 0.7601925135, blue: 0.7602053881, alpha: 1),
-                    text: "It's totes sweets",
-                    figure: Figure.autoCharacter("😍"),
-                    votes: [1,2]
-                )
-            ],
-            voterIDs: voterIDs
-        )
-        let ballotCopy = Ballot(url: ballot.url())
-        XCTAssert(ballot.url() == ballotCopy?.url())
+
+    func testBricks() {
+        for n in 1 ... 100 {
+            let rect = CGRect(
+                x: CGFloat.random(from: -1000, to: 1000),
+                y: CGFloat.random(from: -1000, to: 1000),
+                width: CGFloat.random(from: 0.1, to: 1000),
+                height: CGFloat.random(from: 0.1, to: 1000)
+            )
+            let bricks = rect.bricks(count: n)
+            XCTAssert(bricks.count == n)
+        }
     }
 
     func testUUIDBase64String() {

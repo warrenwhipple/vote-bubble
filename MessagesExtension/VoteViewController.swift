@@ -43,10 +43,6 @@ class VoteViewController:
         super.viewDidLoad()
     }
 
-    override func viewWillLayoutSubviews() {
-        candidatesBrickView.updateAspectRatioConstraint()
-    }
-
     @IBAction func backButtonPrimaryActionTriggered(_ sender: UIButton) {
         delegate?.dismissVote(in: election, with: conversation)
     }
