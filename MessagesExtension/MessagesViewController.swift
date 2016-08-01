@@ -210,7 +210,7 @@ class MessagesViewController:
             status: .open,
             voterIDs: [],
             ballot: ballot,
-            votes: []
+            votes: [[Int]](repeatElement([], count: ballot.candidates.count))
         )
         presentVoteView(for: election, with: conversation)
     }
