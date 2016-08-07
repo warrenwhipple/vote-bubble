@@ -77,7 +77,7 @@ class BuildTableViewController:
 
     func newCandidate() -> Candidate {
         let candidate = Candidate(
-            color: UIColor.white(),
+            color: UIColor.white,
             backgroundColor: UIColor.randomHue(),
             text: nil,
             figure: .none

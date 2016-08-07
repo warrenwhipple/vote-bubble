@@ -82,7 +82,7 @@ extension Election {
         }
         self.init(
             session: session,
-            cloudKitID: cloudKitID,
+            cloudKitRecordID: cloudKitID,
             status: status ?? .open,
             voterIDs: voterIDs ?? [],
             ballot: Ballot(questionText: ballotQuestionText, candidates: candidates),
@@ -98,8 +98,8 @@ extension Election {
             queryItems.append(URLQueryItem(name: name, value: value))
         }
 
-        if let cloudKitID = cloudKitID {
-            add("i", cloudKitID.base64String)
+        if let cloudKitRecordID = cloudKitRecordID {
+            add("i", cloudKitRecordID.base64String)
         }
 
         if status == .closed {

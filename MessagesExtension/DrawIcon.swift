@@ -59,7 +59,7 @@ enum DrawIcon {
         let t1 = CGAffineTransform(translationX: -diameter / 8, y: -diameter / 8)
         let t2 = CGAffineTransform(rotationAngle: (rotation - 45) / 180 * CGFloat.pi)
         let t3 = CGAffineTransform(translationX: center.x, y: center.y)
-        let t = t1.concat(t2).concat(t3)
+        let t = t1.concatenating(t2).concatenating(t3)
         path.apply(t)
         path.lineWidth = strokeWidth
         strokeColor.setStroke()

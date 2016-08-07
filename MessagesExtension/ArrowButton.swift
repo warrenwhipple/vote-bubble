@@ -15,7 +15,7 @@ class ArrowButton: UIButton {
     @IBInspectable var diameter: CGFloat = 32
     @IBInspectable var rotation: CGFloat = 0
     @IBInspectable var strokeWidth: CGFloat = 4
-    @IBInspectable var strokeColor: UIColor = UIColor.white()
+    @IBInspectable var strokeColor: UIColor = UIColor.white
 
     override func draw(_ rect: CGRect) {
         DrawIcon.arrow(

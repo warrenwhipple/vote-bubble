@@ -10,7 +10,7 @@ import Messages
 
 class Election {
     var session: MSSession?
-    var cloudKitID: UUID?
+    var cloudKitRecordID: UUID?
     enum Status: Int { case open, closed }
     var status: Status
     var voterIDs: [UUID]
@@ -18,14 +18,14 @@ class Election {
     var votes: [[Int]]
 
     init(session: MSSession?,
-         cloudKitID: UUID?,
+         cloudKitRecordID: UUID?,
          status: Status,
          voterIDs: [UUID],
          ballot: Ballot,
          votes: [[Int]]) {
 
         self.session = session
-        self.cloudKitID = cloudKitID
+        self.cloudKitRecordID = cloudKitRecordID
         self.status = status
         self.voterIDs = voterIDs
         self.ballot = ballot
@@ -37,8 +37,19 @@ class Election {
         self.init(session: message.session, url: url)
     }
 
+    static func new() -> Election {
+        return Election(
+            session: nil,
+            cloudKitRecordID: nil,
+            status: .open,
+            voterIDs: [],
+            ballot: Ballot.new(),
+            votes: []
+        )
+    }
+
     func didVote(_ voterID: UUID) -> Bool {
-        return voterIDs.contains({ $0 == voterID })
+        return voterIDs.contains(voterID)
     }
 
     func recordVote(voterID: UUID, candidateIndex: Int) {

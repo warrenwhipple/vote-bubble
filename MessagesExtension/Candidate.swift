@@ -35,9 +35,9 @@ class Candidate {
             label.font = UIFont.systemFont(ofSize: rect.size.height * fontSizeRatio)
             label.text = text
             let origin = label.frame.origin
-            context.translate(x: origin.x, y: origin.y)
+            context.translateBy(x: origin.x, y: origin.y)
             label.layer.render(in: context)
-            context.translate(x: -origin.x, y: -origin.y)
+            context.translateBy(x: -origin.x, y: -origin.y)
         }
         switch figure {
         case .none:

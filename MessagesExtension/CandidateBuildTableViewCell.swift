@@ -42,7 +42,7 @@ class CandidateBuildTableViewCell: UITableViewCell, UITextFieldDelegate {
             figureTextField.placeholder = "+"
             figureTextField.text = nil
             textTextField.text = nil
-            contentView.backgroundColor = UIColor.lightGray()
+            contentView.backgroundColor = UIColor.lightGray
         }
     }
 

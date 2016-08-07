@@ -12,7 +12,7 @@ import UIKit
 
 class PlusIconView: UIView {
 
-    @IBInspectable var strokeColor: UIColor = UIColor.white()
+    @IBInspectable var strokeColor: UIColor = UIColor.white
     @IBInspectable var strokeWidth: CGFloat = 4
 
     override func draw(_ rect: CGRect) {

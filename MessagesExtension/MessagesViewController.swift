@@ -24,7 +24,7 @@ class MessagesViewController:
         print("Messages app view did appear")
         super.viewDidAppear(animated)
         anticipatedPresentationStyle = presentationStyle
-        //Ballot.new().testCloudKit()
+        Election.new().testCloudKit()
     }
 
     override func didReceiveMemoryWarning() {
@@ -206,7 +206,7 @@ class MessagesViewController:
     func aprove(ballot: Ballot, with conversation: MSConversation) {
         let election = Election(
             session: nil,
-            cloudKitID: nil,
+            cloudKitRecordID: nil,
             status: .open,
             voterIDs: [],
             ballot: ballot,
