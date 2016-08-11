@@ -8,20 +8,10 @@
 
 import UIKit
 
-class Candidate {
-    var color, backgroundColor: UIColor
+struct Candidate {
     var text: String?
     var figure: Figure
-
-    init(color: UIColor,
-         backgroundColor: UIColor,
-         text: String?,
-         figure: Figure) {
-        self.color = color
-        self.backgroundColor = backgroundColor
-        self.text = text
-        self.figure = figure
-    }
+    var color, backgroundColor: UIColor
 
     func draw(context: CGContext?, rect: CGRect) {
         guard let context = context else { return }

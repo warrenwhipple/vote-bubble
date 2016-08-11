@@ -9,6 +9,7 @@
 import CoreGraphics
 
 extension CGRect {
+
     func bricks(count: Int) -> [CGRect] {
         guard count > 0 else { return [] }
         var rects: [CGRect] = []

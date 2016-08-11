@@ -8,9 +8,15 @@
 
 import Messages
 
-class Ballot {
+struct Ballot {
+
     var questionText: String?
     var candidates: [Candidate]
+
+    init() {
+        questionText = nil
+        candidates = []
+    }
 
     init(questionText: String?, candidates: [Candidate]) {
         self.questionText = questionText

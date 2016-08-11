@@ -1,5 +1,5 @@
 //
-//  BrickView.swift
+//  CandidateBrickView.swift
 //  VoteBubble
 //
 //  Created by Warren Whipple on 8/7/16.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class BrickView: UIView {
-
+class CandidateBrickView: UIView {
+    
     
 
 }
