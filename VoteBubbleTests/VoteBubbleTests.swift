@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import CryptoSwift
 
 class VoteBubbleTests: XCTestCase {
 
@@ -56,7 +55,10 @@ class VoteBubbleTests: XCTestCase {
 
     func testEncryptionKey() {
         XCTAssert(EncryptionKey().bytes != EncryptionKey().bytes)
-        let keys = (1 ... 1000).map { _ in EncryptionKey() }
-
+        let strings = (1...100).map { _ in String.random(Range(0...1000)) }
+        let keys = (1...100).map { _ in EncryptionKey() }
+        let encrypteds = zip(keys,strings).flatMap { $0.0.encrypt($0.1) }
+        let decrypteds = zip(keys,encrypteds).flatMap { $0.0.decrypt($0.1) }
+        XCTAssert(strings == decrypteds)
     }
 }

@@ -7,24 +7,30 @@
 //
 
 import Foundation
-import CryptoSwift
 
-class EncryptionKey {
+private let keySize = 16
+private let ivSize  =  8
 
-    static let byteCount = 16 // 128 bits / 8 bits per byte
+private func randomBytes(_ count: Int) -> [UInt8] {
+    var randomBytes = [UInt8](repeating: 0, count: count)
+    randomBytes.withUnsafeMutableBufferPointer() { arc4random_buf($0.baseAddress, count) }
+    return randomBytes
+}
 
-    private static func randomBytes() -> [UInt8] {
-        var randomBytes = [UInt8](repeating: 0, count: EncryptionKey.byteCount)
-        randomBytes.withUnsafeMutableBufferPointer() {
-            arc4random_buf($0.baseAddress, EncryptionKey.byteCount)
+private extension Data {
+    var bytes: [UInt8] {
+        return withUnsafeBytes() {
+            [UInt8](UnsafeBufferPointer(start: $0, count: count))
         }
-        return randomBytes
     }
+}
+
+struct EncryptionKey {
 
     let bytes: [UInt8]
 
     init() {
-        bytes = EncryptionKey.randomBytes()
+        bytes = randomBytes(keySize)
     }
 
     init?(base64EncodedForURL: String) {
@@ -32,9 +38,8 @@ class EncryptionKey {
             print("String was not base 64 encoded")
             return nil
         }
-        guard data.count > EncryptionKey.byteCount else {
-            print("Encryption key requires at least \(EncryptionKey.byteCount) bytes")
-            print("Only \(data.count) bytes were supplied")
+        guard data.count == keySize else {
+            print("String was incorrect size")
             return nil
         }
         bytes = data.bytes
@@ -46,30 +51,23 @@ class EncryptionKey {
     }
 
     func encrypt(_ string: String) -> Data? {
-        let ivBytes = EncryptionKey.randomBytes()
-        do {
-            let encryptor = try ChaCha20(key: bytes, iv: ivBytes)
-            let stringBytes = [UInt8](string.utf8)
-            let encryptedBytes = try encryptor.encrypt(stringBytes)
-            return Data(bytes: ivBytes + encryptedBytes)
-        } catch {
-            print(error)
-            return nil
-        }
+        let ivBytes = randomBytes(ivSize)
+        let stringBytes = [UInt8](string.utf8)
+        guard let encryptedBytes = chaCha20(message: stringBytes,
+                                            key: self.bytes,
+                                            iv: ivBytes) else { return nil }
+        return Data(bytes: ivBytes + encryptedBytes)
     }
 
     func decrypt(_ data: Data) -> String? {
-        guard data.count >= 16 else { return nil }
+        guard data.count >= ivSize else { return nil }
         let bytes = data.bytes
-        let ivBytes = [UInt8](bytes[0 ..< EncryptionKey.byteCount])
-        let encryptedBytes = [UInt8](bytes[EncryptionKey.byteCount ..< bytes.count])
-        do {
-            let encryptor = try ChaCha20(key: self.bytes, iv: ivBytes)
-            let decryptedBytes = try encryptor.decrypt(encryptedBytes)
-            return String(bytes: decryptedBytes, encoding: .utf8)
-        } catch {
-            print(error)
-            return nil
-        }
+        let ivBytes = [UInt8](bytes[0 ..< ivSize])
+        let message = [UInt8](bytes[ivSize ..< bytes.count])
+        guard let decryptedBytes = chaCha20(message: message,
+                                            key: self.bytes,
+                                            iv: ivBytes) else { return nil }
+        let decryptedData = Data(bytes: decryptedBytes)
+        return String(bytes: decryptedData, encoding: .utf8)
     }
 }

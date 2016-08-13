@@ -8,8 +8,6 @@
 
 import UIKit
 
-@IBDesignable
-
 class ArrowButton: UIButton {
 
     @IBInspectable var diameter: CGFloat = 32

@@ -8,16 +8,11 @@
 
 import UIKit
 
-@IBDesignable
-
 class RoundButton: UIButton {
-
-    @IBInspectable var autoAjustsCornerRadius: Bool = true
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        if autoAjustsCornerRadius {
-            cornerRadius = min(bounds.width, bounds.height) / 2
-        }
+        layer.cornerRadius = min(bounds.width, bounds.height) / 2
     }
+
 }
