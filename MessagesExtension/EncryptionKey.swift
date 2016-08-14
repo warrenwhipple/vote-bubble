@@ -17,14 +17,6 @@ private func randomBytes(_ count: Int) -> [UInt8] {
     return randomBytes
 }
 
-private extension Data {
-    var bytes: [UInt8] {
-        return withUnsafeBytes() {
-            [UInt8](UnsafeBufferPointer(start: $0, count: count))
-        }
-    }
-}
-
 struct EncryptionKey {
 
     let bytes: [UInt8]
@@ -42,7 +34,9 @@ struct EncryptionKey {
             print("String was incorrect size")
             return nil
         }
-        bytes = data.bytes
+        bytes = data.withUnsafeBytes() {
+            [UInt8](UnsafeBufferPointer(start: $0, count: data.count))
+        }
     }
 
     var base64EncodedForURLString: String {
@@ -51,22 +45,24 @@ struct EncryptionKey {
     }
 
     func encrypt(_ string: String) -> Data? {
-        let ivBytes = randomBytes(ivSize)
+        let nonceBytes = randomBytes(ivSize)
         let stringBytes = [UInt8](string.utf8)
         guard let encryptedBytes = chaCha20(message: stringBytes,
                                             key: self.bytes,
-                                            iv: ivBytes) else { return nil }
-        return Data(bytes: ivBytes + encryptedBytes)
+                                            nonce: nonceBytes) else { return nil }
+        return Data(bytes: nonceBytes + encryptedBytes)
     }
 
     func decrypt(_ data: Data) -> String? {
         guard data.count >= ivSize else { return nil }
-        let bytes = data.bytes
-        let ivBytes = [UInt8](bytes[0 ..< ivSize])
+        let bytes = data.withUnsafeBytes() {
+            [UInt8](UnsafeBufferPointer(start: $0, count: data.count))
+        }
+        let nonceBytes = [UInt8](bytes[0 ..< ivSize])
         let message = [UInt8](bytes[ivSize ..< bytes.count])
         guard let decryptedBytes = chaCha20(message: message,
                                             key: self.bytes,
-                                            iv: ivBytes) else { return nil }
+                                            nonce: nonceBytes) else { return nil }
         let decryptedData = Data(bytes: decryptedBytes)
         return String(bytes: decryptedData, encoding: .utf8)
     }

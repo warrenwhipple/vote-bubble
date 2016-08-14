@@ -11,7 +11,7 @@ import UIKit
 struct Candidate {
     var text: String?
     var figure: Figure
-    var color, backgroundColor: UIColor
+    var textColor, backgroundColor: UIColor
 
     func draw(context: CGContext?, rect: CGRect) {
         guard let context = context else { return }
@@ -19,7 +19,7 @@ struct Candidate {
         context.fill(rect)
         func textBox(text: String, fontSizeRatio: CGFloat) {
             let label = UILabel(frame: rect)
-            label.textColor = color
+            label.textColor = textColor
             label.textAlignment = .center
             label.lineBreakMode = .byWordWrapping
             label.font = UIFont.systemFont(ofSize: rect.size.height * fontSizeRatio)

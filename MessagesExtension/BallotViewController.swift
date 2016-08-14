@@ -1,14 +1,31 @@
 //
-//  BubbleViewController.swift
+//  BallotViewController.swift
 //  VoteBubble
 //
-//  Created by Warren Whipple on 8/7/16.
+//  Created by Warren Whipple on 8/14/16.
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
 import UIKit
 
-class BubbleViewController: UIViewController {
+class BallotViewController: UIViewController {
+
+    var ballot: Ballot?
+    var election: Election?
+
+    init(ballot: Ballot) {
+        self.ballot = ballot
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    init(election: Election) {
+        self.election = election
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

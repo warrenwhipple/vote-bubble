@@ -20,7 +20,7 @@ class SavedBallotCell: UICollectionViewCell {
         if let questionText = ballot.questionText {
             if questionLabel == nil {
                 questionLabel = UILabel()
-                questionLabel!.backgroundColor = #colorLiteral(red: 0.7602152824, green: 0.7601925135, blue: 0.7602053881, alpha: 1)
+                questionLabel!.backgroundColor = ColorPalette.messageCaptionBackgroundColor
                 questionLabel!.text = questionText
             }
             if questionLabel!.superview != self {
@@ -54,7 +54,7 @@ class SavedBallotCell: UICollectionViewCell {
             case .customCharacter(let character): label.text = String(character)
             case .none: label.text = nil
             }
-            label.textColor = candidate.color
+            label.textColor = candidate.textColor
             label.backgroundColor = candidate.backgroundColor
         }
     }
@@ -71,7 +71,8 @@ class SavedBallotCell: UICollectionViewCell {
                 width: bounds.width,
                 height: questionLabelHeight
             )
-            questionLabel.font = UIFont.systemFont(ofSize: questionLabelHeight * 0.75)
+            questionLabel.font = UIFont.systemFont(ofSize: questionLabelHeight * 0.5)
+            questionLabel.textAlignment = .center
         } else {
             brickWallHeight = bounds.height
         }

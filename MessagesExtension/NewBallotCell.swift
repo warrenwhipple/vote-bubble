@@ -9,12 +9,17 @@
 import UIKit
 
 class NewBallotCell: UICollectionViewCell {
+
+    override func didMoveToSuperview() {
+        backgroundColor = ColorPalette.messageCaptionBackgroundColor
+    }
+
     override func draw(_ rect: CGRect) {
         let smallestSide = min(bounds.width, bounds.height)
         DrawIcon.plus(
             center: CGPoint(x: bounds.width / 2, y: bounds.height / 2),
-            diameter: smallestSide / 2,
-            strokeWidth: smallestSide / 8,
+            diameter: smallestSide / 5,
+            strokeWidth: smallestSide / 16,
             strokeColor: UIColor.white
         )
     }

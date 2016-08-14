@@ -22,14 +22,19 @@ class BallotCollectionViewController: UICollectionViewController {
 
     init(ballots: [Ballot]) {
         self.ballots = ballots
-        let layout = UICollectionViewFlowLayout()
-        super.init(collectionViewLayout: layout)
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 100, height: 100)
+        let spacing = flowLayout.minimumInteritemSpacing
+        flowLayout.sectionInset =
+            UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        super.init(collectionViewLayout: flowLayout)
         collectionView!.register(NewBallotCell.self,
                                  forCellWithReuseIdentifier: newBallotCellReuseIdentifier)
         collectionView!.register(SavedBallotCell.self,
                                  forCellWithReuseIdentifier: savedBallotCellReuseIdentifier)
+        collectionView!.backgroundColor = UIColor.white
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,18 +53,21 @@ class BallotCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: UICollectionViewCell
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(
+            cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: newBallotCellReuseIdentifier,
-                for: indexPath) as! NewBallotCell
-            return cell
+                for: indexPath)
         } else {
-            let cell = collectionView.dequeueReusableCell(
+            let savedBallotCell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: savedBallotCellReuseIdentifier,
                 for: indexPath) as! SavedBallotCell
-                cell.load(ballot: ballots[indexPath.row - 1])
-            return cell
+            savedBallotCell.load(ballot: ballots[indexPath.row - 1])
+            cell = savedBallotCell
         }
+        cell.layer.cornerRadius = 16
+        cell.clipsToBounds = true
+        return cell
     }
 
     // MARK: UICollectionViewDelegate

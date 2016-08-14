@@ -33,14 +33,14 @@ extension Election {
         }
 
         var cloudKitRecordID: UUID?
-        //var encryptionKey: EncryptionKey?
+        var encryptionKey: EncryptionKey?
         var status: Status?
         var ballotQuestionText: String?
 
         var candidates: [Candidate] = []
         var candidateText: String?
         var candidateFigure: Figure?
-        var candidateColor: UIColor?
+        var candidateTextColor: UIColor?
 
         var voters: [Voter] = []
         var voterName: String?
@@ -53,26 +53,26 @@ extension Election {
 
             switch queryItem.name {
             case "r": cloudKitRecordID = UUID(base64EncodedForURL: value)
-            //case "k": encryptionKey = EncryptionKey(base64EncodedForURL: value)
+            case "k": encryptionKey = EncryptionKey(base64EncodedForURL: value)
             case "s": if value == "c" { status = .closed }
             case "q": ballotQuestionText = value
             case "t": candidateText = value
             case "fa": candidateFigure = .autoCharacter(value.characters.first ?? " ")
             case "fc": candidateFigure = .customCharacter(value.characters.first ?? " ")
-            case "c": candidateColor = UIColor(hexString: value)
+            case "c": candidateTextColor = UIColor(hexString: value)
             case "b":
-                if  let candidateColor = candidateColor,
+                if  let candidateTextColor = candidateTextColor,
                     let candidateBackgroundColor = UIColor(hexString: value) {
                     candidates.append(Candidate(
                         text: candidateText,
                         figure: candidateFigure ?? .none,
-                        color: candidateColor,
+                        textColor: candidateTextColor,
                         backgroundColor: candidateBackgroundColor)
                     )
                 }
                 candidateText = nil
                 candidateFigure = nil
-                candidateColor = nil
+                candidateTextColor = nil
             case "n": voterName = value
             case "m": voterMark = value
             case "u":
@@ -99,12 +99,10 @@ extension Election {
             return nil
         }
 
-        /*
         guard let foundEncryptionKey = encryptionKey else {
             print("URL contained no encryption key")
             return nil
         }
-        */
 
         let ballot = Ballot(
             questionText: ballotQuestionText,
@@ -114,7 +112,7 @@ extension Election {
         self.init(
             session: session,
             cloudKitRecordID: foundCloudKitRecordID,
-            //encryptionKey: foundEncryptionKey,
+            encryptionKey: foundEncryptionKey,
             status: status ?? .open,
             ballot: ballot,
             voters: voters,
@@ -167,7 +165,7 @@ extension Election {
         }
 
         add("r", cloudKitRecordID.base64EncodedForURLString)
-        //add("k", encryptionKey.base64EncodedForURLString)
+        add("k", encryptionKey.base64EncodedForURLString)
         if status == .closed { add("s", "c") }
         add("q", ballot.questionText)
 
@@ -180,7 +178,7 @@ extension Election {
             case .autoCharacter(let character):   add("fa", String(character))
             case .customCharacter(let character): add("fc", String(character))
             }
-            add("c", candidate.color.hexString())
+            add("c", candidate.textColor.hexString())
             add("b", candidate.backgroundColor.hexString())
         }
 

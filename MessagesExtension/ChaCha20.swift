@@ -10,19 +10,18 @@ private func rotateLeft(_ value: UInt32, by: UInt32) -> UInt32 {
     return (value << by) | (value >> (32 &- by))
 }
 
-private func bytesLittleEndian(word: UInt32) -> [UInt8] {
-    return [UInt8((word      ) & UInt32(0xFF)),
-            UInt8((word >>  8) & UInt32(0xFF)),
-            UInt8((word >> 16) & UInt32(0xFF)),
-            UInt8((word >> 24) & UInt32(0xFF))]
+private func bytes(word: UInt32) -> [UInt8] {
+    return [UInt8((word.littleEndian      ) & UInt32(0xFF)),
+            UInt8((word.littleEndian >>  8) & UInt32(0xFF)),
+            UInt8((word.littleEndian >> 16) & UInt32(0xFF)),
+            UInt8((word.littleEndian >> 24) & UInt32(0xFF)) ]
 }
 
-private func wordLittleEndian(bytes: [UInt8], from: Int) -> UInt32 {
-    return ((UInt32(bytes[from &+ 0])      ) |
-        (UInt32(bytes[from &+ 1]) <<  8) |
-        (UInt32(bytes[from &+ 2]) << 16) |
-        (UInt32(bytes[from &+ 3]) << 24)  )
-
+private func word(bytes: [UInt8], from: Int) -> UInt32 {
+    return ((UInt32(bytes[from &+ 0]).littleEndian      ) |
+            (UInt32(bytes[from &+ 1]).littleEndian <<  8) |
+            (UInt32(bytes[from &+ 2]).littleEndian << 16) |
+            (UInt32(bytes[from &+ 3]).littleEndian << 24)   )
 }
 
 private func chaCha20Core(_ input: [UInt32]) -> [UInt8] {
@@ -50,19 +49,19 @@ private func chaCha20Core(_ input: [UInt32]) -> [UInt8] {
     var output: [UInt8] = []
     output.reserveCapacity(64)
     for word in x {
-        output.append(contentsOf: bytesLittleEndian(word: word))
+        output.append(contentsOf: bytes(word: word))
     }
     return output
 }
 
-// sigma and tau are constants used in the original C ChaCha code by D. J. Bernstein
+// Sigma and tau are constants used in the original C ChaCha code by D. J. Bernstein
 // https://cr.yp.to/chacha.html
 // static const char sigma[16] = "expand 32-byte k";
-// static const char tau[16] = "expand 16-byte k";
+// static const char tau[16]   = "expand 16-byte k";
 private let sigma: [UInt8] = [101,120,112,97,110,100,32,51,50,45,98,121,116,101,32,107]
 private let tau:   [UInt8] = [101,120,112,97,110,100,32,49,54,45,98,121,116,101,32,107]
 
-private func context(key: [UInt8], iv: [UInt8], counter: UInt64) -> [UInt32]? {
+func chaCha20(message: [UInt8], key: [UInt8], nonce: [UInt8], counter: UInt64 = 0) -> [UInt8]? {
     let constants: [UInt8]
     let keyShift: Int
     switch key.count {
@@ -77,53 +76,47 @@ private func context(key: [UInt8], iv: [UInt8], counter: UInt64) -> [UInt32]? {
         print("ChaCha20 encryption key must be 16 bytes (128-bit) or 32 bytes (256-bit)")
         return nil
     }
-    guard iv.count == 8 else {
-        print("Initialization vector is \(key.count) bytes")
-        print("ChaCha20 initialization vector must be 8 bytes")
+    guard nonce.count == 8 else {
+        print("Nonce is \(nonce.count) bytes")
+        print("ChaCha20 nonce must be 8 bytes")
         return nil
     }
-    var context = [UInt32](repeating: 0, count: 16)
-    context[ 0] = wordLittleEndian(bytes: constants, from:              0)
-    context[ 1] = wordLittleEndian(bytes: constants, from:              4)
-    context[ 2] = wordLittleEndian(bytes: constants, from:              8)
-    context[ 3] = wordLittleEndian(bytes: constants, from:             12)
-    context[ 4] = wordLittleEndian(bytes: key,       from:              0)
-    context[ 5] = wordLittleEndian(bytes: key,       from:              4)
-    context[ 6] = wordLittleEndian(bytes: key,       from:              8)
-    context[ 7] = wordLittleEndian(bytes: key,       from:             12)
-    context[ 8] = wordLittleEndian(bytes: key,       from: keyShift &+  0)
-    context[ 9] = wordLittleEndian(bytes: key,       from: keyShift &+  4)
-    context[10] = wordLittleEndian(bytes: key,       from: keyShift &+  8)
-    context[11] = wordLittleEndian(bytes: key,       from: keyShift &+ 12)
-    context[12] = UInt32(counter & 0xFFFFFF)
-    context[13] = UInt32(counter >> 32)
-    context[14] = wordLittleEndian(bytes: iv,        from:              0)
-    context[15] = wordLittleEndian(bytes: iv,        from:              4)
-    return context
-}
-
-func chaCha20(message: [UInt8], key: [UInt8], iv: [UInt8], counter: UInt64 = 0) -> [UInt8]? {
-    guard var blockInput = context(key: key, iv: iv, counter: counter) else { return nil }
     guard !message.isEmpty else { return [] }
-    var cipher = [UInt8](repeating: 0, count: message.count)
-    var byteCountDone = 0
-    var byteCountLeft = message.count
+    var context: [UInt32] = [
+        word(bytes: constants, from:              0),
+        word(bytes: constants, from:              4),
+        word(bytes: constants, from:              8),
+        word(bytes: constants, from:             12),
+        word(bytes: key,       from:              0),
+        word(bytes: key,       from:              4),
+        word(bytes: key,       from:              8),
+        word(bytes: key,       from:             12),
+        word(bytes: key,       from: keyShift &+  0),
+        word(bytes: key,       from: keyShift &+  4),
+        word(bytes: key,       from: keyShift &+  8),
+        word(bytes: key,       from: keyShift &+ 12),
+        UInt32(counter.littleEndian & 0xFFFFFFFF),
+        UInt32(counter.littleEndian >> 32),
+        word(bytes: nonce,     from:              0),
+        word(bytes: nonce,     from:              4)
+    ]
+    var cipher: [UInt8] = []
+    cipher.reserveCapacity(message.count)
     while (true) {
-        let blockOutput = chaCha20Core(blockInput)
-        blockInput[12] = blockInput[12] &+ 1
-        if blockInput[12] == 0 {
-            blockInput[13] = blockInput[13] &+ 1
+        let encryptionBlock = chaCha20Core(context)
+        context[12] = context[12] &+ 1
+        if context[12] == 0 {
+            context[13] = context[13] &+ 1
         }
+        let byteCountLeft = message.count - cipher.count
         if byteCountLeft <= 64 {
             for i in 0 ..< byteCountLeft {
-                cipher[byteCountDone &+ i] = message[byteCountDone &+ i] ^ blockOutput[i]
+                cipher.append(message[cipher.count] ^ encryptionBlock[i])
             }
             return cipher
         }
         for i in 0 ..< 64 {
-            cipher[byteCountDone &+ i] = message[byteCountDone &+ i] ^ blockOutput[i]
+            cipher.append(message[cipher.count] ^ encryptionBlock[i])
         }
-        byteCountDone = byteCountDone &+ 64
-        byteCountLeft = byteCountLeft &- 64
     }
 }

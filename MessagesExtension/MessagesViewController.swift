@@ -9,7 +9,7 @@
 import UIKit
 import Messages
 
-class MessagesViewController: MSMessagesAppViewController {
+class MessagesViewController: MSMessagesAppViewController, BallotCollectionViewControllerDelegate {
 
     var anticipatedPresentationStyle: MSMessagesAppPresentationStyle = .compact
     var ballotCollectionViewController: BallotCollectionViewController?
@@ -33,6 +33,7 @@ class MessagesViewController: MSMessagesAppViewController {
     func embedBallotCollectionView() {
         if ballotCollectionViewController == nil {
             ballotCollectionViewController = BallotCollectionViewController(ballots: defaultBallots)
+            ballotCollectionViewController!.delegate = self
         }
         let collectionView = ballotCollectionViewController!.collectionView!
         view.addSubview(collectionView)
@@ -111,6 +112,12 @@ class MessagesViewController: MSMessagesAppViewController {
         }
         anticipatedPresentationStyle = presentationStyle
         super.requestPresentationStyle(presentationStyle)
+    }
+
+    // MARK: - BallotCollectionViewControllerDelegate
+
+    func ballotCollectionSelect(ballot: Ballot) {
+        print("Ballot selected!")
     }
 
     // MARK: - Child view controller delegate methods

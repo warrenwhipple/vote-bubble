@@ -12,7 +12,7 @@ class Election {
 
     var session: MSSession?
     var cloudKitRecordID: UUID
-    //var encryptionKey: EncryptionKey
+    var encryptionKey: EncryptionKey
     enum Status: Int { case open, closed }
     var status: Status
     let ballot: Ballot
@@ -22,7 +22,7 @@ class Election {
     init() {
         session = nil
         cloudKitRecordID = UUID()
-        //encryptionKey = EncryptionKey()
+        encryptionKey = EncryptionKey()
         status = .open
         ballot = Ballot()
         voters = []
@@ -32,7 +32,7 @@ class Election {
     init(ballot: Ballot) {
         session = nil
         cloudKitRecordID = UUID()
-        //encryptionKey = EncryptionKey()
+        encryptionKey = EncryptionKey()
         status = .open
         self.ballot = ballot
         voters = []
@@ -41,14 +41,14 @@ class Election {
 
     init(session: MSSession?,
          cloudKitRecordID: UUID,
-         //encryptionKey: EncryptionKey,
+         encryptionKey: EncryptionKey,
          status: Status,
          ballot: Ballot,
          voters: [Voter],
          votes: [[Int]]) {
         self.session = session
         self.cloudKitRecordID = cloudKitRecordID
-        //self.encryptionKey = encryptionKey
+        self.encryptionKey = encryptionKey
         self.status = status
         self.ballot = ballot
         self.voters = voters
