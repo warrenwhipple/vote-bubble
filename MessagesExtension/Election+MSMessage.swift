@@ -10,7 +10,7 @@ import Messages
 
 extension Election {
 
-    convenience init?(message: MSMessage) {
+    init?(message: MSMessage) {
 
         guard let session = message.session else {
             print("Message has no session")

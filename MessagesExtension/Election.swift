@@ -8,12 +8,13 @@
 
 import Messages
 
-class Election {
+struct Election {
+
+    enum Status: Int { case open, closed }
 
     var session: MSSession?
     var cloudKitRecordID: UUID
     var encryptionKey: EncryptionKey
-    enum Status: Int { case open, closed }
     var status: Status
     let ballot: Ballot
     var voters: [Voter]
@@ -64,9 +65,10 @@ class Election {
         return false
     }
 
-    func recordVote(voter: Voter, candidateIndex: Int) {
+    mutating func recordVote(voter: Voter, candidateIndex: Int) {
         guard !didVote(voter) else { print("Voter already voted"); return }
         votes[candidateIndex].append(voters.count)
         voters.append(voter)
     }
+    
 }

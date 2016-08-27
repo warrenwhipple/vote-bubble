@@ -10,13 +10,13 @@ import UIKit
 import Messages
 
 class MessagesViewController: MSMessagesAppViewController,
-    CollectionViewControllerDelegate, BallotViewDelegate {
+    BallotCollectionViewControllerDelegate, BallotViewDelegate {
 
     enum Mode { case collection, build, vote, report }
     var mode: Mode = .collection
 
     var anticipatedPresentationStyle: MSMessagesAppPresentationStyle = .compact
-    var collectionViewController: CollectionViewController?
+    var collectionViewController: BallotCollectionViewController?
     var ballotView: BallotView?
 
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class MessagesViewController: MSMessagesAppViewController,
 
     func createCollectionView() {
         guard collectionViewController == nil else { fatalError() }
-        collectionViewController = CollectionViewController(ballots: defaultBallots)
+        collectionViewController = BallotCollectionViewController(ballots: defaultBallots)
         collectionViewController!.delegate = self
     }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
+
 private func rotateLeft(_ value: UInt32, by: UInt32) -> UInt32 {
     return (value << by) | (value >> (32 &- by))
 }
@@ -55,16 +56,17 @@ private func chaCha20Core(_ input: [UInt32]) -> [UInt8] {
     return output
 }
 
-// Sigma and tau are constants used in the original C ChaCha code by D. J. Bernstein
+// Sigma and tau are constants used in the original C ChaCha code by D. J. Bernstein.
+// The integers used below are the ascii
 // https://cr.yp.to/chacha.html
-// static const char sigma[16] = "expand 32-byte k";
-// static const char tau[16]   = "expand 16-byte k";
-private let sigma: [UInt8] = [101,120,112,97,110,100,32,51,50,45,98,121,116,101,32,107]
-private let tau:   [UInt8] = [101,120,112,97,110,100,32,49,54,45,98,121,116,101,32,107]
+private let sigma: [UInt8] = "expand 32-byte k".unicodeScalars.map { UInt8($0.value) }
+private let tau:   [UInt8] = "expand 16-byte k".unicodeScalars.map { UInt8($0.value) }
 
 func chaCha20(message: [UInt8], key: [UInt8], nonce: [UInt8], counter: UInt64 = 0) -> [UInt8]? {
+
     let constants: [UInt8]
     let keyShift: Int
+
     switch key.count {
     case 32:
         constants = sigma
@@ -77,12 +79,15 @@ func chaCha20(message: [UInt8], key: [UInt8], nonce: [UInt8], counter: UInt64 = 
         print("ChaCha20 encryption key must be 16 bytes (128-bit) or 32 bytes (256-bit)")
         return nil
     }
+
     guard nonce.count == 8 else {
         print("Nonce is \(nonce.count) bytes")
         print("ChaCha20 nonce must be 8 bytes")
         return nil
     }
+
     guard !message.isEmpty else { return [] }
+
     var context: [UInt32] = [
         word(bytesLittleEndian: constants, from:              0),
         word(bytesLittleEndian: constants, from:              4),
@@ -101,8 +106,10 @@ func chaCha20(message: [UInt8], key: [UInt8], nonce: [UInt8], counter: UInt64 = 
         word(bytesLittleEndian: nonce,     from:              0),
         word(bytesLittleEndian: nonce,     from:              4)
     ]
+
     var cipher: [UInt8] = []
     cipher.reserveCapacity(message.count)
+
     while (true) {
         let encryptionBlock = chaCha20Core(context)
         context[12] = context[12] &+ 1
@@ -120,4 +127,5 @@ func chaCha20(message: [UInt8], key: [UInt8], nonce: [UInt8], counter: UInt64 = 
             cipher.append(message[cipher.count] ^ encryptionBlock[i])
         }
     }
+
 }

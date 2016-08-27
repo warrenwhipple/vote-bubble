@@ -9,7 +9,9 @@
 import Foundation
 
 struct Voter {
+
     var name: String?
     var mark: String?
     let cloudKitUserID: UUID
+    
 }

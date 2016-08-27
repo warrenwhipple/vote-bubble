@@ -59,21 +59,4 @@ class BallotView: UIView, BubbleViewDelegate {
         bubbleView.frame = bounds.centeredRect(ofSize: bubbleSize)
     }
 
-    func showAddButton() {
-        if addButton == nil {
-            addButton = UIButton()
-            addButton?.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-
-        }
-    }
-
-    func hideAddButton() {
-
-    }
-
-    func addButtonFrame() -> CGRect {
-        return CGRect(
-            x: bubbleView.frame.maxX - controlMargin - a, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-    }
-
 }

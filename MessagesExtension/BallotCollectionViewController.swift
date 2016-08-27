@@ -1,24 +1,24 @@
 //
-//  CollectionViewController.swift
+//  BallotCollectionViewController.swift
 //  VoteBubble
 //
-//  Created by Warren Whipple on 8/11/16.
+//  Created by Warren Whipple on 8/27/16.
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
 import UIKit
 
-protocol CollectionViewControllerDelegate: class {
+protocol BallotCollectionViewControllerDelegate: class {
     func collectionSelect(_ cell: UICollectionViewCell?, with ballot: Ballot)
 }
 
 private let newBallotCellReuseIdentifier   = "NewBallotCell"
 private let savedBallotCellReuseIdentifier = "SavedBallotCell"
 
-class CollectionViewController: UICollectionViewController {
+class BallotCollectionViewController: UICollectionViewController {
 
-    weak var delegate: CollectionViewControllerDelegate!
-    var ballots: [Ballot]
+    weak var delegate: BallotCollectionViewControllerDelegate!
+    var ballots: [Ballot] = []
 
     init(ballots: [Ballot]) {
         self.ballots = ballots
@@ -27,8 +27,7 @@ class CollectionViewController: UICollectionViewController {
         // This is hard coded for 320pt wide display
         flowLayout.itemSize = CGSize(width: 90, height: 90)
         flowLayout.minimumLineSpacing = 12.5
-        flowLayout.sectionInset =
-            UIEdgeInsets(top: 12.5, left: 12.5, bottom: 12.5, right: 12.5)
+        flowLayout.sectionInset = UIEdgeInsets(top: 12.5, left: 12.5, bottom: 12.5, right: 12.5)
         super.init(collectionViewLayout: flowLayout)
         collectionView!.register(NewBallotCell.self,
                                  forCellWithReuseIdentifier: newBallotCellReuseIdentifier)
@@ -78,5 +77,4 @@ class CollectionViewController: UICollectionViewController {
             delegate.collectionSelect(cell, with: ballots[indexPath.row - 1])
         }
     }
-
 }

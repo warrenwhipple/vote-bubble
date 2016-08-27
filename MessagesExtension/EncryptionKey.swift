@@ -8,21 +8,23 @@
 
 import Foundation
 
-private let keySize = 16
-private let ivSize  =  8
-
 private func randomBytes(_ count: Int) -> [UInt8] {
     var randomBytes = [UInt8](repeating: 0, count: count)
-    randomBytes.withUnsafeMutableBufferPointer() { arc4random_buf($0.baseAddress, count) }
+    randomBytes.withUnsafeMutableBufferPointer() {
+        arc4random_buf($0.baseAddress, count)
+    }
     return randomBytes
 }
 
 struct EncryptionKey {
 
+    static let keySize = 16
+    static let ivSize  =  8
+
     let bytes: [UInt8]
 
     init() {
-        bytes = randomBytes(keySize)
+        bytes = randomBytes(EncryptionKey.keySize)
     }
 
     init?(base64EncodedForURL: String) {
@@ -30,7 +32,7 @@ struct EncryptionKey {
             print("String was not base 64 encoded")
             return nil
         }
-        guard data.count == keySize else {
+        guard data.count == EncryptionKey.keySize else {
             print("String was incorrect size")
             return nil
         }
@@ -45,7 +47,7 @@ struct EncryptionKey {
     }
 
     func encrypt(_ string: String) -> Data? {
-        let nonceBytes = randomBytes(ivSize)
+        let nonceBytes = randomBytes(EncryptionKey.ivSize)
         let stringBytes = [UInt8](string.utf8)
         guard let encryptedBytes = chaCha20(message: stringBytes,
                                             key: self.bytes,
@@ -54,16 +56,17 @@ struct EncryptionKey {
     }
 
     func decrypt(_ data: Data) -> String? {
-        guard data.count >= ivSize else { return nil }
+        guard data.count >= EncryptionKey.ivSize else { return nil }
         let bytes = data.withUnsafeBytes() {
             [UInt8](UnsafeBufferPointer(start: $0, count: data.count))
         }
-        let nonceBytes = [UInt8](bytes[0 ..< ivSize])
-        let message = [UInt8](bytes[ivSize ..< bytes.count])
+        let nonceBytes = [UInt8](bytes[0 ..< EncryptionKey.ivSize])
+        let message = [UInt8](bytes[EncryptionKey.ivSize ..< bytes.count])
         guard let decryptedBytes = chaCha20(message: message,
                                             key: self.bytes,
                                             nonce: nonceBytes) else { return nil }
         let decryptedData = Data(bytes: decryptedBytes)
         return String(bytes: decryptedData, encoding: .utf8)
     }
+
 }
