@@ -1,5 +1,5 @@
 //
-//  BallotCollectionViewController.swift
+//  CollectionViewController.swift
 //  VoteBubble
 //
 //  Created by Warren Whipple on 8/11/16.
@@ -8,25 +8,27 @@
 
 import UIKit
 
-protocol BallotCollectionViewControllerDelegate: class {
-    func ballotCollectionSelect(ballot: Ballot)
+protocol CollectionViewControllerDelegate: class {
+    func collectionSelect(_ cell: UICollectionViewCell?, with ballot: Ballot)
 }
 
 private let newBallotCellReuseIdentifier   = "NewBallotCell"
 private let savedBallotCellReuseIdentifier = "SavedBallotCell"
 
-class BallotCollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController {
 
-    weak var delegate: BallotCollectionViewControllerDelegate?
+    weak var delegate: CollectionViewControllerDelegate!
     var ballots: [Ballot]
 
     init(ballots: [Ballot]) {
         self.ballots = ballots
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 100, height: 100)
-        let spacing = flowLayout.minimumInteritemSpacing
+        // TODO: Dynamically determine cell spacing
+        // This is hard coded for 320pt wide display
+        flowLayout.itemSize = CGSize(width: 90, height: 90)
+        flowLayout.minimumLineSpacing = 12.5
         flowLayout.sectionInset =
-            UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+            UIEdgeInsets(top: 12.5, left: 12.5, bottom: 12.5, right: 12.5)
         super.init(collectionViewLayout: flowLayout)
         collectionView!.register(NewBallotCell.self,
                                  forCellWithReuseIdentifier: newBallotCellReuseIdentifier)
@@ -37,11 +39,6 @@ class BallotCollectionViewController: UICollectionViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: UICollectionViewDataSource
@@ -74,10 +71,11 @@ class BallotCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
         if indexPath.row == 0 {
-            delegate?.ballotCollectionSelect(ballot: Ballot())
+            delegate.collectionSelect(cell, with: Ballot())
         } else {
-            delegate?.ballotCollectionSelect(ballot: ballots[indexPath.row - 1])
+            delegate.collectionSelect(cell, with: ballots[indexPath.row - 1])
         }
     }
 

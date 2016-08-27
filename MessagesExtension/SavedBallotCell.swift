@@ -20,7 +20,7 @@ class SavedBallotCell: UICollectionViewCell {
         if let questionText = ballot.questionText {
             if questionLabel == nil {
                 questionLabel = UILabel()
-                questionLabel!.backgroundColor = ColorPalette.messageCaptionBackgroundColor
+                questionLabel!.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 questionLabel!.text = questionText
             }
             if questionLabel!.superview != self {

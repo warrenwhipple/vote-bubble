@@ -14,6 +14,7 @@ enum DrawIcon {
                      diameter: CGFloat,
                      strokeWidth: CGFloat,
                      strokeColor: UIColor) {
+
         let path = UIBezierPath()
         path.move(to: CGPoint(
             x: center.x - diameter,

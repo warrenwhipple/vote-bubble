@@ -46,6 +46,20 @@ struct Ballot {
     }
 
     static func new() -> Ballot {
-        return Ballot(questionText: nil, candidates: [])
+        let hueA = CGFloat.random(0 ..< 1)
+        let hueB = hueA < 0.5 ? hueA + 0.5 : hueA - 0.5
+        let colorA = UIColor(hue: hueA, saturation: 1, brightness: 0.75, alpha: 1)
+        let colorB = UIColor(hue: hueB, saturation: 1, brightness: 0.75, alpha: 1)
+        return Ballot(
+            questionText: nil,
+            candidates: [Candidate(text: nil,
+                                   figure: .none,
+                                   textColor: UIColor.white,
+                                   backgroundColor: colorA),
+                         Candidate(text: nil,
+                                   figure: .none,
+                                   textColor: UIColor.white,
+                                   backgroundColor: colorB)]
+        )
     }
 }

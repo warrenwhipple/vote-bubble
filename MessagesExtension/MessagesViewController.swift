@@ -9,10 +9,15 @@
 import UIKit
 import Messages
 
-class MessagesViewController: MSMessagesAppViewController, BallotCollectionViewControllerDelegate {
+class MessagesViewController: MSMessagesAppViewController,
+    CollectionViewControllerDelegate, BallotViewDelegate {
+
+    enum Mode { case collection, build, vote, report }
+    var mode: Mode = .collection
 
     var anticipatedPresentationStyle: MSMessagesAppPresentationStyle = .compact
-    var ballotCollectionViewController: BallotCollectionViewController?
+    var collectionViewController: CollectionViewController?
+    var ballotView: BallotView?
 
     override func viewDidLoad() {
         print("Messages app view did load")
@@ -30,25 +35,75 @@ class MessagesViewController: MSMessagesAppViewController, BallotCollectionViewC
         super.didReceiveMemoryWarning()
     }
 
-    func embedBallotCollectionView() {
-        if ballotCollectionViewController == nil {
-            ballotCollectionViewController = BallotCollectionViewController(ballots: defaultBallots)
-            ballotCollectionViewController!.delegate = self
-        }
-        let collectionView = ballotCollectionViewController!.collectionView!
+    // MARK: - CollectionView and ViewController lifecyle
+
+    func createCollectionView() {
+        guard collectionViewController == nil else { fatalError() }
+        collectionViewController = CollectionViewController(ballots: defaultBallots)
+        collectionViewController!.delegate = self
+    }
+
+    func embedCollectionView() {
+        guard let collectionViewController = collectionViewController else { fatalError() }
+        collectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        addChildViewController(collectionViewController)
+        let collectionView = collectionViewController.view!
         view.addSubview(collectionView)
         collectionView.leftAnchor  .constraint(equalTo: view.leftAnchor)  .isActive = true
         collectionView.rightAnchor .constraint(equalTo: view.rightAnchor) .isActive = true
         collectionView.topAnchor   .constraint(equalTo: view.topAnchor)   .isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        ballotCollectionViewController!.didMove(toParentViewController: self)
+        collectionViewController.didMove(toParentViewController: self)
+    }
+
+    func unembedCollectionView() {
+        guard let collectionViewController = collectionViewController else { fatalError() }
+        collectionViewController.willMove(toParentViewController: nil)
+        collectionViewController.view.removeFromSuperview()
+        collectionViewController.removeFromParentViewController()
+    }
+
+    func destroyCollectionView() {
+        guard let collectionViewController = collectionViewController else { fatalError() }
+        collectionViewController.delegate = nil
+        self.collectionViewController = nil
+    }
+
+    // MARK: - BallotView lifecyle
+
+    func createBallotView(for ballot: Ballot) {
+        guard ballotView == nil else { fatalError() }
+        ballotView = BallotView(ballot: ballot)
+        ballotView!.delegate = self
+    }
+
+    func embedBallotView() {
+        guard let ballotView = ballotView else { fatalError() }
+        ballotView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(ballotView)
+        ballotView.leftAnchor  .constraint(equalTo: view.leftAnchor)  .isActive = true
+        ballotView.rightAnchor .constraint(equalTo: view.rightAnchor) .isActive = true
+        ballotView.topAnchor   .constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        ballotView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+    }
+
+    func unembedBallotView() {
+        guard let ballotView = ballotView else { fatalError() }
+        ballotView.removeFromSuperview()
+    }
+
+    func destroyBallotView() {
+        guard let ballotView = ballotView else { fatalError() }
+        ballotView.delegate = nil
+        self.ballotView = nil
     }
 
     // MARK: - MSMessagesAppViewController methods
 
     override func willBecomeActive(with conversation: MSConversation) {
         print("Messages app will become active")
-        embedBallotCollectionView()
+        createCollectionView()
+        embedCollectionView()
         super.willBecomeActive(with: conversation)
     }
 
@@ -95,6 +150,7 @@ class MessagesViewController: MSMessagesAppViewController, BallotCollectionViewC
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         print("Messages app will transition to " + (presentationStyle == .expanded ? "expanded" : "compact"))
         anticipatedPresentationStyle = presentationStyle
+
         super.willTransition(to: presentationStyle)
     }
 
@@ -116,16 +172,15 @@ class MessagesViewController: MSMessagesAppViewController, BallotCollectionViewC
 
     // MARK: - BallotCollectionViewControllerDelegate
 
-    func ballotCollectionSelect(ballot: Ballot) {
-        print("Ballot selected!")
+    func collectionSelect(_ cell: UICollectionViewCell?, with ballot: Ballot) {
+        requestPresentationStyle(.expanded)
+        createBallotView(for: ballot)
+        embedBallotView()
+        unembedCollectionView()
+        destroyCollectionView()
     }
 
     // MARK: - Child view controller delegate methods
-
-    func browseSelect(ballot: Ballot, with conversation: MSConversation) {
-        //presentBuildView(for: ballot, conversation: conversation)
-        requestPresentationStyle(.expanded)
-    }
 
     func aprove(ballot: Ballot, with conversation: MSConversation) {
         /*

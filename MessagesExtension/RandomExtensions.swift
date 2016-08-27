@@ -6,8 +6,7 @@
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
-import Foundation
-import CoreGraphics
+import UIKit
 
 extension Float {
     static func random(_ range: Range<Float>) -> Float {

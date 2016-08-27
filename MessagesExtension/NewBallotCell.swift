@@ -11,7 +11,7 @@ import UIKit
 class NewBallotCell: UICollectionViewCell {
 
     override func didMoveToSuperview() {
-        backgroundColor = ColorPalette.messageCaptionBackgroundColor
+        backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
 
     override func draw(_ rect: CGRect) {
