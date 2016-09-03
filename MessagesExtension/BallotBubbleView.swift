@@ -17,6 +17,7 @@ class BallotBubbleView: UIView {
 
     init() {
         super.init(frame: CGRect.zero)
+        backgroundColor = ColorPalette.messageBackground
         clipsToBounds = true
     }
     

@@ -62,4 +62,23 @@ struct Ballot {
                                    backgroundColor: colorB)]
         )
     }
+
+    func anyCandidateFigures() -> Bool {
+        for candidate in candidates {
+            switch candidate.figure {
+            case .autoCharacter, .customCharacter: return true
+            case .none: continue
+            }
+        }
+        return false
+    }
+
+    func anyCandidateText() -> Bool {
+        for candidate in candidates {
+            if candidate.text != nil {
+                return true
+            }
+        }
+        return false
+    }
 }

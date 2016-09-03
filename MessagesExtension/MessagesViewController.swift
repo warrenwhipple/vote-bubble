@@ -15,10 +15,8 @@ class MessagesViewController: MSMessagesAppViewController,
     enum Mode { case collection, build, vote, report }
     var mode: Mode = .collection
 
-    var anticipatedPresentationStyle: MSMessagesAppPresentationStyle = .compact
-
     var ballotCollectionViewController: BallotCollectionViewController?
-    var ballotDetailsViewController: BallotDetailsViewController?
+    var ballotViewController: BallotViewController?
 
     override func viewDidLoad() {
         print("Messages app view did load")
@@ -27,7 +25,6 @@ class MessagesViewController: MSMessagesAppViewController,
 
     override func viewDidAppear(_ animated: Bool) {
         print("Messages app view did appear")
-        anticipatedPresentationStyle = presentationStyle
         super.viewDidAppear(animated)
     }
 
@@ -76,12 +73,12 @@ class MessagesViewController: MSMessagesAppViewController,
     // MARK: - BallotDetailsView lifecyle
 
     func createBallotDetailsView(for election: Election) {
-        guard ballotDetailsViewController == nil else { fatalError() }
-        ballotDetailsViewController = BallotDetailsViewController(election: election)
+        guard ballotViewController == nil else { fatalError() }
+        ballotViewController = BallotViewController(election: election)
     }
 
     func destroyBallotDetailsView() {
-        self.ballotDetailsViewController = nil
+        self.ballotViewController = nil
     }
 
     // MARK: - MSMessagesAppViewController methods
@@ -135,24 +132,16 @@ class MessagesViewController: MSMessagesAppViewController,
 
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         print("Messages app will transition to " + (presentationStyle == .expanded ? "expanded" : "compact"))
-        anticipatedPresentationStyle = presentationStyle
-
         super.willTransition(to: presentationStyle)
     }
 
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         print("Messages app did transition to " + (presentationStyle == .expanded ? "expanded" : "compact"))
-        anticipatedPresentationStyle = presentationStyle
         super.didTransition(to: presentationStyle)
     }
 
     override func requestPresentationStyle(_ presentationStyle: MSMessagesAppPresentationStyle) {
         print("Messages app request presentation style " + (presentationStyle == .expanded ? "expanded" : "compact"))
-        guard presentationStyle != anticipatedPresentationStyle else {
-            print("Requested presentation style \(presentationStyle) is already anticipated")
-            return
-        }
-        anticipatedPresentationStyle = presentationStyle
         super.requestPresentationStyle(presentationStyle)
     }
 
@@ -161,7 +150,7 @@ class MessagesViewController: MSMessagesAppViewController,
     func collectionSelect(_ cell: UICollectionViewCell?, with ballot: Ballot) {
         requestPresentationStyle(.expanded)
         createBallotDetailsView(for: Election(ballot: ballot))
-        embed(childViewController: ballotDetailsViewController!, anchorToGuides: true)
+        embed(childViewController: ballotViewController!, anchorToGuides: true)
         unembed(childViewController: ballotCollectionViewController!)
         destroyCollectionView()
     }
