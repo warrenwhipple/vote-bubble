@@ -9,6 +9,7 @@
 import UIKit
 
 struct Candidate {
+
     var text: String?
     var figure: Figure
     var textColor, backgroundColor: UIColor

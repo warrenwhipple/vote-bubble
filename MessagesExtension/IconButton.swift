@@ -17,7 +17,7 @@ class IconButton: UIButton {
 
     override func draw(_ rect: CGRect) {
         icon.draw(
-            center: bounds.center,
+            center: CGPoint(x: bounds.width / 2, y: bounds.height / 2),
             diameter: diameterPercent * min(bounds.width, bounds.height),
             rotation: 0,
             strokeWidth: iconStrokeWidth,

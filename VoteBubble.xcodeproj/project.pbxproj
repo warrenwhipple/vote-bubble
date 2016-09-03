@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2D055AA81D3EBEE100E08DCC /* VoteBubbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D055AA71D3EBEE100E08DCC /* VoteBubbleTests.swift */; };
-		2D182D971D650CA1001F1584 /* BallotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D182D961D650CA1001F1584 /* BallotView.swift */; };
+		2D05ACF61D78AE920051549F /* SynchronizedFigureCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05ACF51D78AE920051549F /* SynchronizedFigureCaptionView.swift */; };
+		2D05ACF81D78BCE20051549F /* SplitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05ACF71D78BCE20051549F /* SplitLayout.swift */; };
 		2D19F77D1D5D0CF6000CB9DF /* DefaultBallots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE237751D4D316800684E9F /* DefaultBallots.swift */; };
 		2D19F7D91D5ECF57000CB9DF /* ChaCha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F77F1D5D5715000CB9DF /* ChaCha20.swift */; };
 		2D19F7DA1D5ECF59000CB9DF /* ChaCha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F77F1D5D5715000CB9DF /* ChaCha20.swift */; };
@@ -16,14 +17,17 @@
 		2D19F7DC1D5EDAB6000CB9DF /* EncryptionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEC29EF1D57EE82004342C4 /* EncryptionKey.swift */; };
 		2D1A500F1D6E15980029C9C7 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A500E1D6E15980029C9C7 /* Icon.swift */; };
 		2D49DD441D4E973800BF7148 /* Election+CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49DD431D4E973800BF7148 /* Election+CloudKit.swift */; };
-		2D516A2C1D67AB6400306DC4 /* CGRect+centering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D516A2B1D67AB6400306DC4 /* CGRect+centering.swift */; };
+		2D4D88AF1D74A51A0049A816 /* InsetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D88AE1D74A51A0049A816 /* InsetLayout.swift */; };
 		2D516A2E1D67DBCB00306DC4 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D516A2D1D67DBCB00306DC4 /* InsetLabel.swift */; };
 		2D549C0B1D71E8E500942314 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C0A1D71E8E500942314 /* IconButton.swift */; };
 		2D549C121D71F6FD00942314 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C111D71F6FD00942314 /* Layout.swift */; };
 		2D549C141D71F78200942314 /* BrickLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C131D71F78200942314 /* BrickLayout.swift */; };
-		2D549C181D71FE5D00942314 /* SplitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C171D71FE5D00942314 /* SplitLayout.swift */; };
 		2D549C1A1D7204F300942314 /* BallotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C191D7204F300942314 /* BallotViewController.swift */; };
 		2D549C1D1D7207C300942314 /* BallotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C1C1D7207C300942314 /* BallotCollectionViewController.swift */; };
+		2D549C261D72139900942314 /* BallotBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C251D72139900942314 /* BallotBubbleView.swift */; };
+		2D549C301D72220F00942314 /* StackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C2F1D72220F00942314 /* StackLayout.swift */; };
+		2D549C321D7234CB00942314 /* BallotDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C311D7234CB00942314 /* BallotDetailsViewController.swift */; };
+		2D549C341D72370000942314 /* BallotDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C331D72370000942314 /* BallotDetailsView.swift */; };
 		2D5950B01D46F48900C03BCB /* UUID+base64String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED18961D46E63A00B181E9 /* UUID+base64String.swift */; };
 		2D59523A1D33EEEE0000DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952391D33EEEE0000DF98 /* Assets.xcassets */; };
 		2D5952411D33EEEE0000DF98 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D5952401D33EEEE0000DF98 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -37,12 +41,14 @@
 		2D5952751D33F0370000DF98 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5952721D33F0370000DF98 /* Figure.swift */; };
 		2D5952771D33F07F0000DF98 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5952761D33F07F0000DF98 /* MainInterface.storyboard */; };
 		2D64A3BC1D51292B00F731CA /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D64A3BB1D51292B00F731CA /* UserSettings.swift */; };
+		2D8FB2A51D7B40A7005AB4CE /* FigureCaptionDisplayStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8FB2A41D7B40A7005AB4CE /* FigureCaptionDisplayStyle.swift */; };
 		2DA26DE61D59114F000B013C /* Data+base64URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA26DE51D59114F000B013C /* Data+base64URLString.swift */; };
 		2DA26DE71D591274000B013C /* Data+base64URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA26DE51D59114F000B013C /* Data+base64URLString.swift */; };
 		2DA26DE91D5A0594000B013C /* RandomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA26DE81D5A0594000B013C /* RandomExtensions.swift */; };
 		2DA26DEA1D5A05AA000B013C /* RandomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA26DE81D5A0594000B013C /* RandomExtensions.swift */; };
 		2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 		2DC076F41D5B553F00E2B883 /* Voter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC076F31D5B553F00E2B883 /* Voter.swift */; };
+		2DC1E4471D77505F009EDE9D /* CenteredLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1E4461D77505F009EDE9D /* CenteredLayout.swift */; };
 		2DC71A4D1D3F18E800D1A366 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 		2DD5DED81D5CF64000537948 /* Election+MSMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5DED71D5CF64000537948 /* Election+MSMessage.swift */; };
 		2DD5DEDA1D5CF7CF00537948 /* NewBallotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5DED91D5CF7CF00537948 /* NewBallotCell.swift */; };
@@ -55,8 +61,6 @@
 		2DE237791D4D3D8A00684E9F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE237781D4D3D8A00684E9F /* CloudKit.framework */; };
 		2DE2377D1D4E3FB600684E9F /* Election.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2377C1D4E3FB600684E9F /* Election.swift */; };
 		2DE237811D4E60BD00684E9F /* Ballot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE237801D4E60BD00684E9F /* Ballot.swift */; };
-		2DE5AC9C1D60B086006F2344 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE5AC9B1D60B086006F2344 /* BubbleView.swift */; };
-		2DE5ACA01D60E1A2006F2344 /* CandidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE5AC9F1D60E1A2006F2344 /* CandidateView.swift */; };
 		2DED18971D46E63A00B181E9 /* UUID+base64String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED18961D46E63A00B181E9 /* UUID+base64String.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +92,8 @@
 		2D055AA51D3EBEE000E08DCC /* VoteBubbleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoteBubbleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D055AA71D3EBEE100E08DCC /* VoteBubbleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteBubbleTests.swift; sourceTree = "<group>"; };
 		2D055AA91D3EBEE100E08DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D05ACF51D78AE920051549F /* SynchronizedFigureCaptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedFigureCaptionView.swift; sourceTree = "<group>"; };
+		2D05ACF71D78BCE20051549F /* SplitLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitLayout.swift; sourceTree = "<group>"; };
 		2D182D961D650CA1001F1584 /* BallotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotView.swift; sourceTree = "<group>"; };
 		2D19F77F1D5D5715000CB9DF /* ChaCha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaCha20.swift; sourceTree = "<group>"; };
 		2D1A500E1D6E15980029C9C7 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
@@ -96,14 +102,17 @@
 		2D49DD431D4E973800BF7148 /* Election+CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Election+CloudKit.swift"; sourceTree = "<group>"; };
 		2D49DD451D4EEDD200BF7148 /* VoteButtonsBrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteButtonsBrickView.swift; sourceTree = "<group>"; };
 		2D49DD471D4EF05A00BF7148 /* CandidatesThumbnailBrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesThumbnailBrickView.swift; sourceTree = "<group>"; };
-		2D516A2B1D67AB6400306DC4 /* CGRect+centering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+centering.swift"; sourceTree = "<group>"; };
+		2D4D88AE1D74A51A0049A816 /* InsetLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetLayout.swift; sourceTree = "<group>"; };
 		2D516A2D1D67DBCB00306DC4 /* InsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		2D549C0A1D71E8E500942314 /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		2D549C111D71F6FD00942314 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		2D549C131D71F78200942314 /* BrickLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickLayout.swift; sourceTree = "<group>"; };
-		2D549C171D71FE5D00942314 /* SplitLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitLayout.swift; sourceTree = "<group>"; };
 		2D549C191D7204F300942314 /* BallotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotViewController.swift; sourceTree = "<group>"; };
 		2D549C1C1D7207C300942314 /* BallotCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotCollectionViewController.swift; sourceTree = "<group>"; };
+		2D549C251D72139900942314 /* BallotBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotBubbleView.swift; sourceTree = "<group>"; };
+		2D549C2F1D72220F00942314 /* StackLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackLayout.swift; sourceTree = "<group>"; };
+		2D549C311D7234CB00942314 /* BallotDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotDetailsViewController.swift; sourceTree = "<group>"; };
+		2D549C331D72370000942314 /* BallotDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotDetailsView.swift; sourceTree = "<group>"; };
 		2D54B1CF1D3BBB130002FB34 /* VoteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
 		2D5950B11D47995300C03BCB /* ReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportTableViewController.swift; sourceTree = "<group>"; };
 		2D5950B31D479AAF00C03BCB /* CandidateReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateReportTableViewCell.swift; sourceTree = "<group>"; };
@@ -131,10 +140,12 @@
 		2D59527A1D3425FB0000DF98 /* KeyboardAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareness.swift; sourceTree = "<group>"; };
 		2D64A3BB1D51292B00F731CA /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		2D800E741D5D0208000E1175 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "../../../Library/Developer/Xcode/DerivedData/Vote_Bubble-dlblwismrjnqvefloszfmfpwvhvx/Build/Products/Debug-iphoneos/CryptoSwift.framework"; sourceTree = "<group>"; };
+		2D8FB2A41D7B40A7005AB4CE /* FigureCaptionDisplayStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigureCaptionDisplayStyle.swift; sourceTree = "<group>"; };
 		2DA26DE51D59114F000B013C /* Data+base64URLString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+base64URLString.swift"; sourceTree = "<group>"; };
 		2DA26DE81D5A0594000B013C /* RandomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomExtensions.swift; sourceTree = "<group>"; };
 		2DB740761D3853D600433E15 /* UIColor+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenience.swift"; sourceTree = "<group>"; };
 		2DC076F31D5B553F00E2B883 /* Voter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voter.swift; sourceTree = "<group>"; };
+		2DC1E4461D77505F009EDE9D /* CenteredLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredLayout.swift; sourceTree = "<group>"; };
 		2DD5DED71D5CF64000537948 /* Election+MSMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Election+MSMessage.swift"; sourceTree = "<group>"; };
 		2DD5DED91D5CF7CF00537948 /* NewBallotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBallotCell.swift; sourceTree = "<group>"; };
 		2DD5DEDB1D5CFF5B00537948 /* SavedBallotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedBallotCell.swift; sourceTree = "<group>"; };
@@ -147,7 +158,6 @@
 		2DE2377C1D4E3FB600684E9F /* Election.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Election.swift; sourceTree = "<group>"; };
 		2DE237801D4E60BD00684E9F /* Ballot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ballot.swift; sourceTree = "<group>"; };
 		2DE5AC9B1D60B086006F2344 /* BubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
-		2DE5AC9F1D60E1A2006F2344 /* CandidateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateView.swift; sourceTree = "<group>"; };
 		2DEC29EF1D57EE82004342C4 /* EncryptionKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptionKey.swift; sourceTree = "<group>"; };
 		2DED18961D46E63A00B181E9 /* UUID+base64String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UUID+base64String.swift"; sourceTree = "<group>"; };
 		2DF1C7BA1D42B51C00F20B7C /* UIView+IBInspectables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectables.swift"; sourceTree = "<group>"; };
@@ -265,7 +275,6 @@
 				2DA26DE51D59114F000B013C /* Data+base64URLString.swift */,
 				2DED18961D46E63A00B181E9 /* UUID+base64String.swift */,
 				2D5952631D33EFFC0000DF98 /* CGRect+bricks.swift */,
-				2D516A2B1D67AB6400306DC4 /* CGRect+centering.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -275,7 +284,10 @@
 			children = (
 				2D549C111D71F6FD00942314 /* Layout.swift */,
 				2D549C131D71F78200942314 /* BrickLayout.swift */,
-				2D549C171D71FE5D00942314 /* SplitLayout.swift */,
+				2D05ACF71D78BCE20051549F /* SplitLayout.swift */,
+				2D549C2F1D72220F00942314 /* StackLayout.swift */,
+				2D4D88AE1D74A51A0049A816 /* InsetLayout.swift */,
+				2DC1E4461D77505F009EDE9D /* CenteredLayout.swift */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -285,7 +297,7 @@
 			children = (
 				2D1A500D1D6DD1010029C9C7 /* Icon */,
 				2D549C0C1D71ECA800942314 /* Layout */,
-				2D549C1B1D72069D00942314 /* BallotView */,
+				2D549C221D720CB700942314 /* BallotDetailsView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -295,7 +307,7 @@
 			children = (
 				2D5952481D33EEEE0000DF98 /* MessagesViewController.swift */,
 				2D549C1C1D7207C300942314 /* BallotCollectionViewController.swift */,
-				2D549C191D7204F300942314 /* BallotViewController.swift */,
+				2D549C311D7234CB00942314 /* BallotDetailsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -317,9 +329,20 @@
 		2D549C1B1D72069D00942314 /* BallotView */ = {
 			isa = PBXGroup;
 			children = (
-				2D182D961D650CA1001F1584 /* BallotView.swift */,
+				2D549C191D7204F300942314 /* BallotViewController.swift */,
 			);
 			name = BallotView;
+			sourceTree = "<group>";
+		};
+		2D549C221D720CB700942314 /* BallotDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				2D549C331D72370000942314 /* BallotDetailsView.swift */,
+				2D8FB2A41D7B40A7005AB4CE /* FigureCaptionDisplayStyle.swift */,
+				2D549C251D72139900942314 /* BallotBubbleView.swift */,
+				2D05ACF51D78AE920051549F /* SynchronizedFigureCaptionView.swift */,
+			);
+			name = BallotDetailsView;
 			sourceTree = "<group>";
 		};
 		2D59522F1D33EEEE0000DF98 = {
@@ -367,11 +390,12 @@
 			isa = PBXGroup;
 			children = (
 				2D5952591D33EF4F0000DF98 /* Model */,
-				2D549C0E1D71ECEB00942314 /* Controller */,
 				2D549C0D1D71ECDE00942314 /* View */,
+				2D549C0E1D71ECEB00942314 /* Controller */,
 				2DE237771D4D3CD800684E9F /* MessagesExtension.entitlements */,
 				2D2C80431D367DF90070DB41 /* Utility */,
 				2D2C80421D367D960070DB41 /* Messages View */,
+				2D549C1B1D72069D00942314 /* BallotView */,
 				2DD5DED21D5CBE3C00537948 /* Ballot Collection View */,
 				2DC8D2491D57BB1C000F211D /* Ballot View */,
 				2DD5DECF1D5CBD4700537948 /* Old view controllers */,
@@ -394,8 +418,8 @@
 		2DC8D2491D57BB1C000F211D /* Ballot View */ = {
 			isa = PBXGroup;
 			children = (
+				2D182D961D650CA1001F1584 /* BallotView.swift */,
 				2DE5AC9B1D60B086006F2344 /* BubbleView.swift */,
-				2DE5AC9F1D60E1A2006F2344 /* CandidateView.swift */,
 			);
 			name = "Ballot View";
 			sourceTree = "<group>";
@@ -585,31 +609,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D05ACF61D78AE920051549F /* SynchronizedFigureCaptionView.swift in Sources */,
+				2D549C301D72220F00942314 /* StackLayout.swift in Sources */,
 				2DE2377D1D4E3FB600684E9F /* Election.swift in Sources */,
 				2DC076F41D5B553F00E2B883 /* Voter.swift in Sources */,
-				2D182D971D650CA1001F1584 /* BallotView.swift in Sources */,
 				2D5952611D33EFF00000DF98 /* BubbleButton.swift in Sources */,
 				2D5952741D33F0370000DF98 /* Candidate.swift in Sources */,
+				2D4D88AF1D74A51A0049A816 /* InsetLayout.swift in Sources */,
 				2DED18971D46E63A00B181E9 /* UUID+base64String.swift in Sources */,
+				2D549C261D72139900942314 /* BallotBubbleView.swift in Sources */,
+				2D549C341D72370000942314 /* BallotDetailsView.swift in Sources */,
 				2D5952491D33EEEE0000DF98 /* MessagesViewController.swift in Sources */,
 				2DD5DEDC1D5CFF5B00537948 /* SavedBallotCell.swift in Sources */,
 				2DA26DE91D5A0594000B013C /* RandomExtensions.swift in Sources */,
 				2DD5DEDA1D5CF7CF00537948 /* NewBallotCell.swift in Sources */,
 				2D19F7DA1D5ECF59000CB9DF /* ChaCha20.swift in Sources */,
-				2DE5ACA01D60E1A2006F2344 /* CandidateView.swift in Sources */,
 				2D5952651D33EFFC0000DF98 /* CGRect+bricks.swift in Sources */,
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
 				2D64A3BC1D51292B00F731CA /* UserSettings.swift in Sources */,
 				2D516A2E1D67DBCB00306DC4 /* InsetLabel.swift in Sources */,
-				2D516A2C1D67AB6400306DC4 /* CGRect+centering.swift in Sources */,
+				2D8FB2A51D7B40A7005AB4CE /* FigureCaptionDisplayStyle.swift in Sources */,
 				2D549C121D71F6FD00942314 /* Layout.swift in Sources */,
 				2D549C0B1D71E8E500942314 /* IconButton.swift in Sources */,
 				2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */,
 				2D19F77D1D5D0CF6000CB9DF /* DefaultBallots.swift in Sources */,
-				2DE5AC9C1D60B086006F2344 /* BubbleView.swift in Sources */,
-				2D549C181D71FE5D00942314 /* SplitLayout.swift in Sources */,
+				2D549C321D7234CB00942314 /* BallotDetailsViewController.swift in Sources */,
+				2D05ACF81D78BCE20051549F /* SplitLayout.swift in Sources */,
 				2D1A500F1D6E15980029C9C7 /* Icon.swift in Sources */,
 				2D549C1D1D7207C300942314 /* BallotCollectionViewController.swift in Sources */,
+				2DC1E4471D77505F009EDE9D /* CenteredLayout.swift in Sources */,
 				2D19F7DC1D5EDAB6000CB9DF /* EncryptionKey.swift in Sources */,
 				2DD5DED81D5CF64000537948 /* Election+MSMessage.swift in Sources */,
 				2DA26DE61D59114F000B013C /* Data+base64URLString.swift in Sources */,

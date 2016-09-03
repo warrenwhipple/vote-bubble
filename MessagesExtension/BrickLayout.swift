@@ -8,9 +8,9 @@
 
 import CoreGraphics
 
-struct BrickLayout<Child: Layout>: Layout {
+struct BrickLayout: Layout {
 
-    var children: [Child]
+    var children: [Layout?]
 
     mutating func layout(in rect: CGRect) {
         guard !children.isEmpty else { return }
@@ -41,10 +41,24 @@ struct BrickLayout<Child: Layout>: Layout {
                     width: thisRowColumnWidth,
                     height: rowHeight
                 )
-                children[childIndex].layout(in: brickRect)
+                children[childIndex]?.layout(in: brickRect)
                 childIndex += 1
             }
         }
     }
-    
+
+    func smallestBrick(in size: CGSize) -> CGSize {
+        guard !children.isEmpty else { return size }
+        var columnCount = 1
+        var rowCount = 1
+        while columnCount * rowCount < children.count {
+            if columnCount == rowCount {
+                columnCount += 1
+            } else {
+                rowCount += 1
+            }
+        }
+        return CGSize(width: size.width / CGFloat(columnCount),
+                      height: size.height / CGFloat(rowCount))
+    }
 }

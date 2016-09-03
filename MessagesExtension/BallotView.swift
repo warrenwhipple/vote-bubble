@@ -8,32 +8,20 @@
 
 import UIKit
 
-private let maxBubbleSide: CGFloat = 300
+private let maxMessageBubbleEdgeLength: CGFloat = 300
 private let addButtonDiameter: CGFloat = 64
 private let controlMargin: CGFloat = 8
 
 protocol BallotViewDelegate: class {
+    var ballot: Ballot { get }
 }
 
-class BallotView: UIView, BubbleViewDelegate {
+class BallotView: UIView {
 
     weak var delegate: BallotViewDelegate?
 
-    var buildingBallot: Ballot?
-    var election: Election?
-
-    var ballot: Ballot {
-        if let buildingBallot = buildingBallot {
-            return buildingBallot
-        } else if let election = election {
-            return election.ballot
-        } else {
-            fatalError("No building ballot or election")
-        }
-    }
-
-    let bubbleView: BubbleView
-    var addButton: UIButton? = nil
+    let bubbleView = UIView()
+    
 
     init(ballot: Ballot) {
         self.buildingBallot = ballot
@@ -51,7 +39,7 @@ class BallotView: UIView, BubbleViewDelegate {
         super.layoutSubviews()
         let smallestViewSide = min(bounds.width, bounds.height)
         let stretchBubbleSide = smallestViewSide - 20
-        let bubbleSide = min(stretchBubbleSide, maxBubbleSide)
+        let bubbleSide = min(stretchBubbleSide, maxMessageBubbleEdgeLength)
         let bubbleSize = CGSize(
             width: bubbleSide,
             height: bubbleSide

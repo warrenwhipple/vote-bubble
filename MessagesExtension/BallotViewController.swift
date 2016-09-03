@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol BallotViewControllerDelegate: class {
+
+}
+
 class BallotViewController: UIViewController {
 
-    let messageBubbleView = UIView()
+    weak var delegate: BallotViewControllerDelegate?
+    let ballotBubbleView = BallotBubbleView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(messageBubbleView)
+        
+        view.addSubview(ballotBubbleView)
     }
 
     override func didReceiveMemoryWarning() {
