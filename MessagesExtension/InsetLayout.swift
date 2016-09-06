@@ -16,7 +16,7 @@ struct InsetLayout: Layout {
     var mode: Mode
     var left, right, top, bottom: CGFloat
 
-    mutating func layout(in rect: CGRect) {
+    func layout(in rect: CGRect) {
         switch mode {
         case .absolute: child.layout(in: CGRect(
             x: rect.minX + left,

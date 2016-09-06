@@ -17,7 +17,7 @@ struct SplitLayout: Layout {
     var split: CGFloat
     var direction: Direction
 
-    mutating func layout(in rect: CGRect) {
+    func layout(in rect: CGRect) {
         switch direction {
         case .horizontal:
             firstChild?.layout(in: CGRect(x: rect.minX,

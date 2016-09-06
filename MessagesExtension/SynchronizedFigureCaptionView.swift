@@ -108,7 +108,7 @@ class SynchronizedFigureCaptionView: UIView {
     }
 
     private func layoutFigureOverCaption() {
-        var layout = SplitLayout(
+        let layout = SplitLayout(
             firstChild: figureLabel,
             secondChild: captionLabel?.withInsets(mode: .relative, all: 0.1),
             split: 0.75,
@@ -119,7 +119,7 @@ class SynchronizedFigureCaptionView: UIView {
     }
 
     private func layoutFigureLeftOfCaption() {
-        var layout = SplitLayout(
+        let layout = SplitLayout(
             firstChild: figureLabel,
             secondChild: captionLabel?.withInsets(mode: .relative, all: 0.1),
             split: smallSynchSize.height / smallSynchSize.height,
@@ -134,7 +134,7 @@ class SynchronizedFigureCaptionView: UIView {
     }
 
     private func layoutCaptionOnly() {
-        var layout = captionLabel?.withInsets(mode: .relative, all: 0.1)
+        let layout = captionLabel?.withInsets(mode: .relative, all: 0.1)
         captionLabel?.textAlignment = .center
         layout?.layout(in: bounds)
     }

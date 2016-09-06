@@ -10,10 +10,10 @@ import UIKit
 
 class IconButton: UIButton {
 
-    var icon: Icon = .plus
+    var icon: Icon = .none
     var diameterPercent: CGFloat = 0.75
     var iconStrokeWidth: CGFloat = 1
-    var iconStrokeColor: UIColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    var iconStrokeColor: UIColor = UIColor.white
 
     override func draw(_ rect: CGRect) {
         icon.draw(

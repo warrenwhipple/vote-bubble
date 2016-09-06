@@ -18,10 +18,10 @@ private let savedBallotCellReuseIdentifier = "SavedBallotCell"
 class BallotCollectionViewController: UICollectionViewController {
 
     weak var delegate: BallotCollectionViewControllerDelegate!
-    var ballots: [Ballot] = []
+    let ballotStorage: BallotStorage
 
-    init(ballots: [Ballot]) {
-        self.ballots = ballots
+    init(ballotStorage: BallotStorage) {
+        self.ballotStorage = ballotStorage
         let flowLayout = UICollectionViewFlowLayout()
         // TODO: Dynamically determine cell spacing
         // This is hard coded for 320pt wide display
@@ -40,17 +40,23 @@ class BallotCollectionViewController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func save(ballot: Ballot) {
+        ballotStorage.save(ballot)
+        let indexPath = IndexPath(item: 1, section: 0)
+        collectionView?.insertItems(at: [indexPath])
+    }
+
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return ballots.count + 1
+        return ballotStorage.savedBallots.count + 1
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell
-        if indexPath.row == 0 {
+        if indexPath.item == 0 {
             cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: newBallotCellReuseIdentifier,
                 for: indexPath)
@@ -58,7 +64,7 @@ class BallotCollectionViewController: UICollectionViewController {
             let savedBallotCell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: savedBallotCellReuseIdentifier,
                 for: indexPath) as! SavedBallotCell
-            savedBallotCell.load(ballot: ballots[indexPath.row - 1])
+            savedBallotCell.load(ballot: ballotStorage.savedBallots[indexPath.row - 1])
             cell = savedBallotCell
         }
         cell.layer.cornerRadius = 16
@@ -74,7 +80,7 @@ class BallotCollectionViewController: UICollectionViewController {
         if indexPath.row == 0 {
             delegate.collectionSelect(cell, with: Ballot())
         } else {
-            delegate.collectionSelect(cell, with: ballots[indexPath.row - 1])
+            delegate.collectionSelect(cell, with: ballotStorage.savedBallots[indexPath.row - 1])
         }
     }
 }

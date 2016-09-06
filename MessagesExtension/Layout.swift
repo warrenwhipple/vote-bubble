@@ -9,11 +9,15 @@
 import UIKit
 
 protocol Layout {
-    mutating func layout(in rect: CGRect)
+    func layout(in rect: CGRect)
 }
 
 extension UIView: Layout {
     func layout(in rect: CGRect) {
         self.frame = rect
     }
+}
+
+struct PlaceHolderLayout: Layout {
+    func layout(in rect: CGRect) {}
 }

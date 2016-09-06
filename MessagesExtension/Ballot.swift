@@ -45,7 +45,7 @@ struct Ballot {
         return image
     }
 
-    static func new() -> Ballot {
+    static func newWithPlaceholders() -> Ballot {
         let hueA = CGFloat.random(0 ..< 1)
         let hueB = hueA < 0.5 ? hueA + 0.5 : hueA - 0.5
         let colorA = UIColor(hue: hueA, saturation: 1, brightness: 0.75, alpha: 1)

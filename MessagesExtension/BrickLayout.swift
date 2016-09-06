@@ -12,7 +12,7 @@ struct BrickLayout: Layout {
 
     var children: [Layout?]
 
-    mutating func layout(in rect: CGRect) {
+    func layout(in rect: CGRect) {
         guard !children.isEmpty else { return }
         var columnCount = 1
         var rowCount = 1

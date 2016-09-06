@@ -10,7 +10,7 @@ import UIKit
 
 enum Icon {
 
-    case plus, arrow
+    case none, plus, arrow
 
     func draw(center: CGPoint,
               diameter: CGFloat,
@@ -21,6 +21,7 @@ enum Icon {
         let path: UIBezierPath
 
         switch self {
+        case .none: return
         case .plus:  path =      plusPath(diameter: diameter, strokeWidth: strokeWidth)
         case .arrow: path = leftArrowPath(diameter: diameter, strokeWidth: strokeWidth)
         }

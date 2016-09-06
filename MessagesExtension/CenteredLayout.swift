@@ -10,10 +10,14 @@ import CoreGraphics
 
 struct CenteredLayout: Layout {
 
+    enum Mode {
+        case size(CGSize), aspectRatio(CGFloat)
+    }
+
     var child: Layout
     var size: CGSize
 
-    mutating func layout(in rect: CGRect) {
+    func layout(in rect: CGRect) {
             child.layout(in: CGRect(x: rect.minX + (rect.width - size.width) / 2,
                                     y: rect.minY + (rect.height - size.height) / 2,
                                     width: size.width,

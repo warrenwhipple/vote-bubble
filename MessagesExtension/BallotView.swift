@@ -10,11 +10,23 @@ import UIKit
 
 class BallotView: UIView {
 
-    var ballotBubbleView = BallotBubbleView()
+    let bubbleView = BallotBubbleView()
+    let brickStyleButtons: [IconButton] = [IconButton(), IconButton(), IconButton()]
+    let addCandidateButton = IconButton()
+    let subtractCandidateButton = IconButton()
+    let backButton = IconButton()
+    let toggleQuestionButton = IconButton()
 
     init() {
         super.init(frame: CGRect.zero)
-        addSubview(ballotBubbleView)
+
+        addSubview(bubbleView)
+
+        addCandidateButton.icon = .plus
+        addCandidateButton.backgroundColor = ColorPalette.voteBubblePrimary
+        addCandidateButton.iconStrokeColor = UIColor.white
+        addCandidateButton.clipsToBounds = true
+        addSubview(addCandidateButton)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,11 +35,30 @@ class BallotView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let smallestSide = min(bounds.width, bounds.height)
-        let bubbleSide = min(smallestSide - 16, 300)
-        var layout = ballotBubbleView.centered(size: CGSize(width: bubbleSide, height: bubbleSide))
-        layout.layout(in: bounds)
+        let controlStackDirection: StackLayout.Direction
+        let overallStackDirection: StackLayout.Direction
+        if bounds.width > bounds.height {
+            controlStackDirection = .vertical
+            overallStackDirection = .horizontal
+        } else {
+            controlStackDirection = .vertical
+            overallStackDirection = .horizontal
+        }
+        let topControlLayout = StackLayout(
+            spacedChildren: brickStyleButtons,
+            all: .aspectRatio(1),
+            direction: controlStackDirection
+        )
+        let bottomControls: [Layout] = [
+            backButton,
+            toggleQuestionButton,
+            subtractCandidateButton,
+            addCandidateButton
+        ]
+        let bottomControlsLayout = StackLayout(
+            spacedChildren: bottomControls,
+            all: .aspectRatio(1),
+            direction: controlStackDirection
+        )
     }
-
-    
 }

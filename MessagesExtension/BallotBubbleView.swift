@@ -12,6 +12,7 @@ class BallotBubbleView: UIView {
 
     private(set) var candidateViews: [SynchronizedFigureCaptionView] = []
     private(set) var questionLabel: UILabel?
+
     var shouldDiplayFigures = true;
     var shouldDisplayText = true;
 
@@ -32,11 +33,13 @@ class BallotBubbleView: UIView {
         } else {
             addSubview(candidateView)
         }
+        setNeedsLayout()
     }
 
     func add(questionLabel: UILabel) {
         self.questionLabel = questionLabel
         addSubview(questionLabel)
+        setNeedsLayout()
     }
 
     override func layoutSubviews() {
@@ -94,5 +97,4 @@ class BallotBubbleView: UIView {
         layout.layout(in: bounds)
     }
 
-    
 }
