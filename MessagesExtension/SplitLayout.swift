@@ -14,7 +14,7 @@ struct SplitLayout: Layout {
 
     var firstChild: Layout?
     var secondChild: Layout?
-    /// Proportion of the layout for firstChild, 0 to 1
+    /// Proportion of the layout devoted to firstChild, 0 to 1
     var split: CGFloat
     var direction: Direction
 
@@ -30,7 +30,8 @@ struct SplitLayout: Layout {
         self.direction = direction
     }
 
-    func layout(in rect: CGRect) {
+    @discardableResult
+    func layout(in rect: CGRect) -> SplitLayout {
         switch direction {
         case .horizontal:
             firstChild?.layout(in: CGRect(
@@ -54,11 +55,12 @@ struct SplitLayout: Layout {
             ))
             secondChild?.layout(in: CGRect(
                 x: rect.minX,
-                y: rect.minY + rect.width * split,
+                y: rect.minY + rect.height * split,
                 width: rect.width,
                 height: rect.height * (1 - split)
             ))
         }
+        return self
     }
 
     func firstSize(in size: CGSize) -> CGSize {

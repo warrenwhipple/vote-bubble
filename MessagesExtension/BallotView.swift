@@ -19,9 +19,7 @@ class BallotView: UIView {
 
     init() {
         super.init(frame: CGRect.zero)
-
         addSubview(bubbleView)
-
         addCandidateButton.icon = .plus
         addCandidateButton.backgroundColor = ColorPalette.voteBubblePrimary
         addCandidateButton.iconStrokeColor = UIColor.white
@@ -38,7 +36,7 @@ class BallotView: UIView {
         let topControlsLayout = StackLayout(
             spacingChildren: brickStyleButtons,
             all: .aspectRatio(1),
-            direction: .contextual,
+            direction: .horizontal,
             insideSpacing: .stretch(1)
         )
         let bottomControls = [
@@ -50,7 +48,7 @@ class BallotView: UIView {
         let bottomControlsLayout = StackLayout(
             spacingChildren: bottomControls,
             all: .aspectRatio(1),
-            direction: .contextual,
+            direction: .horizontal,
             insideSpacing: .stretch(1)
         )
         let stackChildren: [Layout] = [
@@ -66,13 +64,12 @@ class BallotView: UIView {
         let stackLayout = StackLayout(
             spacingChildren: stackChildren,
             modes: stackModes,
-            direction: .contextual,
+            direction: .vertical,
             insideSpacing: .stretch(1)
         )
         let centeredLayout = stackLayout
             .withCentering(.aspectRatioFit(0.75))
             .withCentering(.maxWidth(300))
-            .withInsets(.absolute, all: 8)
         centeredLayout.layout(in: bounds)
     }
 }

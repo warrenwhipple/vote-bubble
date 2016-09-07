@@ -16,7 +16,8 @@ struct InsetLayout: Layout {
     var mode: Mode
     var left, right, top, bottom: CGFloat
 
-    func layout(in rect: CGRect) {
+    @discardableResult
+    func layout(in rect: CGRect) -> InsetLayout {
         switch mode {
         case .absolute: child.layout(in: CGRect(
             x: rect.minX + left,
@@ -29,6 +30,7 @@ struct InsetLayout: Layout {
             width: rect.width - (left + right) * rect.width,
             height: rect.height - (top + bottom) * rect.height))
         }
+        return self
     }
 }
 

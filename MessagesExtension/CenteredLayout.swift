@@ -22,7 +22,8 @@ struct CenteredLayout: Layout {
     var child: Layout
     var mode: Mode
 
-    func layout(in rect: CGRect) {
+    @discardableResult
+    func layout(in rect: CGRect) -> CenteredLayout {
         let size = childSize(in: rect.size, mode: self.mode)
         child.layout(in: CGRect(
             x: rect.minX + (rect.width - size.width) / 2,
@@ -30,6 +31,7 @@ struct CenteredLayout: Layout {
             width: size.width,
             height: size.height
         ))
+        return self
     }
 
     private func childSize(in parentSize: CGSize, mode: Mode) -> CGSize {

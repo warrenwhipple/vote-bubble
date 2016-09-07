@@ -1,15 +1,15 @@
 //
-//  VoteBubbleTests.swift
-//  VoteBubbleTests
+//  VoteBubbleMacOSTests.swift
+//  VoteBubbleMacOSTests
 //
-//  Created by Warren Whipple on 7/19/16.
+//  Created by Warren Whipple on 9/7/16.
 //  Copyright © 2016 Warren Whipple. All rights reserved.
 //
 
 import XCTest
 
-class VoteBubbleTests: XCTestCase {
-
+class VoteBubbleMacOSTests: XCTestCase {
+    
     func testBricks() {
         for i in 1 ... 100 {
             let rect = CGRect(
@@ -60,5 +60,5 @@ class VoteBubbleTests: XCTestCase {
         let encrypteds = zip(keys,strings).flatMap { $0.0.encrypt($0.1) }
         let decrypteds = zip(keys,encrypteds).flatMap { $0.0.decrypt($0.1) }
         XCTAssert(strings == decrypteds)
-    }
+    }    
 }

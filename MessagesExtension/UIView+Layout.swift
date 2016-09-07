@@ -9,8 +9,9 @@
 import UIKit
 
 extension UIView: Layout {
-    func layout(in rect: CGRect) {
+    @discardableResult
+    func layout(in rect: CGRect) -> Self {
         self.frame = rect
+        return self
     }
 }
-

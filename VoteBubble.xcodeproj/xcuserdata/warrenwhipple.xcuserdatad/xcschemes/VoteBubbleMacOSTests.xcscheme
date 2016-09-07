@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D055AA41D3EBEE000E08DCC"
-               BuildableName = "VoteBubbleTests.xctest"
-               BlueprintName = "VoteBubbleTests"
+               BlueprintIdentifier = "2D5A6FAD1D80508800BEB809"
+               BuildableName = "VoteBubbleMacOSTests.xctest"
+               BlueprintName = "VoteBubbleMacOSTests"
                ReferencedContainer = "container:VoteBubble.xcodeproj">
             </BuildableReference>
          </TestableReference>

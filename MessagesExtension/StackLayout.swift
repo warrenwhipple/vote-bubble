@@ -50,14 +50,14 @@ struct StackLayout: Layout {
         insideSpacing: Mode,
         outsideSpacing: Mode? = nil
         ) {
-        let (childrenPlusSpacing, modesPlusSpacing) = StackLayout.spacing(
+        let (childrenPlusSpacers, modesPlusSpacers) = StackLayout.inertSpacers(
             children: spacingChildren,
             modes: modes,
             insideSpacing: insideSpacing,
             outsideSpacing: outsideSpacing
         )
-        self.children = childrenPlusSpacing
-        self.modes = modesPlusSpacing
+        self.children = childrenPlusSpacers
+        self.modes = modesPlusSpacers
         self.direction = direction
     }
 
@@ -69,57 +69,57 @@ struct StackLayout: Layout {
         insideSpacing: Mode,
         outsideSpacing: Mode? = nil
         ) {
-        let (childrenPlusSpacing, modesPlusSpacing) = StackLayout.spacing(
+        let (childrenPlusSpacers, modesPlusSpacers) = StackLayout.inertSpacers(
             children: spacingChildren,
             modes: [Mode](repeatElement(mode, count: spacingChildren.count)),
             insideSpacing: insideSpacing,
             outsideSpacing: outsideSpacing
         )
-        self.children = childrenPlusSpacing
-        self.modes = modesPlusSpacing
+        self.children = childrenPlusSpacers
+        self.modes = modesPlusSpacers
         self.direction = direction
     }
 
-    private static func spacing(
+    private static func inertSpacers(
         children: [Layout?],
         modes: [Mode],
         insideSpacing: Mode,
         outsideSpacing: Mode?
         ) -> ([Layout?],[Mode]) {
-        var childrenPlusSpacing: [Layout?] = []
-        var modesPlusSpacing: [Mode] = []
+        var childrenPlusSpacers: [Layout?] = []
+        var modesPlusSpacers: [Mode] = []
         let minCount = min(children.count, modes.count)
         if let outsideSpacing = outsideSpacing {
-            childrenPlusSpacing.reserveCapacity(minCount * 2 + 1)
-            modesPlusSpacing.reserveCapacity(minCount * 2 + 1)
-            childrenPlusSpacing.append(nil)
-            modesPlusSpacing.append(outsideSpacing)
+            childrenPlusSpacers.reserveCapacity(minCount * 2 + 1)
+            modesPlusSpacers.reserveCapacity(minCount * 2 + 1)
+            childrenPlusSpacers.append(nil)
+            modesPlusSpacers.append(outsideSpacing)
         } else {
-            childrenPlusSpacing.reserveCapacity(minCount * 2 - 1)
-            modesPlusSpacing.reserveCapacity(minCount * 2 - 1)
+            childrenPlusSpacers.reserveCapacity(minCount * 2 - 1)
+            modesPlusSpacers.reserveCapacity(minCount * 2 - 1)
         }
         if minCount > 0 {
-            childrenPlusSpacing.append(children[0])
-            modesPlusSpacing.append(modes[0])
+            childrenPlusSpacers.append(children[0])
+            modesPlusSpacers.append(modes[0])
         }
         if minCount > 1 {
-            for i in 0 ..< minCount {
-                childrenPlusSpacing.append(nil)
-                modesPlusSpacing.append(insideSpacing)
-                childrenPlusSpacing.append(children[i])
-                modesPlusSpacing.append(modes[i])
+            for i in 1 ..< minCount {
+                childrenPlusSpacers.append(nil)
+                modesPlusSpacers.append(insideSpacing)
+                childrenPlusSpacers.append(children[i])
+                modesPlusSpacers.append(modes[i])
             }
         }
         if let outsideSpacing = outsideSpacing {
-            childrenPlusSpacing.append(nil)
-            modesPlusSpacing.append(outsideSpacing)
+            childrenPlusSpacers.append(nil)
+            modesPlusSpacers.append(outsideSpacing)
         }
-        return (childrenPlusSpacing, modesPlusSpacing)
+        return (childrenPlusSpacers, modesPlusSpacers)
     }
 
-    func layout(in rect: CGRect) {
+    func layout(in rect: CGRect) -> StackLayout {
         let minCount = min(children.count, modes.count)
-        guard minCount > 0 else { return }
+        guard minCount > 0 else { return self }
         var stretchSum: CGFloat = 0
         var aspectRatioSum: CGFloat = 0
         for mode in modes {
@@ -171,5 +171,6 @@ struct StackLayout: Layout {
                 y += height
             }
         }
+        return self
     }
 }
