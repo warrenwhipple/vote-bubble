@@ -17,8 +17,8 @@ private let savedBallotCellReuseIdentifier = "SavedBallotCell"
 
 class BallotCollectionViewController: UICollectionViewController {
 
-    weak var delegate: BallotCollectionViewControllerDelegate!
     let ballotStorage: BallotStorage
+    weak var delegate: BallotCollectionViewControllerDelegate?
 
     init(ballotStorage: BallotStorage) {
         self.ballotStorage = ballotStorage
@@ -78,9 +78,9 @@ class BallotCollectionViewController: UICollectionViewController {
                                  didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         if indexPath.row == 0 {
-            delegate.collectionSelect(cell, with: Ballot())
+            delegate?.collectionSelect(cell, with: Ballot())
         } else {
-            delegate.collectionSelect(cell, with: ballotStorage.savedBallots[indexPath.row - 1])
+            delegate?.collectionSelect(cell, with: ballotStorage.savedBallots[indexPath.row - 1])
         }
     }
 }

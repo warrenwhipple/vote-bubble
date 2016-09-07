@@ -34,26 +34,32 @@ struct InsetLayout: Layout {
 
 extension Layout {
 
-    func withInsets(mode: InsetLayout.Mode,
-                    left: CGFloat = 0,
-                    right: CGFloat = 0,
-                    top: CGFloat = 0,
-                    bottom: CGFloat = 0
+    func withInsets(
+        _ mode: InsetLayout.Mode,
+        left: CGFloat = 0,
+        right: CGFloat = 0,
+        top: CGFloat = 0,
+        bottom: CGFloat = 0
         ) -> InsetLayout {
-        return InsetLayout(child: self,
-                           mode: mode,
-                           left: left,
-                           right: right,
-                           top: top,
-                           bottom: bottom)
+
+        return InsetLayout(
+            child: self,
+            mode: mode,
+            left: left,
+            right: right,
+            top: top,
+            bottom: bottom
+        )
     }
 
-    func withInsets(mode: InsetLayout.Mode, all inset: CGFloat) -> InsetLayout {
-        return InsetLayout(child: self,
-                           mode: mode,
-                           left: inset,
-                           right: inset,
-                           top: inset,
-                           bottom: inset)
+    func withInsets(_ mode: InsetLayout.Mode, all inset: CGFloat) -> InsetLayout {
+        return InsetLayout(
+            child: self,
+            mode: mode,
+            left: inset,
+            right: inset,
+            top: inset,
+            bottom: inset
+        )
     }
 }

@@ -45,13 +45,13 @@ class BallotBubbleView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.width / 16
-        let brickLayout = BrickLayout(children: candidateViews)
+        let brickLayout = BrickLayout(candidateViews)
         var layout: Layout
         var brickWallSize: CGSize
         if let questionLabel = questionLabel {
             let splitLayout = SplitLayout(
-                firstChild: brickLayout,
-                secondChild: questionLabel.withInsets(mode: .relative, all: 0.1),
+                brickLayout,
+                questionLabel.withInsets(.relative, all: 0.1),
                 split: 0.75,
                 direction: .vertical
             )

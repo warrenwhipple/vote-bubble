@@ -8,13 +8,15 @@
 
 import UIKit
 
+protocol BallotViewControllerDelegate: class {
+
+}
+
 class BallotViewController: UIViewController {
 
     var ballot: Ballot
-
-    var ballotView: BallotView! {
-        get { return view as! BallotView }
-    }
+    var ballotView: BallotView! { get { return view as! BallotView } }
+    weak var delegate: BallotViewControllerDelegate?
 
     init(ballot: Ballot) {
         self.ballot = ballot

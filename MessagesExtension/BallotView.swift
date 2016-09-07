@@ -35,30 +35,44 @@ class BallotView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let controlStackDirection: StackLayout.Direction
-        let overallStackDirection: StackLayout.Direction
-        if bounds.width > bounds.height {
-            controlStackDirection = .vertical
-            overallStackDirection = .horizontal
-        } else {
-            controlStackDirection = .vertical
-            overallStackDirection = .horizontal
-        }
-        let topControlLayout = StackLayout(
-            spacedChildren: brickStyleButtons,
+        let topControlsLayout = StackLayout(
+            spacingChildren: brickStyleButtons,
             all: .aspectRatio(1),
-            direction: controlStackDirection
+            direction: .contextual,
+            insideSpacing: .stretch(1)
         )
-        let bottomControls: [Layout] = [
+        let bottomControls = [
             backButton,
             toggleQuestionButton,
             subtractCandidateButton,
             addCandidateButton
         ]
         let bottomControlsLayout = StackLayout(
-            spacedChildren: bottomControls,
+            spacingChildren: bottomControls,
             all: .aspectRatio(1),
-            direction: controlStackDirection
+            direction: .contextual,
+            insideSpacing: .stretch(1)
         )
+        let stackChildren: [Layout] = [
+            topControlsLayout,
+            bubbleView,
+            bottomControlsLayout
+        ]
+        let stackModes: [StackLayout.Mode] = [
+            .aspectRatio(0.25),
+            .aspectRatio(1),
+            .aspectRatio(0.25)
+        ]
+        let stackLayout = StackLayout(
+            spacingChildren: stackChildren,
+            modes: stackModes,
+            direction: .contextual,
+            insideSpacing: .stretch(1)
+        )
+        let centeredLayout = stackLayout
+            .withCentering(.aspectRatioFit(0.75))
+            .withCentering(.maxWidth(300))
+            .withInsets(.absolute, all: 8)
+        centeredLayout.layout(in: bounds)
     }
 }

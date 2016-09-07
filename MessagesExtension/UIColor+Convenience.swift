@@ -1,6 +1,6 @@
 //
 //  UIColor+Convenience.swift
-//  Vote Bubble
+//  VoteBubble
 //
 //  Created by Warren Whipple on 7/14/16.
 //  Copyright © 2016 Warren Whipple. All rights reserved.

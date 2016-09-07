@@ -12,6 +12,14 @@ struct BrickLayout: Layout {
 
     var children: [Layout?]
 
+    init(_ children: [Layout]) {
+        self.children = children
+    }
+
+    init(_ children: [Layout?]) {
+        self.children = children
+    }
+
     func layout(in rect: CGRect) {
         guard !children.isEmpty else { return }
         var columnCount = 1

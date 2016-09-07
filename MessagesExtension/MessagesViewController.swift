@@ -1,6 +1,6 @@
 //
 //  MessagesViewController.swift
-//  Vote Bubble
+//  VoteBubble
 //
 //  Created by Warren Whipple on 7/11/16.
 //  Copyright © 2016 Warren Whipple. All rights reserved.
@@ -10,7 +10,7 @@ import UIKit
 import Messages
 
 class MessagesViewController: MSMessagesAppViewController,
-    BallotCollectionViewControllerDelegate {
+    BallotCollectionViewControllerDelegate, BallotViewControllerDelegate {
 
     enum Mode { case collection, single }
     var mode: Mode = .collection
@@ -27,7 +27,7 @@ class MessagesViewController: MSMessagesAppViewController,
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("Vote Bubble view.didAppear(animated: \(animated)).")
+        print("VoteBubble view.didAppear(animated: \(animated)).")
     }
 
     override func viewDidLoad() {
@@ -42,11 +42,14 @@ class MessagesViewController: MSMessagesAppViewController,
 
     func segueToSingleView(for ballot: Ballot, from cell: UICollectionViewCell? = nil) {
         if let oldSingleViewController = singleViewController {
+            oldSingleViewController.delegate = nil
             unembed(childViewController: oldSingleViewController)
         }
         singleViewController = BallotViewController(ballot: ballot)
         embed(childViewController: singleViewController!, anchorToGuides: true)
+        singleViewController!.delegate = self
         if let collectionViewController = collectionViewController {
+            collectionViewController.delegate = nil
             unembed(childViewController: collectionViewController)
         }
     }
@@ -57,9 +60,9 @@ class MessagesViewController: MSMessagesAppViewController,
 
     func segueToCollectionView(from ballot: Ballot) {
         if collectionViewController == nil {
-            collectionViewController =
-                BallotCollectionViewController(ballotStorage: ballotStorage)
+            collectionViewController = BallotCollectionViewController(ballotStorage: ballotStorage)
         }
+        collectionViewController!.delegate = self
         embed(childViewController: collectionViewController!, anchorToGuides: false)
         guard let singleViewController = singleViewController else { return }
         unembed(childViewController: singleViewController)
@@ -106,6 +109,7 @@ class MessagesViewController: MSMessagesAppViewController,
     override func willBecomeActive(with conversation: MSConversation) {
         // No super call in template
         if let singleViewController = singleViewController {
+            singleViewController.delegate = nil
             unembed(childViewController: singleViewController)
             self.singleViewController = nil
         }
@@ -114,6 +118,7 @@ class MessagesViewController: MSMessagesAppViewController,
                 BallotCollectionViewController(ballotStorage: ballotStorage)
         }
         embed(childViewController: collectionViewController!, anchorToGuides: false)
+        collectionViewController!.delegate = self
     }
 
     override func didResignActive(with conversation: MSConversation) {

@@ -9,20 +9,15 @@
 /* Begin PBXBuildFile section */
 		2D055AA81D3EBEE100E08DCC /* VoteBubbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D055AA71D3EBEE100E08DCC /* VoteBubbleTests.swift */; };
 		2D05ACF61D78AE920051549F /* SynchronizedFigureCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05ACF51D78AE920051549F /* SynchronizedFigureCaptionView.swift */; };
-		2D05ACF81D78BCE20051549F /* SplitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05ACF71D78BCE20051549F /* SplitLayout.swift */; };
 		2D19F7D91D5ECF57000CB9DF /* ChaCha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F77F1D5D5715000CB9DF /* ChaCha20.swift */; };
 		2D19F7DA1D5ECF59000CB9DF /* ChaCha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F77F1D5D5715000CB9DF /* ChaCha20.swift */; };
 		2D19F7DB1D5EDAB5000CB9DF /* EncryptionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEC29EF1D57EE82004342C4 /* EncryptionKey.swift */; };
 		2D19F7DC1D5EDAB6000CB9DF /* EncryptionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEC29EF1D57EE82004342C4 /* EncryptionKey.swift */; };
 		2D1A500F1D6E15980029C9C7 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A500E1D6E15980029C9C7 /* Icon.swift */; };
 		2D49DD441D4E973800BF7148 /* Election+CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49DD431D4E973800BF7148 /* Election+CloudKit.swift */; };
-		2D4D88AF1D74A51A0049A816 /* InsetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D88AE1D74A51A0049A816 /* InsetLayout.swift */; };
 		2D549C0B1D71E8E500942314 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C0A1D71E8E500942314 /* IconButton.swift */; };
-		2D549C121D71F6FD00942314 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C111D71F6FD00942314 /* Layout.swift */; };
-		2D549C141D71F78200942314 /* BrickLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C131D71F78200942314 /* BrickLayout.swift */; };
 		2D549C1D1D7207C300942314 /* BallotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C1C1D7207C300942314 /* BallotCollectionViewController.swift */; };
 		2D549C261D72139900942314 /* BallotBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C251D72139900942314 /* BallotBubbleView.swift */; };
-		2D549C301D72220F00942314 /* StackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C2F1D72220F00942314 /* StackLayout.swift */; };
 		2D549C321D7234CB00942314 /* BallotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C311D7234CB00942314 /* BallotViewController.swift */; };
 		2D549C341D72370000942314 /* BallotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D549C331D72370000942314 /* BallotView.swift */; };
 		2D5950B01D46F48900C03BCB /* UUID+base64String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED18961D46E63A00B181E9 /* UUID+base64String.swift */; };
@@ -45,9 +40,15 @@
 		2DA26DE71D591274000B013C /* Data+base64URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA26DE51D59114F000B013C /* Data+base64URLString.swift */; };
 		2DA26DE91D5A0594000B013C /* RandomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA26DE81D5A0594000B013C /* RandomExtensions.swift */; };
 		2DA26DEA1D5A05AA000B013C /* RandomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA26DE81D5A0594000B013C /* RandomExtensions.swift */; };
+		2DA52BA81D7F8C5C00D875FA /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA52BA11D7F8C5C00D875FA /* Layout.swift */; };
+		2DA52BA91D7F8C5C00D875FA /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA52BA21D7F8C5C00D875FA /* UIView+Layout.swift */; };
+		2DA52BAA1D7F8C5C00D875FA /* BrickLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA52BA31D7F8C5C00D875FA /* BrickLayout.swift */; };
+		2DA52BAB1D7F8C5C00D875FA /* SplitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA52BA41D7F8C5C00D875FA /* SplitLayout.swift */; };
+		2DA52BAC1D7F8C5C00D875FA /* StackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA52BA51D7F8C5C00D875FA /* StackLayout.swift */; };
+		2DA52BAD1D7F8C5C00D875FA /* InsetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA52BA61D7F8C5C00D875FA /* InsetLayout.swift */; };
+		2DA52BAE1D7F8C5C00D875FA /* CenteredLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA52BA71D7F8C5C00D875FA /* CenteredLayout.swift */; };
 		2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 		2DC076F41D5B553F00E2B883 /* Voter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC076F31D5B553F00E2B883 /* Voter.swift */; };
-		2DC1E4471D77505F009EDE9D /* CenteredLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1E4461D77505F009EDE9D /* CenteredLayout.swift */; };
 		2DC71A4D1D3F18E800D1A366 /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB740761D3853D600433E15 /* UIColor+Convenience.swift */; };
 		2DD5DED81D5CF64000537948 /* Election+MSMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5DED71D5CF64000537948 /* Election+MSMessage.swift */; };
 		2DD5DEDA1D5CF7CF00537948 /* NewBallotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5DED91D5CF7CF00537948 /* NewBallotCell.swift */; };
@@ -92,17 +93,12 @@
 		2D055AA71D3EBEE100E08DCC /* VoteBubbleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteBubbleTests.swift; sourceTree = "<group>"; };
 		2D055AA91D3EBEE100E08DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D05ACF51D78AE920051549F /* SynchronizedFigureCaptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedFigureCaptionView.swift; sourceTree = "<group>"; };
-		2D05ACF71D78BCE20051549F /* SplitLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitLayout.swift; sourceTree = "<group>"; };
 		2D19F77F1D5D5715000CB9DF /* ChaCha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaCha20.swift; sourceTree = "<group>"; };
 		2D1A500E1D6E15980029C9C7 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		2D49DD431D4E973800BF7148 /* Election+CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Election+CloudKit.swift"; sourceTree = "<group>"; };
-		2D4D88AE1D74A51A0049A816 /* InsetLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetLayout.swift; sourceTree = "<group>"; };
 		2D549C0A1D71E8E500942314 /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
-		2D549C111D71F6FD00942314 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		2D549C131D71F78200942314 /* BrickLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickLayout.swift; sourceTree = "<group>"; };
 		2D549C1C1D7207C300942314 /* BallotCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotCollectionViewController.swift; sourceTree = "<group>"; };
 		2D549C251D72139900942314 /* BallotBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotBubbleView.swift; sourceTree = "<group>"; };
-		2D549C2F1D72220F00942314 /* StackLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackLayout.swift; sourceTree = "<group>"; };
 		2D549C311D7234CB00942314 /* BallotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotViewController.swift; sourceTree = "<group>"; };
 		2D549C331D72370000942314 /* BallotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallotView.swift; sourceTree = "<group>"; };
 		2D5952361D33EEEE0000DF98 /* VoteBubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoteBubble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,9 +122,15 @@
 		2D8FB2A81D7B5BC7005AB4CE /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		2DA26DE51D59114F000B013C /* Data+base64URLString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+base64URLString.swift"; sourceTree = "<group>"; };
 		2DA26DE81D5A0594000B013C /* RandomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomExtensions.swift; sourceTree = "<group>"; };
+		2DA52BA11D7F8C5C00D875FA /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		2DA52BA21D7F8C5C00D875FA /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		2DA52BA31D7F8C5C00D875FA /* BrickLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickLayout.swift; sourceTree = "<group>"; };
+		2DA52BA41D7F8C5C00D875FA /* SplitLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitLayout.swift; sourceTree = "<group>"; };
+		2DA52BA51D7F8C5C00D875FA /* StackLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackLayout.swift; sourceTree = "<group>"; };
+		2DA52BA61D7F8C5C00D875FA /* InsetLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetLayout.swift; sourceTree = "<group>"; };
+		2DA52BA71D7F8C5C00D875FA /* CenteredLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredLayout.swift; sourceTree = "<group>"; };
 		2DB740761D3853D600433E15 /* UIColor+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenience.swift"; sourceTree = "<group>"; };
 		2DC076F31D5B553F00E2B883 /* Voter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voter.swift; sourceTree = "<group>"; };
-		2DC1E4461D77505F009EDE9D /* CenteredLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredLayout.swift; sourceTree = "<group>"; };
 		2DD5DED71D5CF64000537948 /* Election+MSMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Election+MSMessage.swift"; sourceTree = "<group>"; };
 		2DD5DED91D5CF7CF00537948 /* NewBallotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBallotCell.swift; sourceTree = "<group>"; };
 		2DD5DEDB1D5CFF5B00537948 /* SavedBallotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedBallotCell.swift; sourceTree = "<group>"; };
@@ -208,25 +210,12 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
-		2D549C0C1D71ECA800942314 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				2D549C111D71F6FD00942314 /* Layout.swift */,
-				2D549C131D71F78200942314 /* BrickLayout.swift */,
-				2D05ACF71D78BCE20051549F /* SplitLayout.swift */,
-				2D549C2F1D72220F00942314 /* StackLayout.swift */,
-				2D4D88AE1D74A51A0049A816 /* InsetLayout.swift */,
-				2DC1E4461D77505F009EDE9D /* CenteredLayout.swift */,
-			);
-			name = Layout;
-			sourceTree = "<group>";
-		};
 		2D549C0D1D71ECDE00942314 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				2D8FB2A81D7B5BC7005AB4CE /* ColorPalette.swift */,
 				2D1A500D1D6DD1010029C9C7 /* Icon */,
-				2D549C0C1D71ECA800942314 /* Layout */,
+				2DA52BA01D7F8C4A00D875FA /* Layout */,
 				2D8FB2AA1D7B64A3005AB4CE /* Ballot Collection */,
 				2D549C221D720CB700942314 /* Single Ballot */,
 			);
@@ -340,6 +329,20 @@
 				2DD5DEDB1D5CFF5B00537948 /* SavedBallotCell.swift */,
 			);
 			name = "Ballot Collection";
+			sourceTree = "<group>";
+		};
+		2DA52BA01D7F8C4A00D875FA /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2DA52BA11D7F8C5C00D875FA /* Layout.swift */,
+				2DA52BA21D7F8C5C00D875FA /* UIView+Layout.swift */,
+				2DA52BA31D7F8C5C00D875FA /* BrickLayout.swift */,
+				2DA52BA41D7F8C5C00D875FA /* SplitLayout.swift */,
+				2DA52BA51D7F8C5C00D875FA /* StackLayout.swift */,
+				2DA52BA61D7F8C5C00D875FA /* InsetLayout.swift */,
+				2DA52BA71D7F8C5C00D875FA /* CenteredLayout.swift */,
+			);
+			name = Layout;
 			sourceTree = "<group>";
 		};
 		2DD53F9E1D7DEFE2000C2A09 /* Ballot Collection */ = {
@@ -521,40 +524,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D05ACF61D78AE920051549F /* SynchronizedFigureCaptionView.swift in Sources */,
-				2D549C301D72220F00942314 /* StackLayout.swift in Sources */,
 				2DE2377D1D4E3FB600684E9F /* Election.swift in Sources */,
 				2DC076F41D5B553F00E2B883 /* Voter.swift in Sources */,
 				2D5952611D33EFF00000DF98 /* BubbleButton.swift in Sources */,
 				2D5952741D33F0370000DF98 /* Candidate.swift in Sources */,
-				2D4D88AF1D74A51A0049A816 /* InsetLayout.swift in Sources */,
+				2DA52BAD1D7F8C5C00D875FA /* InsetLayout.swift in Sources */,
 				2DED18971D46E63A00B181E9 /* UUID+base64String.swift in Sources */,
 				2D549C261D72139900942314 /* BallotBubbleView.swift in Sources */,
 				2D549C341D72370000942314 /* BallotView.swift in Sources */,
 				2D5952491D33EEEE0000DF98 /* MessagesViewController.swift in Sources */,
+				2DA52BAC1D7F8C5C00D875FA /* StackLayout.swift in Sources */,
+				2DA52BAA1D7F8C5C00D875FA /* BrickLayout.swift in Sources */,
 				2DD5DEDC1D5CFF5B00537948 /* SavedBallotCell.swift in Sources */,
 				2DA26DE91D5A0594000B013C /* RandomExtensions.swift in Sources */,
+				2DA52BA81D7F8C5C00D875FA /* Layout.swift in Sources */,
 				2DD5DEDA1D5CF7CF00537948 /* NewBallotCell.swift in Sources */,
 				2D19F7DA1D5ECF59000CB9DF /* ChaCha20.swift in Sources */,
 				2D5952651D33EFFC0000DF98 /* CGRect+bricks.swift in Sources */,
 				2D5952751D33F0370000DF98 /* Figure.swift in Sources */,
+				2DA52BA91D7F8C5C00D875FA /* UIView+Layout.swift in Sources */,
 				2D64A3BC1D51292B00F731CA /* UserSettings.swift in Sources */,
 				2D8FB2A51D7B40A7005AB4CE /* FigureCaptionDisplayStyle.swift in Sources */,
-				2D549C121D71F6FD00942314 /* Layout.swift in Sources */,
 				2D549C0B1D71E8E500942314 /* IconButton.swift in Sources */,
 				2DB740771D3853D600433E15 /* UIColor+Convenience.swift in Sources */,
 				2D549C321D7234CB00942314 /* BallotViewController.swift in Sources */,
-				2D05ACF81D78BCE20051549F /* SplitLayout.swift in Sources */,
 				2D1A500F1D6E15980029C9C7 /* Icon.swift in Sources */,
 				2D549C1D1D7207C300942314 /* BallotCollectionViewController.swift in Sources */,
-				2DC1E4471D77505F009EDE9D /* CenteredLayout.swift in Sources */,
 				2D19F7DC1D5EDAB6000CB9DF /* EncryptionKey.swift in Sources */,
+				2DA52BAE1D7F8C5C00D875FA /* CenteredLayout.swift in Sources */,
 				2DD5DED81D5CF64000537948 /* Election+MSMessage.swift in Sources */,
 				2D8FB2A91D7B5BC7005AB4CE /* ColorPalette.swift in Sources */,
 				2DA26DE61D59114F000B013C /* Data+base64URLString.swift in Sources */,
 				2D5952641D33EFFC0000DF98 /* MSMessageTemplateLayout+defaults.swift in Sources */,
 				2D6C97581D7F4D1B0012B811 /* BallotStorage.swift in Sources */,
 				2D49DD441D4E973800BF7148 /* Election+CloudKit.swift in Sources */,
-				2D549C141D71F78200942314 /* BrickLayout.swift in Sources */,
+				2DA52BAB1D7F8C5C00D875FA /* SplitLayout.swift in Sources */,
 				2DE237811D4E60BD00684E9F /* Ballot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
