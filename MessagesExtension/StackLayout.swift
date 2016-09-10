@@ -30,24 +30,24 @@ struct StackLayout: Layout {
     var modes: [Mode]
     var direction: Direction
 
-    init(_ children: [Layout?], modes: [Mode], direction: Direction) {
+    init(_ children: [Layout?], modes: [Mode], direction: Direction = .contextual) {
         self.children = children
         self.modes = modes
         self.direction = direction
     }
 
-    init(children: [Layout?], all mode: Mode, direction: Direction) {
+    init(children: [Layout?], all mode: Mode, direction: Direction = .contextual) {
         self.children = children
         self.modes = [Mode](repeatElement(mode, count: children.count))
         self.direction = direction
     }
 
-    /// Inserts spacing between children
+    /// Inserts nil layouts between children
     init(
         spacingChildren: [Layout?],
         modes: [Mode],
-        direction: Direction,
-        insideSpacing: Mode,
+        direction: Direction = .contextual,
+        insideSpacing: Mode = .stretch(1),
         outsideSpacing: Mode? = nil
         ) {
         let (childrenPlusSpacers, modesPlusSpacers) = StackLayout.inertSpacers(
@@ -65,8 +65,8 @@ struct StackLayout: Layout {
     init(
         spacingChildren: [Layout?],
         all mode: Mode,
-        direction: Direction,
-        insideSpacing: Mode,
+        direction: Direction = .contextual,
+        insideSpacing: Mode = .stretch(1),
         outsideSpacing: Mode? = nil
         ) {
         let (childrenPlusSpacers, modesPlusSpacers) = StackLayout.inertSpacers(
@@ -117,9 +117,9 @@ struct StackLayout: Layout {
         return (childrenPlusSpacers, modesPlusSpacers)
     }
 
-    func layout(in rect: CGRect) -> StackLayout {
+    func layout(in rect: CGRect) {
         let minCount = min(children.count, modes.count)
-        guard minCount > 0 else { return self }
+        guard minCount > 0 else { return }
         var stretchSum: CGFloat = 0
         var aspectRatioSum: CGFloat = 0
         for mode in modes {
@@ -145,32 +145,38 @@ struct StackLayout: Layout {
         let stretchLength = axisLength - axisDepth * aspectRatioSum
         let childLengths: [CGFloat] = modes.map { mode in
             switch mode {
-            case .stretch(let weight): return stretchLength * weight / stretchSum
-            case .aspectRatio(let aspectRatio): return aspectRatio * axisDepth
+            case .stretch(let weight):
+                guard !stretchSum.isZero else { return 0 }
+                return stretchLength * weight / stretchSum
+            case .aspectRatio(let aspectRatio):
+                return aspectRatio * axisDepth
             }
         }
         let directionIsHorizontal: Bool = {
             switch direction {
             case .horizontal: return true
-            case .vertical: return false
-            case .contextual: return (rect.height > rect.width)
+            case .vertical:   return false
+            case .contextual: return (rect.width >= rect.height)
             }
         }()
         if directionIsHorizontal {
             var x = rect.minX
+            let y = rect.minY
+            let height = axisDepth
             for i in 0 ..< minCount {
                 let width = childLengths[i]
-                children[i]?.layout(in: CGRect(x: x, y: 0, width: width, height: axisDepth))
+                children[i]?.layout(in: CGRect(x: x, y: y, width: width, height: height))
                 x += width
             }
         } else {
+            let x = rect.minX
             var y = rect.minY
+            let width = axisDepth
             for i in 0 ..< minCount {
                 let height = childLengths[i]
-                children[i]?.layout(in: CGRect(x: 0, y: y, width: axisDepth, height: height))
+                children[i]?.layout(in: CGRect(x: x, y: y, width: width, height: height))
                 y += height
             }
         }
-        return self
     }
 }

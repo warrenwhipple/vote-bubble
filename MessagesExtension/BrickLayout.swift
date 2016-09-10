@@ -20,8 +20,8 @@ struct BrickLayout: Layout {
         self.children = children
     }
 
-    func layout(in rect: CGRect) -> BrickLayout {
-        guard !children.isEmpty else { return self }
+    func layout(in rect: CGRect) {
+        guard !children.isEmpty else { return }
         var columnCount = 1
         var rowCount = 1
         while columnCount * rowCount < children.count {
@@ -53,7 +53,6 @@ struct BrickLayout: Layout {
                 childIndex += 1
             }
         }
-        return self
     }
 
     func smallestBrick(in size: CGSize) -> CGSize {

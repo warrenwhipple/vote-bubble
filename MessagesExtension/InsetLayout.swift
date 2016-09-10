@@ -16,21 +16,23 @@ struct InsetLayout: Layout {
     var mode: Mode
     var left, right, top, bottom: CGFloat
 
-    @discardableResult
-    func layout(in rect: CGRect) -> InsetLayout {
+    func layout(in rect: CGRect) {
         switch mode {
-        case .absolute: child.layout(in: CGRect(
-            x: rect.minX + left,
-            y: rect.minY + top,
-            width: rect.width - left - right,
-            height: rect.height - top - bottom))
-        case .relative: child.layout(in: CGRect(
-            x: rect.minX + left * rect.width,
-            y: rect.minY + top * rect.height,
-            width: rect.width - (left + right) * rect.width,
-            height: rect.height - (top + bottom) * rect.height))
+        case .absolute:
+            child.layout(in: CGRect(
+                x: rect.minX + left,
+                y: rect.minY + top,
+                width: rect.width - left - right,
+                height: rect.height - top - bottom
+            ))
+        case .relative:
+            child.layout(in: CGRect(
+                x: rect.minX + left * rect.width,
+                y: rect.minY + top * rect.height,
+                width: rect.width - (left + right) * rect.width,
+                height: rect.height - (top + bottom) * rect.height
+            ))
         }
-        return self
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 enum Icon {
 
-    case none, plus, arrow
+    case none, plus, minus, arrow
 
     func draw(center: CGPoint,
               diameter: CGFloat,
@@ -19,10 +19,10 @@ enum Icon {
               strokeColor: UIColor) {
 
         let path: UIBezierPath
-
         switch self {
         case .none: return
         case .plus:  path =      plusPath(diameter: diameter, strokeWidth: strokeWidth)
+        case .minus: path =     minusPath(diameter: diameter, strokeWidth: strokeWidth)
         case .arrow: path = leftArrowPath(diameter: diameter, strokeWidth: strokeWidth)
         }
 
@@ -38,24 +38,25 @@ enum Icon {
 
     private func plusPath(diameter: CGFloat, strokeWidth: CGFloat) -> UIBezierPath {
         let path = UIBezierPath()
+        path.move   (to: CGPoint(x: -diameter / 2, y:             0))
+        path.addLine(to: CGPoint(x:  diameter / 2, y:             0))
+        path.move   (to: CGPoint(x:             0, y: -diameter / 2))
+        path.addLine(to: CGPoint(x:             0, y:  diameter / 2))
+        return path
+    }
+
+    private func minusPath(diameter: CGFloat, strokeWidth: CGFloat) -> UIBezierPath {
+        let path = UIBezierPath()
         path.move   (to: CGPoint(x: -diameter / 2, y: 0))
         path.addLine(to: CGPoint(x:  diameter / 2, y: 0))
-        path.move   (to: CGPoint(x: 0, y: -diameter / 2))
-        path.addLine(to: CGPoint(x: 0, y: -strokeWidth / 2))
-        path.move   (to: CGPoint(x: 0, y:  strokeWidth / 2))
-        path.addLine(to: CGPoint(x: 0, y:  diameter / 2))
         return path
     }
 
     private func leftArrowPath(diameter: CGFloat, strokeWidth: CGFloat) -> UIBezierPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: -strokeWidth / 2, y: 0))
-        path.addLine(to: CGPoint(x: diameter / 2, y: 0))
-        path.move(to: CGPoint(x:0, y: strokeWidth / 2))
-        path.addLine(to: CGPoint(x: 0, y: diameter / 2))
-        let t1 = CGAffineTransform(translationX: -diameter / 8, y: -diameter / 8)
-        let t2 = CGAffineTransform(rotationAngle: -CGFloat.pi / 4)
-        path.apply(t1.concatenating(t2))
+        path.move   (to: CGPoint(x:  diameter * 3/16, y: -diameter / 2))
+        path.addLine(to: CGPoint(x: -diameter * 5/16, y:             0))
+        path.addLine(to: CGPoint(x:  diameter * 3/16, y:  diameter / 2))
         return path
     }
     

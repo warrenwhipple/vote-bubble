@@ -784,6 +784,7 @@
 				2D5A6FB41D80508800BEB809 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

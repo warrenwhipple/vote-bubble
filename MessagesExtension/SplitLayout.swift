@@ -30,8 +30,7 @@ struct SplitLayout: Layout {
         self.direction = direction
     }
 
-    @discardableResult
-    func layout(in rect: CGRect) -> SplitLayout {
+    func layout(in rect: CGRect) {
         switch direction {
         case .horizontal:
             firstChild?.layout(in: CGRect(
@@ -60,20 +59,23 @@ struct SplitLayout: Layout {
                 height: rect.height * (1 - split)
             ))
         }
-        return self
     }
 
     func firstSize(in size: CGSize) -> CGSize {
         switch direction {
-        case .horizontal: return CGSize(width: size.width * split, height: size.height)
-        case .vertical:   return CGSize(width: size.width, height: size.height * split)
+        case .horizontal:
+            return CGSize(width: size.width * split, height: size.height)
+        case .vertical:
+            return CGSize(width: size.width, height: size.height * split)
         }
     }
 
     func secondSize(in size: CGSize) -> CGSize {
         switch direction {
-        case .horizontal: return CGSize(width: size.width * (1 - split), height: size.height)
-        case .vertical:   return CGSize(width: size.width, height: size.height * (1 - split))
+        case .horizontal:
+            return CGSize(width: size.width * (1 - split), height: size.height)
+        case .vertical:
+            return CGSize(width: size.width, height: size.height * (1 - split))
         }
     }
 

@@ -11,20 +11,35 @@ import UIKit
 class BallotView: UIView {
 
     let bubbleView = BallotBubbleView()
-    let brickStyleButtons: [IconButton] = [IconButton(), IconButton(), IconButton()]
-    let addCandidateButton = IconButton()
-    let subtractCandidateButton = IconButton()
-    let backButton = IconButton()
+    let brickModeButtons: [IconButton] = [IconButton(), IconButton(), IconButton(), IconButton()]
+    let settingsButton = IconButton()
     let toggleQuestionButton = IconButton()
+    let subtractCandidateButton = IconButton()
+    let addCandidateButton = IconButton()
 
     init() {
         super.init(frame: CGRect.zero)
         addSubview(bubbleView)
+        settingsButton.icon = .arrow
         addCandidateButton.icon = .plus
-        addCandidateButton.backgroundColor = ColorPalette.voteBubblePrimary
-        addCandidateButton.iconStrokeColor = UIColor.white
-        addCandidateButton.clipsToBounds = true
-        addSubview(addCandidateButton)
+        subtractCandidateButton.icon = .minus
+        let buttons: [IconButton] = brickModeButtons + [
+            settingsButton,
+            toggleQuestionButton,
+            subtractCandidateButton,
+            addCandidateButton
+        ]
+        for button in buttons {
+            button.backgroundColor = UIColor.white
+            button.borderColor = ColorPalette.uiBlue
+            button.iconStrokeColor = ColorPalette.uiBlue
+            button.dynamicIconDiameter = 3/8
+            button.dynamicCornerRadius = 1/2
+            button.iconStrokeWidth = 2
+            button.borderWidth = 2
+            button.clipsToBounds = true
+            addSubview(button)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,43 +48,51 @@ class BallotView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let topControlsLayout = StackLayout(
-            spacingChildren: brickStyleButtons,
-            all: .aspectRatio(1),
-            direction: .horizontal,
-            insideSpacing: .stretch(1)
-        )
-        let bottomControls = [
-            backButton,
+        let topStackChildren: [Layout?] = brickModeButtons
+        let bottomStackChildren: [Layout?] = [
+            settingsButton,
             toggleQuestionButton,
             subtractCandidateButton,
             addCandidateButton
         ]
-        let bottomControlsLayout = StackLayout(
-            spacingChildren: bottomControls,
-            all: .aspectRatio(1),
-            direction: .horizontal,
-            insideSpacing: .stretch(1)
+        let topButtonStackLayout = StackLayout(
+            spacingChildren: topStackChildren,
+            all: .aspectRatio(1)
         )
-        let stackChildren: [Layout] = [
-            topControlsLayout,
+        let bottomButtonStackLayout = StackLayout(
+            spacingChildren: bottomStackChildren,
+            all: .aspectRatio(1)
+        )
+        let fullStackChildren: [Layout?] = [
+            topButtonStackLayout,
             bubbleView,
-            bottomControlsLayout
+            bottomButtonStackLayout
         ]
-        let stackModes: [StackLayout.Mode] = [
-            .aspectRatio(0.25),
+
+        // 4 square buttons + 3 * 1/4 spacers between buttons
+        // 1 / (16/4 + 3/4)
+        let barAspectRatio: CGFloat = 4 / 19
+
+        let fullStackModes: [StackLayout.Mode] = [
+            .aspectRatio(barAspectRatio),
             .aspectRatio(1),
-            .aspectRatio(0.25)
+            .aspectRatio(barAspectRatio)
         ]
-        let stackLayout = StackLayout(
-            spacingChildren: stackChildren,
-            modes: stackModes,
-            direction: .vertical,
-            insideSpacing: .stretch(1)
+
+        let fullStackLayout = StackLayout(
+            spacingChildren: fullStackChildren,
+            modes: fullStackModes,
+            direction: .contextual,
+            insideSpacing: .stretch(1),
+            outsideSpacing: .stretch(1)
         )
-        let centeredLayout = stackLayout
-            .withCentering(.aspectRatioFit(0.75))
-            .withCentering(.maxWidth(300))
+
+        // 2 * 4/19 bars + 1 square message + 4 * 1/19 spacers inside and outside
+        // 1 / (8/19 + 19/19 + 4/19)
+        let fullAspectRatio: CGFloat = 19 / 31
+
+        let centeredLayout = fullStackLayout.withCentering(.aspectRatioFit(fullAspectRatio))
+
         centeredLayout.layout(in: bounds)
     }
 }

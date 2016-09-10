@@ -22,16 +22,14 @@ struct CenteredLayout: Layout {
     var child: Layout
     var mode: Mode
 
-    @discardableResult
-    func layout(in rect: CGRect) -> CenteredLayout {
-        let size = childSize(in: rect.size, mode: self.mode)
+    func layout(in rect: CGRect) {
+        let size = childSize(in: rect.size, mode: mode)
         child.layout(in: CGRect(
             x: rect.minX + (rect.width - size.width) / 2,
             y: rect.minY + (rect.height - size.height) / 2,
             width: size.width,
             height: size.height
         ))
-        return self
     }
 
     private func childSize(in parentSize: CGSize, mode: Mode) -> CGSize {
@@ -54,6 +52,9 @@ struct CenteredLayout: Layout {
                 height: min(parentSize.height, maxHeight)
             )
         case .aspectRatioFit(let aspectRatio):
+            if parentSize.height.isZero {
+                return CGSize.zero
+            }
             let parentAspectRatio = parentSize.width / parentSize.height
             if parentAspectRatio > aspectRatio {
                 return CGSize(
@@ -67,6 +68,12 @@ struct CenteredLayout: Layout {
                 )
             }
         case .aspectRatioCover(let aspectRatio):
+            if parentSize.height.isZero {
+                return CGSize(
+                    width: parentSize.width,
+                    height: parentSize.width / aspectRatio
+                )
+            }
             let parentAspectRatio = parentSize.width / parentSize.height
             if parentAspectRatio > aspectRatio {
                 return CGSize(

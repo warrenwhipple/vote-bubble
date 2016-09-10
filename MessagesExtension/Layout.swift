@@ -9,6 +9,5 @@
 import CoreGraphics
 
 protocol Layout {
-    @discardableResult
-    func layout(in rect: CGRect) -> Self
+    func layout(in rect: CGRect)
 }
