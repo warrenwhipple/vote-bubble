@@ -169,7 +169,9 @@ class MessagesViewController: MSMessagesAppViewController,
                 waitingBallot = nil
                 waitingCell = nil
             }
-        }
+        case .transcript:
+<#code#>
+}
     }
 
     // MARK: - BallotCollectionViewControllerDelegate
@@ -182,7 +184,9 @@ class MessagesViewController: MSMessagesAppViewController,
             requestPresentationStyle(.expanded)
         case .expanded:
             segueToSingleView(for: ballot, from: cell)
-        }
+        case .transcript:
+<#code#>
+}
     }
 
     // MARK: - Child view controller delegate methods

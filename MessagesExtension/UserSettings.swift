@@ -15,12 +15,12 @@ extension MessagesViewController {
             self,
             selector: #selector(settingsStoreDidChange(_:)),
             name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-            object: NSUbiquitousKeyValueStore.default()
+            object: NSUbiquitousKeyValueStore.default
         )
-        NSUbiquitousKeyValueStore.default().synchronize()
+        NSUbiquitousKeyValueStore.default.synchronize()
     }
 
-    func settingsStoreDidChange(_ store: NSUbiquitousKeyValueStore) {
+    @objc func settingsStoreDidChange(_ store: NSUbiquitousKeyValueStore) {
 
     }
 
